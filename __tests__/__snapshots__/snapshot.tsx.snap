@@ -3,7 +3,7 @@
 exports[`renders homepage unchanged 1`] = `
 <div>
   <h1>
-    App Router
+    Salut Andrei
   </h1>
 </div>
 `;
