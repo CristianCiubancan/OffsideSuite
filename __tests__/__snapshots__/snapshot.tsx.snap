@@ -2,21 +2,8 @@
 
 exports[`renders homepage unchanged 1`] = `
 <div>
-  <div
-    class="container"
-  >
-    <main>
-      <h1
-        class="title"
-      >
-        Welcome to 
-        <a
-          href="https://nextjs.org"
-        >
-          Next.js!
-        </a>
-      </h1>
-    </main>
-  </div>
+  <h1>
+    App Router
+  </h1>
 </div>
 `;
