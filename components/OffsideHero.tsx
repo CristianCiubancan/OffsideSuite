@@ -326,7 +326,7 @@ const OffsideHero = () => {
         <div className="w-full h-full relative z-20" ref={heroRef}>
           <div className="w-full h-full flex justify-center items-center text-white">
             {canDisplayAttributes && !displayedAllAttributes ? (
-              <div className="flex flex-wrap justify-center gap-16">
+              <div className="flex flex-wrap justify-center gap-4 md:gap-16">
                 {attributes.map((attr) => (
                   <div key={attr.key}>
                     <span>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { use, useMemo } from "react";
 import styles from "./Attribute.module.css";
 import useWindowSize from "./useWindowSize";
 interface IAttributeProps {
@@ -8,13 +8,23 @@ interface IAttributeProps {
   };
   style?: React.CSSProperties;
 }
-
 const Attribute = ({ text, style }: IAttributeProps) => {
-  const { width } = useWindowSize();
+  const { width: windowWidth } = useWindowSize();
+
+  const width = windowWidth || 0;
+
+  const multiplier = useMemo(() => {
+    return width > 500 ? 0.9 : 0.5;
+  }, [width]);
+
+  const fontRatio = useMemo(() => {
+    return 3840 * multiplier;
+  }, [width]);
 
   const fontSize = ((style?.fontSize as string) || "").split("em")[0];
+
   const usedFontSize = fontSize?.length ? parseFloat(fontSize) : undefined;
-  console.log("fontSize", fontSize);
+
   return (
     <span
       id={`attribute-${text.key}-${text.value}`}
@@ -22,7 +32,7 @@ const Attribute = ({ text, style }: IAttributeProps) => {
       style={{
         ...style,
         fontSize: usedFontSize
-          ? `${usedFontSize * ((width || 3840 * 0.9) / (3840 * 0.9))}em`
+          ? `${usedFontSize * ((width || fontRatio) / fontRatio)}em`
           : undefined,
       }}
     >
