@@ -299,6 +299,11 @@ const OffsideHero = () => {
       }, 500);
     }
   }, [canDisplayAttributes, displayedAllAttributes]);
+
+  useEffect(() => {
+    const video = document.querySelector("video");
+    video?.play().catch(() => {});
+  }, []);
   return (
     <div>
       <div className="relative h-dvh overflow-hidden">
