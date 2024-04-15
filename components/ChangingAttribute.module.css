@@ -1,0 +1,3 @@
+.attribute-transition {
+  transition: opacity 0.5s ease-in-out;  /* Adjust timings as needed */
+}
