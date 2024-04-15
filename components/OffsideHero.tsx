@@ -232,6 +232,10 @@ const OffsideHero = () => {
   const [canDisplayAttributes, setCanDisplayAttributes] = useState(false);
   const [displayedAllAttributes, setDisplayedAllAttributes] = useState(false);
   const [attributes, setAttributes] = useState<IAttribute[]>([]);
+
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(true);
+
   const cycleEndCallback = (state: boolean) => {
     if (state) {
       const newAttributes = initialAttributes.map((text) => ({
@@ -301,12 +305,26 @@ const OffsideHero = () => {
   }, [canDisplayAttributes, displayedAllAttributes]);
 
   useEffect(() => {
-    const video = document.querySelector("video");
-    video?.play().catch(() => {});
-  }, []);
+    if (videoRef.current) {
+      // Add event listeners to track playback state
+      videoRef.current.addEventListener("playing", () => setIsPlaying(true));
+      videoRef.current.addEventListener("pause", () => setIsPlaying(false));
+    }
+    setIsPlaying(videoRef.current?.paused === false);
+  }, [videoRef]);
   return (
     <div>
       <div className="relative h-dvh overflow-hidden">
+        {!isPlaying && ( // Only show the button if the video is not playing
+          <button
+            className="absolute z-50 bottom-0 right-0 m-4 p-2 bg-white text-black rounded-md shadow-md"
+            onClick={() => {
+              videoRef.current?.play();
+            }}
+          >
+            Play Video
+          </button>
+        )}
         <img
           src="/hero-video-poster.jpeg"
           alt="Blurred Background"
@@ -314,6 +332,7 @@ const OffsideHero = () => {
         />
         <div className="absolute inset-0 z-10 bg-gradient-to-b from-transparent to-black opacity-50"></div>
         <video
+          ref={videoRef}
           className="absolute inset-0 z-0 w-full h-full object-cover"
           autoPlay
           loop
