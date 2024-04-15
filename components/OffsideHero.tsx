@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import Attribute from "./Attribute";
 import ChangingAttribute from "./ChangingAttribute";
+import useWindowSize from "./useWindowSize";
 interface IAttribute {
   key: number;
   value: string;
@@ -224,7 +225,6 @@ const OffsideHero = () => {
   const [canDisplayAttributes, setCanDisplayAttributes] = useState(false);
   const [displayedAllAttributes, setDisplayedAllAttributes] = useState(false);
   const [attributes, setAttributes] = useState<IAttribute[]>([]);
-
   const cycleEndCallback = (state: boolean) => {
     if (state) {
       const newAttributes = initialAttributes.map((text) => ({
