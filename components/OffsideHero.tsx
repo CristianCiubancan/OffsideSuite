@@ -304,27 +304,9 @@ const OffsideHero = () => {
     }
   }, [canDisplayAttributes, displayedAllAttributes]);
 
-  useEffect(() => {
-    if (videoRef.current) {
-      // Add event listeners to track playback state
-      videoRef.current.addEventListener("playing", () => setIsPlaying(true));
-      videoRef.current.addEventListener("pause", () => setIsPlaying(false));
-    }
-    setIsPlaying(videoRef.current?.paused === false);
-  }, [videoRef]);
   return (
     <div>
       <div className="relative h-dvh overflow-hidden">
-        {!isPlaying && ( // Only show the button if the video is not playing
-          <button
-            className="absolute z-50 bottom-0 right-0 m-4 p-2 bg-white text-black rounded-md shadow-md"
-            onClick={() => {
-              videoRef.current?.play();
-            }}
-          >
-            Play Video
-          </button>
-        )}
         <img
           src="/hero-video-poster.jpeg"
           alt="Blurred Background"
