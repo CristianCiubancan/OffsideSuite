@@ -333,6 +333,7 @@ const OffsideHero = () => {
         <div className="absolute inset-0 z-10 bg-gradient-to-b from-transparent to-black opacity-50"></div>
         <video
           ref={videoRef}
+          playsInline
           className="absolute inset-0 z-0 w-full h-full object-cover"
           autoPlay
           loop
