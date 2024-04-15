@@ -265,22 +265,13 @@ const OffsideHero = () => {
           // we want to change the opacity to 1 after idx+1 * 300 ms
           setTimeout(() => {
             element.style.opacity = "1";
+            setTimeout(() => {
+              element.style.opacity = "0";
+            }, 1500);
             if (idx === attributes.length - 1) {
-              // attributes.forEach((attr) => {
-              //   const element = document.getElementById(
-              //     `attribute-${attr.key}-${attr.value}`
-              //   );
-              //   if (element) {
-              //     element.style.opacity = "0";
-              //   }
-              // });
               setTimeout(() => {
                 setDisplayedAllAttributes(true);
               }, 2600);
-            } else {
-              setTimeout(() => {
-                element.style.opacity = "0";
-              }, 1500);
             }
           }, (idx + 1) * 300);
         }
