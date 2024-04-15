@@ -22,7 +22,7 @@ const Attribute = ({ text, style }: IAttributeProps) => {
       style={{
         ...style,
         fontSize: usedFontSize
-          ? `${usedFontSize * ((width || 1920) / 1920)}em`
+          ? `${usedFontSize * ((width || 3840 * 0.9) / (3840 * 0.9))}em`
           : undefined,
       }}
     >

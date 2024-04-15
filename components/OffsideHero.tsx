@@ -2,7 +2,6 @@
 import { useEffect, useRef, useState } from "react";
 import Attribute from "./Attribute";
 import ChangingAttribute from "./ChangingAttribute";
-import useWindowSize from "./useWindowSize";
 interface IAttribute {
   key: number;
   value: string;
@@ -173,7 +172,7 @@ const initialAttributes = [
   },
   {
     key: 20,
-    value: "Authentic",
+    value: "Diligent",
     style: {
       fontSize: "12em",
       fontWeight: "300",
@@ -190,18 +189,26 @@ const initialAttributes = [
   {
     key: 22,
     value: "Determined",
+    style: {
+      fontSize: "6em",
+      fontWeight: "thin",
+    },
   },
   {
     key: 23,
     value: "Bold",
+    style: {
+      fontSize: "6em",
+      fontWeight: "bold",
+    },
   },
   {
     key: 24,
     value: "Youthful",
-  },
-  {
-    key: 25,
-    value: "Diligent",
+    style: {
+      fontSize: "10em",
+      fontWeight: "thin",
+    },
   },
 ];
 
@@ -259,17 +266,21 @@ const OffsideHero = () => {
           setTimeout(() => {
             element.style.opacity = "1";
             if (idx === attributes.length - 1) {
-              attributes.forEach((attr) => {
-                const element = document.getElementById(
-                  `attribute-${attr.key}-${attr.value}`
-                );
-                if (element) {
-                  element.style.opacity = "0";
-                }
-              });
+              // attributes.forEach((attr) => {
+              //   const element = document.getElementById(
+              //     `attribute-${attr.key}-${attr.value}`
+              //   );
+              //   if (element) {
+              //     element.style.opacity = "0";
+              //   }
+              // });
               setTimeout(() => {
                 setDisplayedAllAttributes(true);
-              }, 500);
+              }, 2600);
+            } else {
+              setTimeout(() => {
+                element.style.opacity = "0";
+              }, 1500);
             }
           }, (idx + 1) * 300);
         }
@@ -287,6 +298,11 @@ const OffsideHero = () => {
           // we keep it there for three seconds and set it back to 0
           setTimeout(() => {
             finalHeading.style.opacity = "0";
+            setTimeout(() => {
+              setDisplayedAllAttributes(false);
+              setCanDisplayAttributes(false);
+              setAttributes([]);
+            }, 5000);
           }, 3000);
         }
       }, 500);
@@ -312,7 +328,7 @@ const OffsideHero = () => {
         <div className="w-full h-full relative z-20" ref={heroRef}>
           <div className="w-full h-full flex justify-center items-center text-white">
             {canDisplayAttributes && !displayedAllAttributes ? (
-              <div className="flex flex-wrap justify-center gap-4">
+              <div className="flex flex-wrap justify-center gap-16">
                 {attributes.map((attr) => (
                   <div key={attr.key}>
                     <span>
