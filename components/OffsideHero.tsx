@@ -2,9 +2,67 @@
 import { useEffect, useRef, useState } from "react";
 import Attribute from "./Attribute";
 import ChangingAttribute from "./ChangingAttribute";
+import {
+  Calligraffitti,
+  ABeeZee,
+  Croissant_One,
+  Syne_Mono,
+  Syne_Tactile,
+  Rubik_Microbe,
+  Dancing_Script,
+  Pacifico,
+  Permanent_Marker,
+} from "next/font/google";
+
+const calligraffitti = Calligraffitti({
+  weight: ["400"],
+  subsets: ["latin"],
+});
+
+const abeezee = ABeeZee({
+  weight: ["400"],
+  subsets: ["latin"],
+});
+
+const croissantOne = Croissant_One({
+  weight: ["400"],
+  subsets: ["latin"],
+});
+
+const syneMono = Syne_Mono({
+  weight: ["400"],
+  subsets: ["latin"],
+});
+
+const syneTactile = Syne_Tactile({
+  weight: ["400"],
+  subsets: ["latin"],
+});
+
+const rubikMicrobe = Rubik_Microbe({
+  weight: ["400"],
+  subsets: ["latin"],
+});
+
+const dancingScript = Dancing_Script({
+  weight: ["400"],
+  subsets: ["latin"],
+});
+
+const pacifico = Pacifico({
+  weight: ["400"],
+  subsets: ["latin"],
+});
+
+const permanentMarker = Permanent_Marker({
+  weight: ["400"],
+  subsets: ["latin"],
+});
+
 interface IAttribute {
   key: number;
   value: string;
+  className: string;
   style: {
     opacity?: number;
   };
@@ -13,6 +71,7 @@ const initialAttributes = [
   {
     key: 0,
     value: "Creative",
+    className: calligraffitti.className,
     style: {
       fontSize: "8em",
       fontWeight: "bold",
@@ -21,6 +80,7 @@ const initialAttributes = [
   {
     key: 1,
     value: "Passionate",
+    className: abeezee.className,
     style: {
       fontSize: "10em",
       fontWeight: "200",
@@ -29,6 +89,7 @@ const initialAttributes = [
   {
     key: 2,
     value: "Ethical",
+    className: croissantOne.className,
     style: {
       fontSize: "3em",
       fontWeight: "bold",
@@ -37,6 +98,7 @@ const initialAttributes = [
   {
     key: 3,
     value: "Innovative",
+    className: syneMono.className,
     style: {
       fontSize: "8em",
       fontWeight: "300",
@@ -45,6 +107,7 @@ const initialAttributes = [
   {
     key: 4,
     value: "Diverse",
+    className: syneTactile.className,
     style: {
       fontSize: "6em",
       fontWeight: "400",
@@ -53,6 +116,7 @@ const initialAttributes = [
   {
     key: 5,
     value: "Inclusive",
+    className: rubikMicrobe.className,
     style: {
       fontSize: "3em",
       fontWeight: "200",
@@ -61,6 +125,7 @@ const initialAttributes = [
   {
     key: 6,
     value: "Respectful",
+    className: dancingScript.className,
     style: {
       fontSize: "7em",
       fontWeight: "400",
@@ -69,6 +134,7 @@ const initialAttributes = [
   {
     key: 7,
     value: "Authentic",
+    className: pacifico.className,
     style: {
       fontSize: "2em",
       fontWeight: "400",
@@ -77,6 +143,7 @@ const initialAttributes = [
   {
     key: 8,
     value: "Empathetic",
+    className: permanentMarker.className,
     style: {
       fontSize: "12em",
       fontWeight: "300",
@@ -85,6 +152,7 @@ const initialAttributes = [
   {
     key: 9,
     value: "Collaborative",
+    className: calligraffitti.className,
     style: {
       fontSize: "5em",
       fontWeight: "200",
@@ -93,6 +161,7 @@ const initialAttributes = [
   {
     key: 10,
     value: "Inspirational",
+    className: abeezee.className,
     style: {
       fontSize: "2em",
       fontWeight: "200",
@@ -101,6 +170,7 @@ const initialAttributes = [
   {
     key: 11,
     value: "Purpose-Driven",
+    className: croissantOne.className,
     style: {
       fontSize: "6em",
       fontWeight: "400",
@@ -109,6 +179,7 @@ const initialAttributes = [
   {
     key: 12,
     value: "Community-Focused",
+    className: syneMono.className,
     style: {
       fontSize: "7em",
       fontWeight: "400",
@@ -117,6 +188,7 @@ const initialAttributes = [
   {
     key: 13,
     value: "Progressive",
+    className: syneTactile.className,
     style: {
       fontSize: "5em",
       fontWeight: "400",
@@ -125,6 +197,7 @@ const initialAttributes = [
   {
     key: 14,
     value: "Sustainable",
+    className: rubikMicrobe.className,
     style: {
       fontSize: "4em",
       fontWeight: "400",
@@ -133,6 +206,7 @@ const initialAttributes = [
   {
     key: 15,
     value: "Transparent",
+    className: dancingScript.className,
     style: {
       fontSize: "8em",
       fontWeight: "400",
@@ -141,6 +215,7 @@ const initialAttributes = [
   {
     key: 16,
     value: "Accountable",
+    className: pacifico.className,
     style: {
       fontSize: "6em",
       fontWeight: "400",
@@ -149,6 +224,7 @@ const initialAttributes = [
   {
     key: 17,
     value: "Supportive",
+    className: permanentMarker.className,
     style: {
       fontSize: "7em",
       fontWeight: "400",
@@ -157,6 +233,7 @@ const initialAttributes = [
   {
     key: 18,
     value: "Forward-Thinking",
+    className: calligraffitti.className,
     style: {
       fontSize: "5em",
       fontWeight: "400",
@@ -165,6 +242,7 @@ const initialAttributes = [
   {
     key: 19,
     value: "Equitable",
+    className: abeezee.className,
     style: {
       fontSize: "6em",
       fontWeight: "400",
@@ -173,6 +251,7 @@ const initialAttributes = [
   {
     key: 20,
     value: "Diligent",
+    className: croissantOne.className,
     style: {
       fontSize: "12em",
       fontWeight: "300",
@@ -181,6 +260,7 @@ const initialAttributes = [
   {
     key: 21,
     value: "Impactful",
+    className: syneMono.className,
     style: {
       fontSize: "6em",
       fontWeight: "bold",
@@ -189,6 +269,7 @@ const initialAttributes = [
   {
     key: 22,
     value: "Determined",
+    className: syneTactile.className,
     style: {
       fontSize: "6em",
       fontWeight: "thin",
@@ -197,6 +278,7 @@ const initialAttributes = [
   {
     key: 23,
     value: "Bold",
+    className: rubikMicrobe.className,
     style: {
       fontSize: "6em",
       fontWeight: "bold",
@@ -205,6 +287,7 @@ const initialAttributes = [
   {
     key: 24,
     value: "Youthful",
+    className: dancingScript.className,
     style: {
       fontSize: "10em",
       fontWeight: "thin",
@@ -234,7 +317,6 @@ const OffsideHero = () => {
   const [attributes, setAttributes] = useState<IAttribute[]>([]);
 
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(true);
 
   const cycleEndCallback = (state: boolean) => {
     if (state) {
@@ -322,7 +404,7 @@ const OffsideHero = () => {
     }
   }, [videoRef]);
   return (
-    <div>
+    <div className={calligraffitti.className}>
       <div className="relative h-dvh overflow-hidden">
         <img
           src="/hero-video-poster.jpg"
@@ -335,12 +417,6 @@ const OffsideHero = () => {
           playsInline
           className="absolute inset-0 -z-10 w-full h-full object-cover"
           autoPlay
-          // loop
-          // onEnded={(e) => {
-          //   alert(e);
-          //   videoRef.current?.play();
-          //   alert(videoRef.current?.play);
-          // }}
           muted
         >
           <source src="/hero-video.mp4" type="video/mp4" />
@@ -355,6 +431,7 @@ const OffsideHero = () => {
                       <Attribute
                         key={attr.key}
                         text={attr}
+                        className={attr.className}
                         style={attr.style}
                       />
                     </span>

@@ -6,9 +6,10 @@ interface IAttributeProps {
     key: number;
     value: string;
   };
+  className?: string;
   style?: React.CSSProperties;
 }
-const Attribute = ({ text, style }: IAttributeProps) => {
+const Attribute = ({ text, style, className }: IAttributeProps) => {
   const { width: windowWidth } = useWindowSize();
 
   const width = windowWidth || 0;
@@ -28,7 +29,7 @@ const Attribute = ({ text, style }: IAttributeProps) => {
   return (
     <span
       id={`attribute-${text.key}-${text.value}`}
-      className={`${styles["attribute-element"]}`}
+      className={`${styles["attribute-element"]} ${className}`}
       style={{
         ...style,
         fontSize: usedFontSize
