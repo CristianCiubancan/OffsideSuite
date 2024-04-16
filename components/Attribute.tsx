@@ -1,4 +1,4 @@
-import React, { use, useMemo } from "react";
+import React, { useMemo } from "react";
 import styles from "./Attribute.module.css";
 import useWindowSize from "./useWindowSize";
 interface IAttributeProps {

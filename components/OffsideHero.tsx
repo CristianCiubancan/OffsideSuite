@@ -234,7 +234,6 @@ const OffsideHero = () => {
   const [attributes, setAttributes] = useState<IAttribute[]>([]);
 
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(true);
 
   const cycleEndCallback = (state: boolean) => {
     if (state) {
@@ -303,6 +302,15 @@ const OffsideHero = () => {
       }, 500);
     }
   }, [canDisplayAttributes, displayedAllAttributes]);
+  // on safari, the loop property on the video does not seem to work so we worked around it with dom manipulation
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.addEventListener("ended", () => {
+        console.log("Video ended, restarting...");
+        videoRef.current?.play();
+      });
+    }
+  }, [videoRef]);
 
   return (
     <div>
@@ -318,7 +326,7 @@ const OffsideHero = () => {
           playsInline
           className="absolute inset-0 -z-10 w-full h-full object-cover"
           autoPlay
-          loop
+          // loop // becoause this did not work on safari, we used the event listener in the useEffect hook
           muted
         >
           <source src="/hero-video.mp4" type="video/mp4" />
