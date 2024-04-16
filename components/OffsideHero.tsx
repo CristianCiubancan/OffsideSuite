@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import Attribute from "./Attribute";
 import ChangingAttribute from "./ChangingAttribute";
+import styles from "./OffsideHero.module.css";
 interface IAttribute {
   key: number;
   value: string;
@@ -325,7 +326,7 @@ const OffsideHero = () => {
             <img
               src="/hero-video-poster.png"
               alt="Background"
-              className="absolute inset-0 -z-10 w-full h-full object-cover bg-white"
+              className={`${styles["hero-poster-placeholder"]} absolute inset-0 -z-10 w-full h-full object-cover bg-white`}
             />
           </div>
         ) : (

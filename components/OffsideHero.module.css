@@ -1,0 +1,8 @@
+.hero-poster-placeholder{
+  background-color: red;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  background-image: url('../public/hero-video-poster.jpg');
+}
