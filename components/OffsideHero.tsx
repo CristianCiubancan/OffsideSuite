@@ -304,6 +304,22 @@ const OffsideHero = () => {
     }
   }, [canDisplayAttributes, displayedAllAttributes]);
 
+  const recursiveReplay = () => {
+    setTimeout(() => {
+      if (videoRef.current) {
+        videoRef.current.currentTime = 0;
+        videoRef.current.play();
+        recursiveReplay();
+      }
+    }, 1 * 1000);
+  };
+
+  // ugly hack to loop the video
+  useEffect(() => {
+    if (videoRef.current) {
+      recursiveReplay();
+    }
+  }, [videoRef]);
   return (
     <div>
       <div className="relative h-dvh overflow-hidden">
@@ -319,11 +335,11 @@ const OffsideHero = () => {
           className="absolute inset-0 -z-10 w-full h-full object-cover"
           autoPlay
           // loop
-          onEnded={(e) => {
-            alert(e);
-            videoRef.current?.play();
-            alert(videoRef.current?.play);
-          }}
+          // onEnded={(e) => {
+          //   alert(e);
+          //   videoRef.current?.play();
+          //   alert(videoRef.current?.play);
+          // }}
           muted
         >
           <source src="/hero-video.mp4" type="video/mp4" />
