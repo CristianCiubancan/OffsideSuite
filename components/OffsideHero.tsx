@@ -2,7 +2,6 @@
 import { useEffect, useRef, useState } from "react";
 import Attribute from "./Attribute";
 import ChangingAttribute from "./ChangingAttribute";
-import styles from "./OffsideHero.module.css";
 interface IAttribute {
   key: number;
   value: string;
@@ -233,8 +232,9 @@ const OffsideHero = () => {
   const [canDisplayAttributes, setCanDisplayAttributes] = useState(false);
   const [displayedAllAttributes, setDisplayedAllAttributes] = useState(false);
   const [attributes, setAttributes] = useState<IAttribute[]>([]);
-  const [videoEndedPlaying, setVideoEndedPlaying] = useState(false);
+
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(true);
 
   const cycleEndCallback = (state: boolean) => {
     if (state) {
@@ -303,14 +303,6 @@ const OffsideHero = () => {
       }, 500);
     }
   }, [canDisplayAttributes, displayedAllAttributes]);
-  // on safari, the loop property on the video does not seem to work so we worked around it with dom manipulation
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.addEventListener("ended", () => {
-        setVideoEndedPlaying(true);
-      });
-    }
-  }, [videoRef]);
 
   return (
     <div>
@@ -318,29 +310,24 @@ const OffsideHero = () => {
         <img
           src="/hero-video-poster.jpg"
           alt="Blurred Background"
-          className="absolute inset-0 -z-10 w-full h-full object-cover blur-xl bg-white"
+          className="absolute inset-0 -z-10 w-full h-full object-cover blur-xl"
         />
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-transparent to-black opacity-50"></div>
-        {videoEndedPlaying ? (
-          <div>
-            <img
-              src="/hero-video-poster.png"
-              alt="Background"
-              className={`${styles["hero-poster-placeholder"]} absolute inset-0 -z-10 w-full h-full object-cover bg-white`}
-            />
-          </div>
-        ) : (
-          <video
-            ref={videoRef}
-            playsInline
-            className="absolute inset-0 -z-10 w-full h-full object-cover"
-            autoPlay
-            // loop // becoause this did not work on safari, we used the event listener in the useEffect hook
-            muted
-          >
-            <source src="/hero-video.mp4" type="video/mp4" />
-          </video>
-        )}
+        <video
+          ref={videoRef}
+          playsInline
+          className="absolute inset-0 -z-10 w-full h-full object-cover"
+          autoPlay
+          loop
+          onEnded={(e) => {
+            alert(e);
+            videoRef.current?.play();
+            alert(videoRef.current?.play);
+          }}
+          muted
+        >
+          <source src="/hero-video.mp4" type="video/mp4" />
+        </video>
         <div className="w-full h-full relative -z-10" ref={heroRef}>
           <div className="w-full h-full flex justify-center items-center text-white">
             {canDisplayAttributes && !displayedAllAttributes ? (
