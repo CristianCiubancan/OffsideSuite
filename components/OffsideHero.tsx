@@ -232,7 +232,7 @@ const OffsideHero = () => {
   const [canDisplayAttributes, setCanDisplayAttributes] = useState(false);
   const [displayedAllAttributes, setDisplayedAllAttributes] = useState(false);
   const [attributes, setAttributes] = useState<IAttribute[]>([]);
-
+  const [videoEndedPlaying, setVideoEndedPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const cycleEndCallback = (state: boolean) => {
@@ -306,8 +306,7 @@ const OffsideHero = () => {
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.addEventListener("ended", () => {
-        console.log("Video ended, restarting...");
-        videoRef.current?.play();
+        setVideoEndedPlaying(true);
       });
     }
   }, [videoRef]);
@@ -321,16 +320,26 @@ const OffsideHero = () => {
           className="absolute inset-0 -z-10 w-full h-full object-cover blur-xl bg-white"
         />
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-transparent to-black opacity-50"></div>
-        <video
-          ref={videoRef}
-          playsInline
-          className="absolute inset-0 -z-10 w-full h-full object-cover"
-          autoPlay
-          // loop // becoause this did not work on safari, we used the event listener in the useEffect hook
-          muted
-        >
-          <source src="/hero-video.mp4" type="video/mp4" />
-        </video>
+        {videoEndedPlaying ? (
+          <div>
+            <img
+              src="/hero-video-poster.png"
+              alt="Background"
+              className="absolute inset-0 -z-10 w-full h-full object-cover bg-white"
+            />
+          </div>
+        ) : (
+          <video
+            ref={videoRef}
+            playsInline
+            className="absolute inset-0 -z-10 w-full h-full object-cover"
+            autoPlay
+            // loop // becoause this did not work on safari, we used the event listener in the useEffect hook
+            muted
+          >
+            <source src="/hero-video.mp4" type="video/mp4" />
+          </video>
+        )}
         <div className="w-full h-full relative -z-10" ref={heroRef}>
           <div className="w-full h-full flex justify-center items-center text-white">
             {canDisplayAttributes && !displayedAllAttributes ? (
