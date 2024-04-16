@@ -23,7 +23,7 @@ const OffsideHeading = () => {
         <h2 className="text-4xl md:text-6xl font-light mb-4">
           We are{" "}
           <span className="text-4xl md:text-6xl font-bold mb-4">
-            OffsideMusic
+            Offside Music
           </span>
         </h2>
         <h2 className="text-4xl md:text-6xl font-light mb-4">

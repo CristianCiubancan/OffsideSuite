@@ -12,7 +12,13 @@ import {
   Dancing_Script,
   Pacifico,
   Permanent_Marker,
+  Bebas_Neue,
 } from "next/font/google";
+
+const bebasNeue = Bebas_Neue({
+  weight: ["400"],
+  subsets: ["latin"],
+});
 
 const calligraffitti = Calligraffitti({
   weight: ["400"],
@@ -302,7 +308,7 @@ const introTexts = [
   },
   {
     key: 1,
-    value: "OffsideMusic",
+    value: "Offside Music",
   },
   {
     key: 2,
@@ -404,7 +410,7 @@ const OffsideHero = () => {
     }
   }, [videoRef]);
   return (
-    <div className={calligraffitti.className}>
+    <div className={bebasNeue.className}>
       <div className="relative h-dvh overflow-hidden">
         <img
           src="/hero-video-poster.jpg"
@@ -452,7 +458,7 @@ const OffsideHero = () => {
                 id="finalHeading"
                 className="text-4xl md:text-6xl font-bold mb-4 opacity-0 delay-500 duration-500 ease-in-out"
               >
-                OffsideMusic
+                Offside Music
               </div>
             ) : null}
           </div>
