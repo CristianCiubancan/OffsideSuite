@@ -318,7 +318,7 @@ const OffsideHero = () => {
           playsInline
           className="absolute inset-0 -z-10 w-full h-full object-cover"
           autoPlay
-          loop
+          // loop
           onEnded={(e) => {
             alert(e);
             videoRef.current?.play();
