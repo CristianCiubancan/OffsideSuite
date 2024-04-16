@@ -18,6 +18,7 @@
     "types": ["@testing-library/jest-dom"],
     "paths": {
       "@/components/*": ["components/*"],
+      "@/assets/*": ["assets/*"],
       "@/pages/*": ["pages/*"],
       "@/app/*": ["app/*"],
       "@/styles/*": ["styles/*"],

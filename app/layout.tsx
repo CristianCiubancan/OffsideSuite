@@ -1,3 +1,4 @@
+import MenuIcon from "@/assets/icons/MenuIcon";
 import "@/styles/global.css";
 import "@/styles/styles.css";
 import { Calligraffitti } from "next/font/google";
@@ -23,7 +24,7 @@ export default function RootLayout({
           >
             <div className="font-bold text-2xl">OffisdeMusic</div>
             <button className="bg-yellow-500 text-white px-4 py-2 rounded-md cursor-pointer hover:bg-yellow-600 text-lg">
-              Menu
+              <MenuIcon className="w-8 h-8 inline-block mr-2" />
             </button>
           </div>
         </div>
