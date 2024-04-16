@@ -13,7 +13,7 @@ const CoolHeadings = () => {
     });
   }, []); // Run the effect only once on component mount
   return (
-    <div className="absolute inset-0 z-20 flex p-4 md:p-6">
+    <div className="absolute inset-0 z-10 flex p-4 md:p-6">
       <div className="text-white">
         <h2
           ref={(el) =>

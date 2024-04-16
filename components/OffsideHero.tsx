@@ -310,20 +310,20 @@ const OffsideHero = () => {
         <img
           src="/hero-video-poster.jpeg"
           alt="Blurred Background"
-          className="absolute inset-0 z-0 w-full h-full object-cover blur-xl"
+          className="absolute inset-0 -z-10 w-full h-full object-cover blur-xl"
         />
-        <div className="absolute inset-0 z-10 bg-gradient-to-b from-transparent to-black opacity-50"></div>
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-transparent to-black opacity-50"></div>
         <video
           ref={videoRef}
           playsInline
-          className="absolute inset-0 z-0 w-full h-full object-cover"
+          className="absolute inset-0 -z-10 w-full h-full object-cover"
           autoPlay
           loop
           muted
         >
           <source src="/hero-video.mp4" type="video/mp4" />
         </video>
-        <div className="w-full h-full relative z-20" ref={heroRef}>
+        <div className="w-full h-full relative -z-10" ref={heroRef}>
           <div className="w-full h-full flex justify-center items-center text-white">
             {canDisplayAttributes && !displayedAllAttributes ? (
               <div className="flex flex-wrap justify-center gap-4 md:gap-16">

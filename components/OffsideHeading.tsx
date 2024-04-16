@@ -18,7 +18,7 @@ const attributeOptions = [
 
 const OffsideHeading = () => {
   return (
-    <div className="absolute inset-0 z-20 flex p-4 md:p-6 py-24 md:py-24">
+    <div className="absolute inset-0 z-10 flex p-4 md:p-6 py-24 md:py-24">
       <div className="text-white">
         <h2 className="text-4xl md:text-6xl font-light mb-4">
           We are{" "}

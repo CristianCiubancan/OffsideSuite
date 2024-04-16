@@ -9,6 +9,7 @@
     "test:update": "jest -u"
   },
   "dependencies": {
+    "@heroicons/react": "^2.1.3",
     "next": "latest",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
