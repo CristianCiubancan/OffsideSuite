@@ -427,8 +427,11 @@ const OffsideHero = () => {
         >
           <source src="/hero-video.mp4" type="video/mp4" />
         </video>
-        <div className="w-full h-full relative -z-10" ref={heroRef}>
-          <div className="w-full h-full flex justify-center items-center text-white">
+        <div className="w-full h-full relative -z-10 pt-16">
+          <div
+            className="w-full h-full flex justify-center items-center text-white"
+            ref={heroRef}
+          >
             {canDisplayAttributes && !displayedAllAttributes ? (
               <div className="flex flex-wrap justify-center gap-4 md:gap-16">
                 {attributes.map((attr) => (
