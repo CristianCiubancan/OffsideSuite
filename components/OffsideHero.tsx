@@ -310,7 +310,7 @@ const OffsideHero = () => {
         <img
           src="/hero-video-poster.jpg"
           alt="Blurred Background"
-          className="absolute inset-0 -z-10 w-full h-full object-cover blur-xl"
+          className="absolute inset-0 -z-10 w-full h-full object-cover blur-xl bg-white"
         />
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-transparent to-black opacity-50"></div>
         <video
