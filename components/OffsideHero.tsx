@@ -311,7 +311,8 @@ const OffsideHero = () => {
         videoRef.current.play();
         recursiveReplay();
       }
-    }, 1 * 1000);
+      // the ammount of secons must match the lenth of the video or be smaller but greater than 0
+    }, 59 * 1000);
   };
 
   // ugly hack to loop the video
