@@ -411,7 +411,7 @@ const OffsideHero = () => {
   }, [videoRef]);
   return (
     <div className={bebasNeue.className}>
-      <div className="relative h-dvh overflow-hidden">
+      <div className="relative h-vh overflow-hidden">
         <img
           src="/hero-video-poster.jpg"
           alt="Blurred Background"
