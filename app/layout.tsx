@@ -17,10 +17,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="bg-red-700">
       <Head>
-        <meta
+        <meta name="viewport" content="width=device-width" />
+        {/* <meta
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1"
-        />
+        /> */}
       </Head>
       <body className="position-relative">
         <Header />
