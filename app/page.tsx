@@ -28,7 +28,7 @@ export default function Page() {
       <div className="w-full min-h-dvh flex justify-center items-center p-4">
         <ContactForm />
       </div>
-      <div className="w-full min-h-dvh flex justify-center items-center p-4 bg-yellow-500"></div>
+      <div className="w-full min-h-vh flex justify-center items-center p-4 bg-yellow-500"></div>
     </div>
   );
 }
