@@ -432,7 +432,7 @@ const OffsideHero = () => {
             className="w-full h-full flex justify-center items-center text-white"
             ref={heroRef}
           >
-            {canDisplayAttributes && !displayedAllAttributes ? (
+            {/* {canDisplayAttributes && !displayedAllAttributes ? (
               <div className="flex flex-wrap justify-center gap-4 md:gap-16">
                 {attributes.map((attr) => (
                   <div key={attr.key}>
@@ -447,14 +447,14 @@ const OffsideHero = () => {
                   </div>
                 ))}
               </div>
-            ) : null}
-            {!canDisplayAttributes && !displayedAllAttributes && (
+            ) : null} */}
+            {/* {!canDisplayAttributes && !displayedAllAttributes && (
               <ChangingAttribute
                 attributeOptions={introTexts}
                 stopOnEnd
                 cycleEndCallback={cycleEndCallback}
               />
-            )}
+            )} */}
 
             {canDisplayAttributes && displayedAllAttributes ? (
               <div

@@ -106,7 +106,7 @@ const ContactForm = ({}: IContactForm) => {
 
         <Button
           type="submit"
-          color="yellow"
+          color="red"
           disabled={isLoading}
           loading={isLoading}
         >

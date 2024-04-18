@@ -20,10 +20,26 @@ const Button = ({
   disabled,
 }: IButtonProps) => {
   const classes = useMemo(
+    // () =>
+    //   `bg-${color}-${loading ? 900 : 800}
+    //    hover:bg-${color}-900
+    //    ${loading ? `text-${color}-900` : "text-white"}
+    //    font-bold
+    //    py-2
+    //    px-4
+    //    rounded
+    //    relative
+    //    ${fullWidth ? "w-full" : ""}`,
     () =>
-      `bg-${color}-${loading ? 700 : 500} hover:bg-${color}-700 ${
-        loading ? `text-${color}-700` : "text-white"
-      } font-bold py-2 px-4 rounded relative ${fullWidth ? "w-full" : ""}`,
+      `bg-${color}-${loading ? 900 : 800}
+       hover:bg-${color}-900 
+       ${loading ? `text-${color}-900` : "text-white"}
+       font-bold
+       py-2
+       px-4
+       rounded
+       relative
+       ${fullWidth ? "w-full" : ""}`,
     [color, loading, fullWidth]
   );
   return (
@@ -44,25 +60,25 @@ const Button = ({
       {/* here we will insert a hidden div that will contain a bunch of our preffered colours so tailwind can build them if passed as tempalte strings elsewhere*/}
 
       <div className="hidden">
-        {/* a div for each color's 500 and 700 variation */}
-        <div className="bg-purple-500"></div>
-        <div className="bg-purple-700 hover:bg-purple-700 text-purple-700"></div>
-        <div className="bg-red-500"></div>
-        <div className="bg-red-700 hover:bg-red-700 text-red-700"></div>
-        <div className="bg-green-500"></div>
-        <div className="bg-green-700 hover:bg-green-700 text-green-700"></div>
-        <div className="bg-yellow-500"></div>
-        <div className="bg-yellow-700 hover:bg-yellow-700 text-yellow-700"></div>
-        <div className="bg-blue-500"></div>
-        <div className="bg-blue-700 hover:bg-blue-700 text-blue-700"></div>
-        <div className="bg-indigo-500"></div>
-        <div className="bg-indigo-700 hover:bg-indigo-700 text-indigo-700"></div>
-        <div className="bg-pink-500"></div>
-        <div className="bg-pink-700 hover:bg-pink-700 text-pink-700"></div>
-        <div className="bg-gray-500"></div>
-        <div className="bg-gray-700 hover:bg-gray-700 text-gray-700"></div>
-        <div className="bg-orange-500"></div>
-        <div className="bg-orange-700 hover:bg-orange-700 text-orange-700"></div>
+        {/* a div for each color's 800 and 900 variation */}
+        <div className="bg-purple-800"></div>
+        <div className="bg-purple-900 hover:bg-purple-900 text-purple-900"></div>
+        <div className="bg-red-800"></div>
+        <div className="bg-red-900 hover:bg-red-900 text-red-900"></div>
+        <div className="bg-green-800"></div>
+        <div className="bg-green-900 hover:bg-green-900 text-green-900"></div>
+        <div className="bg-yellow-800"></div>
+        <div className="bg-yellow-900 hover:bg-yellow-900 text-yellow-900"></div>
+        <div className="bg-blue-800"></div>
+        <div className="bg-blue-900 hover:bg-blue-900 text-blue-900"></div>
+        <div className="bg-indigo-800"></div>
+        <div className="bg-indigo-900 hover:bg-indigo-900 text-indigo-900"></div>
+        <div className="bg-pink-800"></div>
+        <div className="bg-pink-900 hover:bg-pink-900 text-pink-900"></div>
+        <div className="bg-gray-800"></div>
+        <div className="bg-gray-900 hover:bg-gray-900 text-gray-900"></div>
+        <div className="bg-orange-800"></div>
+        <div className="bg-orange-900 hover:bg-orange-900 text-orange-900"></div>
         <div className="bg-black"></div>
         <div className="bg-white"></div>
       </div>
