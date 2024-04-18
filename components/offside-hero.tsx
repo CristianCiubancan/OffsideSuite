@@ -425,7 +425,7 @@ const OffsideHero = () => {
           autoPlay
           muted
         >
-          <source src="/hero-video.mp4" type="video/mp4" />
+          <source src="/videos/hero-video.mp4" type="video/mp4" />
         </video>
         <div className="w-full h-full relative -z-10 pt-16">
           <div
