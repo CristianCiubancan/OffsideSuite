@@ -31,7 +31,7 @@ export default function RootLayout({
         content="We are a creative media agency based in Bucharest specializing in music, video, lyrics, publicity, websiste and app development. Let's collaborate!"
       />
       <meta property="fb:app_id" content="450961180645048" />
-
+      <meta property="og:image:alt" content="OffsideMusic logo banner" />
       <body className="position-relative">
         <Header />
         {children}
