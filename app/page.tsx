@@ -7,7 +7,7 @@ export const metadata = {
     "We are a creative media agency based in Bucharest specializing in music, video, lyrics, publicity, websiste and app development. Let's collaborate!",
   keywords:
     "Offside Music, creative agency, music production, video production, web development, app development, lyrics writing, publicity",
-  image: "/images/hero.jpg",
+  image: "https://offsidemusic.ro/hero-video-poster.jpg",
   url: "https://offsidemusic.ro",
   type: "website",
   siteName: "Offside Music",
@@ -24,6 +24,9 @@ export const metadata = {
 export default function Page() {
   return (
     <div>
+      <h1 className="sr-only" aria-hidden="true">
+        Offside Music - Creative Media Agency
+      </h1>
       <OffsideHero />
       <div className="w-full min-h-screen flex justify-center items-center p-4">
         <ContactForm />
