@@ -18,7 +18,7 @@ export default function RootLayout({
       {/* the following is a selective fix for IPhone's safari's zoom on input touch/focus */}
       <meta
         property="og:image"
-        content={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/images/og-image.jpg`}
+        content={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/images/og-image.png`}
       />
       <body className="position-relative">
         <Header />

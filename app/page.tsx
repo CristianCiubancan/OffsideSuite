@@ -7,7 +7,7 @@ export const metadata = {
     "We are a creative media agency based in Bucharest specializing in music, video, lyrics, publicity, websiste and app development. Let's collaborate!",
   keywords:
     "Offside Music, creative agency, music production, video production, web development, app development, lyrics writing, publicity",
-  image: "/public/og-image.jpg",
+  image: "/images/og-image.png",
   url: "https://offsidemusic.ro",
   type: "website",
   siteName: "Offside Music",
