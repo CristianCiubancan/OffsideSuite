@@ -16,7 +16,10 @@ export default function RootLayout({
   return (
     <html lang="en" className="bg-red-700">
       {/* the following is a selective fix for IPhone's safari's zoom on input touch/focus */}
-      <meta property="og:image" content="/images/og-image.jpg" />
+      <meta
+        property="og:image"
+        content={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/images/og-image.jpg`}
+      />
       <body className="position-relative">
         <Header />
         {children}
