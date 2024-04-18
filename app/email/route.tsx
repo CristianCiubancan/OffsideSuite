@@ -66,22 +66,22 @@ export async function POST(request: Request) {
 
     // 2. Configure email transporter (same as before)
     const transporter = nodemailer.createTransport({
-      host: process.env.NEXT_PUBLIC_SMTP_HOST,
-      port: process.env.NEXT_PUBLIC_SMTP_PORT,
+      host: process.env.SMTP_HOST,
+      port: process.env.SMTP_PORT,
       secure: true,
       auth: {
-        user: process.env.NEXT_PUBLIC_SMTP_USER,
-        pass: process.env.NEXT_PUBLIC_SMTP_PASSWORD,
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASSWORD,
       },
     } as nodemailer.SendMailOptions);
 
     // 3. Construct email content (same as before)
     const mailOptions = {
-      from: process.env.NEXT_PUBLIC_SMTP_USER,
+      from: process.env.SMTP_USER,
       // to have multiple recipients, use an array of email addresses
-      to: (
-        process.env.NEXT_PUBLIC_EMAIL_RECIEVERS || "baloo.programs@gmail.com"
-      ).split(","),
+      to: (process.env.EMAIL_RECIEVERS || "baloo.programs@gmail.com").split(
+        ","
+      ),
       subject: "New Form Submission",
       text: `Form Details: ${JSON.stringify(formData)}`,
     };
