@@ -15,6 +15,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="bg-red-700">
+      <head>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, user-scalable=no"
+        />
+      </head>
       <body className="position-relative">
         <Header />
         {children}
