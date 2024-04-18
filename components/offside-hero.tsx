@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import Attribute from "./Attribute";
-import ChangingAttribute from "./ChangingAttribute";
+import Attribute from "./attribute-element";
+import ChangingAttribute from "./changing-attribute";
 import {
   Calligraffitti,
   ABeeZee,
