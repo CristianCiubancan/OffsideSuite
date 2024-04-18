@@ -413,7 +413,7 @@ const OffsideHero = () => {
     <div className={bebasNeue.className}>
       <div className="relative h-screen overflow-hidden">
         <img
-          src="/hero-video-poster.jpg"
+          src="/images/hero-video-poster.jpg"
           alt="Blurred Background"
           className="absolute inset-0 -z-10 w-full h-full object-cover blur-xl"
         />

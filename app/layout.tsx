@@ -18,10 +18,7 @@ export default function RootLayout({
     <html lang="en" className="bg-red-700">
       {/* the following is a selective fix for IPhone's safari's zoom on input touch/focus */}
       <Head>
-        <meta
-          property="og:image"
-          content="https://offsidemusic.ro/hero-video-poster.jpg"
-        />
+        <meta property="og:image" content="/images/og-image.jpg" />
       </Head>
       <body className="position-relative">
         <Header />
