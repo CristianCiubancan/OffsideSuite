@@ -17,12 +17,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="bg-red-700">
       {/* the following is a selective fix for IPhone's safari's zoom on input touch/focus */}
-      {/* <Head>
+      <Head>
         <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"
+          property="og:image"
+          content="https://offsidemusic.ro/hero-video-poster.jpg"
         />
-      </Head> */}
+      </Head>
       <body className="position-relative">
         <Header />
         {children}
