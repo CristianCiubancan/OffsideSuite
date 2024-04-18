@@ -1,6 +1,5 @@
 import ContactForm from "@/components/forms/contact";
 import OffsideHero from "@/components/offside-hero";
-
 export const metadata = {
   // we are Offside Music, we de all sorts of media, this is the most optimized title discription and metadata for our landing page
   title: "Offside Music - Creative Media Agency",
