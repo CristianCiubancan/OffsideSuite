@@ -25,10 +25,10 @@ export default function Page() {
   return (
     <div>
       <OffsideHero />
-      <div className="w-full min-h-vh flex justify-center items-center p-4">
+      <div className="w-full min-h-screen flex justify-center items-center p-4">
         <ContactForm />
       </div>
-      <div className="w-full min-h-vh flex justify-center items-center p-4 bg-yellow-500"></div>
+      <div className="w-full min-h-screen flex justify-center items-center p-4 bg-yellow-500"></div>
     </div>
   );
 }
