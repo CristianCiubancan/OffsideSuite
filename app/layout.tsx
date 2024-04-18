@@ -16,12 +16,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="bg-red-700">
+      {/* the following is a selective fix for IPhone's safari's zoom on input touch/focus */}
       <Head>
         <meta
           name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"
         />
       </Head>
+      {/* <style jsx global>{`
+        html {
+          font-family: ${bebasNeue.style.fontFamily};
+          -webkit-text-size-adjust: 100%;
+          -webkit-tap-highlight-color: transparent;
+        }
+      `}</style> */}
       <body className="position-relative">
         <Header />
         {children}
