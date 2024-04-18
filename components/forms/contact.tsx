@@ -115,11 +115,11 @@ const ContactForm = ({}: IContactForm) => {
         </Button>
 
         {rootError ? (
-          <div className="text-red-300 text-xs italic mt-2">
+          <div className="text-red-300 text-base italic mt-2">
             {rootError.message as string}
           </div>
         ) : (
-          <div className="text-red-300 text-xs italic mt-2 min-h-4"> </div>
+          <div className="text-red-300 text-base italic mt-2 min-h-6"> </div>
         )}
       </form>
       <ToastContainer />
