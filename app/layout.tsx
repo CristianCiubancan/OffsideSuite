@@ -20,6 +20,18 @@ export default function RootLayout({
         property="og:image"
         content={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/images/og-image.png`}
       />
+      <meta property="og:url" content="https://www.offsidemusic.ro/" />
+      <meta property="og:type" content="website" />
+      <meta
+        property="og:title"
+        content="Offside Music - Creative Media Agency"
+      />
+      <meta
+        property="og:description"
+        content="We are a creative media agency based in Bucharest specializing in music, video, lyrics, publicity, websiste and app development. Let's collaborate!"
+      />
+      <meta property="fb:app_id" content="450961180645048" />
+
       <body className="position-relative">
         <Header />
         {children}
