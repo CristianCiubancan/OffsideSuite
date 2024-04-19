@@ -15,7 +15,7 @@ const Header = () => {
       <div
         className={`h-16 w-full flex justify-between items-center absolute z-20 top-0 left-0 p-4 text-white ${bebasNeue.className}`}
       >
-        <div className="font-bold text-2xl">Offside Music</div>
+        <div className="font-bold text-2xl text-red-700">Offside Music</div>
         {/* TODO: maybe a add a menu once more functionalities are implemented */}
         {/* <Button
           color="yellow"
