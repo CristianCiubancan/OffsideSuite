@@ -9,7 +9,7 @@ const bebasNeue = Bebas_Neue({
 
 const Header = () => {
   return (
-    <div className="w-full h-16 fixed top-0 left-0 z-10 overflow-hidden rounded-md">
+    <div className="w-full h-16 fixed top-0 left-0 z-10 overflow-hidden">
       {/* a blurred navbar */}
       <div className="blur-2xl h-16 w-full bg-red-700 flex justify-between absolute top-0 left-0"></div>
       <div
