@@ -14,11 +14,7 @@ export default function Page() {
       <h1 className="sr-only" aria-hidden="true">
         Offside Music - Creative Media Agency
       </h1>
-      {/* <OffsideHero />
-      <div className="w-full min-h-screen flex justify-center items-center p-4">
-        <ContactForm />
-      </div>
-      <div className="w-full min-h-screen flex justify-center items-center p-4 bg-yellow-500"></div> */}
+
       <div className="h-screen">
         <Swiper
           className=""
