@@ -1179,20 +1179,19 @@ video {
      object-fit: cover;
 }
 
-.swiper-pagination {
+.swiper-pagination .swiper-pagination-vertical{
   width: 2em;
   display: flex;
   align-items: center;
   flex-direction: column;
   background-color: #b91c1c;
   border-radius: 0.25em;
-  border: 1px solid #eab308;
 }
 
 .swiper-pagination-bullet {
   width: 1em !important;
   height: 1em !important;
-  background-color: #eab308 !important;
+  background-color: white !important;
   opacity: 1 !important;
   border-radius: .25em !important;
 }

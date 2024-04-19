@@ -28,7 +28,28 @@ export default function Page() {
           modules={[Mousewheel, Pagination]}
         >
           <SwiperSlide>
-            <OffsideHero />
+            <Swiper
+              className=""
+              spaceBetween={0}
+              slidesPerView={1}
+              onSlideChange={() => console.log("slide change")}
+              onSwiper={(swiper) => console.log(swiper)}
+              mousewheel={false}
+              pagination={{ clickable: true }}
+              modules={[Pagination]}
+            >
+              <SwiperSlide>
+                <OffsideHero />
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="w-full min-h-screen flex text-left justify-center items-center p-4 bg-red-700 ">
+                  <ContactForm />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="w-full min-h-screen flex justify-center items-center p-4 bg-yellow-500"></div>
+              </SwiperSlide>
+            </Swiper>
           </SwiperSlide>
           <SwiperSlide>
             <div className="w-full min-h-screen flex text-left justify-center items-center p-4 bg-red-700 ">
