@@ -1,25 +1,12 @@
+"use client";
 import ContactForm from "@/components/forms/contact";
 import OffsideHero from "@/components/offside-hero";
-export const metadata = {
-  // we are Offside Music, we de all sorts of media, this is the most optimized title discription and metadata for our landing page
-  title: "Offside Music - Creative Media Agency",
-  description:
-    "We are a creative media agency based in Bucharest specializing in music, video, lyrics, publicity, websiste and app development. Let's collaborate!",
-  keywords:
-    "Offside Music, creative agency, music production, video production, web development, app development, lyrics writing, publicity",
-  image: "/images/og-image.png",
-  url: "https://offsidemusic.ro",
-  type: "website",
-  siteName: "Offside Music",
-  locale: "en_US",
-  // TODO: sa punem astea legit
-  // twitter: "@offsidemusic",
-  // facebook: "offsidemusic",
-  // instagram: "offsidemusic",
-  youtube: "@OffsideMusicOfficial",
-  // linkedin: "offside-music",
-  email: "business@offsidemusic.ro",
-};
+import React, { useRef, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import { Mousewheel } from "swiper/modules";
 
 export default function Page() {
   return (
@@ -27,11 +14,35 @@ export default function Page() {
       <h1 className="sr-only" aria-hidden="true">
         Offside Music - Creative Media Agency
       </h1>
-      <OffsideHero />
+      {/* <OffsideHero />
       <div className="w-full min-h-screen flex justify-center items-center p-4">
         <ContactForm />
       </div>
-      <div className="w-full min-h-screen flex justify-center items-center p-4 bg-yellow-500"></div>
+      <div className="w-full min-h-screen flex justify-center items-center p-4 bg-yellow-500"></div> */}
+      <div className="h-screen">
+        <Swiper
+          className=""
+          direction="vertical"
+          spaceBetween={0}
+          slidesPerView={1}
+          onSlideChange={() => console.log("slide change")}
+          onSwiper={(swiper) => console.log(swiper)}
+          mousewheel={true}
+          modules={[Mousewheel]}
+        >
+          <SwiperSlide>
+            <OffsideHero />
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="w-full min-h-screen flex text-left items-center p-4 bg-red-700 ">
+              <ContactForm />
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="w-full min-h-screen flex justify-center items-center p-4 bg-yellow-500"></div>
+          </SwiperSlide>
+        </Swiper>
+      </div>
     </div>
   );
 }
