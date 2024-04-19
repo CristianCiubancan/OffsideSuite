@@ -14,8 +14,45 @@ export default function Page() {
       <h1 className="sr-only" aria-hidden="true">
         Offside Music - Creative Media Agency
       </h1>
+      <Swiper
+        className=""
+        spaceBetween={0}
+        slidesPerView={1}
+        // autoplay={{ delay: 15000 }}
+        onSlideChange={() => console.log("slide change")}
+        onSwiper={(swiper) => console.log(swiper)}
+        mousewheel={false}
+        pagination={{ clickable: true }}
+        // modules={[Pagination, Autoplay]}
+        modules={[Pagination]}
+      >
+        <SwiperSlide>
+          <OffsideHero />
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="w-full min-h-screen flex text-left justify-center items-center p-4 bg-red-700 "></div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="w-full min-h-screen flex justify-center items-center p-4 bg-yellow-500"></div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="w-full min-h-screen flex justify-center items-center p-4 bg-red-500"></div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="w-full min-h-screen flex justify-center items-center p-4 bg-gray-500"></div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="w-full min-h-screen flex justify-center items-center p-4 bg-stone-500"></div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="w-full min-h-screen flex justify-center items-center p-4 bg-blue-500"></div>
+        </SwiperSlide>
+      </Swiper>
+      <div className="w-full min-h-screen flex text-left justify-center items-center p-4 bg-red-700 ">
+        <ContactForm />
+      </div>
 
-      <div className="h-screen">
+      {/* <div className="h-screen">
         <Swiper
           className=""
           direction="vertical"
@@ -23,10 +60,9 @@ export default function Page() {
           slidesPerView={1}
           onSlideChange={() => console.log("slide change")}
           onSwiper={(swiper) => console.log(swiper)}
-          // mousewheel={true}
+          mousewheel={true}
           pagination={{ clickable: true }}
-          modules={[Pagination]}
-          // modules={[Mousewheel, Pagination]}
+          modules={[Mousewheel, Pagination]}
         >
           <SwiperSlide>
             <Swiper
@@ -73,7 +109,7 @@ export default function Page() {
             <div className="w-full min-h-screen flex justify-center items-center p-4 bg-yellow-500"></div>
           </SwiperSlide>
         </Swiper>
-      </div>
+      </div> */}
     </div>
   );
 }
