@@ -638,10 +638,6 @@ video {
   margin-right: 0.5rem;
 }
 
-.mt-16 {
-  margin-top: 4rem;
-}
-
 .mt-2 {
   margin-top: 0.5rem;
 }
@@ -1029,6 +1025,10 @@ video {
   padding-top: 1.25rem;
 }
 
+.text-left {
+  text-align: left;
+}
+
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -1163,7 +1163,7 @@ video {
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background: #fff;
+  background: unset;
   height: 100vh;
   /* Center slide text vertically */
   display: flex;
