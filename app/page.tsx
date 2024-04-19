@@ -30,22 +30,22 @@ export default function Page() {
           <OffsideHero />
         </SwiperSlide>
         <SwiperSlide>
-          <div className="w-full min-h-screen flex text-left justify-center items-center p-4 bg-red-700 "></div>
+          <div className="w-full min-h-dvh flex text-left justify-center items-center p-4 bg-red-700 "></div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="w-full min-h-screen flex justify-center items-center p-4 bg-yellow-500"></div>
+          <div className="w-full min-h-dvh flex justify-center items-center p-4 bg-yellow-500"></div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="w-full min-h-screen flex justify-center items-center p-4 bg-red-500"></div>
+          <div className="w-full min-h-dvh flex justify-center items-center p-4 bg-red-500"></div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="w-full min-h-screen flex justify-center items-center p-4 bg-gray-500"></div>
+          <div className="w-full min-h-dvh flex justify-center items-center p-4 bg-gray-500"></div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="w-full min-h-screen flex justify-center items-center p-4 bg-stone-500"></div>
+          <div className="w-full min-h-dvh flex justify-center items-center p-4 bg-stone-500"></div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="w-full min-h-screen flex justify-center items-center p-4 bg-blue-500"></div>
+          <div className="w-full min-h-dvh flex justify-center items-center p-4 bg-blue-500"></div>
         </SwiperSlide>
       </Swiper>
       <div className="w-full min-h-screen flex text-left justify-center items-center p-4 bg-red-700 ">
