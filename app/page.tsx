@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
-import { Mousewheel, Pagination } from "swiper/modules";
+import { Autoplay, Mousewheel, Pagination } from "swiper/modules";
 
 export default function Page() {
   return (
@@ -23,19 +23,22 @@ export default function Page() {
           slidesPerView={1}
           onSlideChange={() => console.log("slide change")}
           onSwiper={(swiper) => console.log(swiper)}
-          mousewheel={true}
+          // mousewheel={true}
           pagination={{ clickable: true }}
-          modules={[Mousewheel, Pagination]}
+          modules={[Pagination]}
+          // modules={[Mousewheel, Pagination]}
         >
           <SwiperSlide>
             <Swiper
               className=""
               spaceBetween={0}
               slidesPerView={1}
+              // autoplay={{ delay: 15000 }}
               onSlideChange={() => console.log("slide change")}
               onSwiper={(swiper) => console.log(swiper)}
               mousewheel={false}
               pagination={{ clickable: true }}
+              // modules={[Pagination, Autoplay]}
               modules={[Pagination]}
             >
               <SwiperSlide>
