@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
-import { Mousewheel } from "swiper/modules";
+import { Mousewheel, Pagination } from "swiper/modules";
 
 export default function Page() {
   return (
@@ -24,13 +24,14 @@ export default function Page() {
           onSlideChange={() => console.log("slide change")}
           onSwiper={(swiper) => console.log(swiper)}
           mousewheel={true}
-          modules={[Mousewheel]}
+          pagination={{ clickable: true }}
+          modules={[Mousewheel, Pagination]}
         >
           <SwiperSlide>
             <OffsideHero />
           </SwiperSlide>
           <SwiperSlide>
-            <div className="w-full min-h-screen flex text-left items-center p-4 bg-red-700 ">
+            <div className="w-full min-h-screen flex text-left justify-center items-center p-4 bg-red-700 ">
               <ContactForm />
             </div>
           </SwiperSlide>

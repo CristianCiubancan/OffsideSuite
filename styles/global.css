@@ -1,27 +1,50 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 .swiper {
-    width: 100%;
-    height: 100%;
-  }
-  
-  .swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: unset;
-    height: 100vh;
+  width: 100%;
+  height: 100%;
+}
 
-    /* Center slide text vertically */
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: unset;
+  height: 100vh;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiper-pagination {
+    width: 2em;
     display: flex;
-    justify-content: center;
     align-items: center;
-  }
-  
-  .swiper-slide img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+    flex-direction: column;
+    background-color: #b91c1c;
+    border-radius: 0.25em;
+    border: 1px solid #eab308;
+}
+
+.swiper-pagination-bullet {
+    width: 1em !important;
+    height: 1em !important;
+    background-color: #eab308 !important;
+    opacity: 1 !important;
+    border-radius: .25em !important;
+}
+
+.swiper-pagination-bullet-active {
+    border-radius: .25em !important;
+    background-color: #991b1b !important;
+}

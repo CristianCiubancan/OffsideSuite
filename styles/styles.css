@@ -1179,6 +1179,29 @@ video {
      object-fit: cover;
 }
 
+.swiper-pagination {
+  width: 2em;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #b91c1c;
+  border-radius: 0.25em;
+  border: 1px solid #eab308;
+}
+
+.swiper-pagination-bullet {
+  width: 1em !important;
+  height: 1em !important;
+  background-color: #eab308 !important;
+  opacity: 1 !important;
+  border-radius: .25em !important;
+}
+
+.swiper-pagination-bullet-active {
+  border-radius: .25em !important;
+  background-color: #991b1b !important;
+}
+
 .hover\:bg-blue-900:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(30 58 138 / var(--tw-bg-opacity));
