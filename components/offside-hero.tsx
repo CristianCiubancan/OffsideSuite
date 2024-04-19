@@ -417,6 +417,7 @@ const OffsideHero = () => {
           alt="Blurred Background"
           className="absolute inset-0 -z-10 w-full h-full object-cover blur-xl"
         />
+        <div className="absolute inset-0 -z-10 w-full h-full bg-white"></div>
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-transparent to-black opacity-50"></div>
         <video
           ref={videoRef}
