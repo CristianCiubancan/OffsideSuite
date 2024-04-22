@@ -1,7 +1,6 @@
 import nodemailer from "nodemailer";
 
 export async function POST(request: Request) {
-  console.log("Request received", request.body);
   try {
     // 1. Extract form data from the request body
     const formData = await request.json();

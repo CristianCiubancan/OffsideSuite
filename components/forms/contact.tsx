@@ -45,7 +45,6 @@ const ContactForm = ({}: IContactForm) => {
           setIsLoading(true);
           try {
             const response = await sendEmail(data);
-            console.log("response", response);
             if (response?.error) {
               setError(response.error.field, {
                 message: response.error.message,

@@ -3,6 +3,7 @@ import Spinner from "@/components/primitives/spinner";
 export interface IButtonProps {
   color?: string;
   loading?: boolean;
+  theme?: "light" | "dark";
   fullWidth?: boolean;
   children?: React.ReactNode;
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
@@ -14,11 +15,14 @@ const Button = ({
   color = "purple",
   loading,
   children,
+  theme = "dark",
   fullWidth,
   onClick = () => {},
   type = "button",
   disabled,
 }: IButtonProps) => {
+  const colorVariationLight = theme === "light" ? 500 : 800;
+  const colorVariationDark = theme === "light" ? 600 : 900;
   const classes = useMemo(
     // () =>
     //   `bg-${color}-${loading ? 900 : 800}
@@ -31,9 +35,15 @@ const Button = ({
     //    relative
     //    ${fullWidth ? "w-full" : ""}`,
     () =>
-      `bg-${color}-${loading ? 900 : 800}
-       hover:bg-${color}-900 
-       ${loading ? `text-${color}-900` : "text-white"}
+      `bg-${color}-${loading ? colorVariationDark : colorVariationLight}
+       hover:bg-${color}-${colorVariationDark} 
+       ${
+         loading || disabled
+           ? `text-${color}-${colorVariationDark}`
+           : theme === "light"
+           ? "text-black"
+           : "text-white"
+       }
        font-bold
        py-2
        px-4
@@ -79,8 +89,30 @@ const Button = ({
         <div className="bg-gray-900 hover:bg-gray-900 text-gray-900"></div>
         <div className="bg-orange-800"></div>
         <div className="bg-orange-900 hover:bg-orange-900 text-orange-900"></div>
+        <div className="bg-purple-500"></div>
+        <div className="bg-purple-600 hover:bg-purple-600 text-purple-600"></div>
+        <div className="bg-red-500"></div>
+        <div className="bg-red-600 hover:bg-red-600 text-red-600"></div>
+        <div className="bg-green-500"></div>
+        <div className="bg-green-600 hover:bg-green-600 text-green-600"></div>
+        <div className="bg-yellow-500"></div>
+        <div className="bg-yellow-600 hover:bg-yellow-600 text-yellow-600"></div>
+        <div className="bg-blue-500"></div>
+        <div className="bg-blue-600 hover:bg-blue-600 text-blue-600"></div>
+        <div className="bg-indigo-500"></div>
+        <div className="bg-indigo-600 hover:bg-indigo-600 text-indigo-600"></div>
+        <div className="bg-pink-500"></div>
+        <div className="bg-pink-600 hover:bg-pink-600 text-pink-600"></div>
+        <div className="bg-gray-500"></div>
+        <div className="bg-gray-600 hover:bg-gray-600 text-gray-600"></div>
+        <div className="bg-orange-500"></div>
+        <div className="bg-orange-600 hover:bg-orange-600 text-orange-600"></div>
         <div className="bg-black"></div>
+        <div className="text-black"></div>
         <div className="bg-white"></div>
+        <div className="text-white"></div>
+        {/* here we will add all miscelaneous classes that are used in dynamic properties in order to have them */}
+        <div className="" />
       </div>
     </>
   );

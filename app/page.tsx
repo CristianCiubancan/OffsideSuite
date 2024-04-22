@@ -7,6 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Autoplay, Mousewheel, Pagination } from "swiper/modules";
+import Booking from "@/components/booking";
 
 export default function Page() {
   return (
@@ -19,8 +20,8 @@ export default function Page() {
         spaceBetween={0}
         slidesPerView={1}
         // autoplay={{ delay: 15000 }}
-        onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper) => console.log(swiper)}
+        onSlideChange={() => {}}
+        onSwiper={(swiper) => {}}
         mousewheel={false}
         pagination={{ clickable: true }}
         // modules={[Pagination, Autoplay]}
@@ -51,7 +52,9 @@ export default function Page() {
       <div className="w-full min-h-screen flex text-left justify-center items-center p-4 bg-red-700 ">
         <ContactForm />
       </div>
-
+      <div className="w-full min-h-screen flex text-left justify-center items-center p-4 bg-yellow-500 ">
+        <Booking />
+      </div>
       {/* <div className="h-screen">
         <Swiper
           className=""
