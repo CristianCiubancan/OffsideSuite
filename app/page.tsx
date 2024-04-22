@@ -1,7 +1,7 @@
 "use client";
 import ContactForm from "@/components/forms/contact";
 import OffsideHero from "@/components/offside-hero";
-import React, { useRef, useState } from "react";
+import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
@@ -15,7 +15,9 @@ export default function Page() {
       <h1 className="sr-only" aria-hidden="true">
         Offside Music - Creative Media Agency
       </h1>
-      <Swiper
+      <OffsideHero />
+
+      {/* <Swiper
         className=""
         spaceBetween={0}
         slidesPerView={1}
@@ -48,7 +50,7 @@ export default function Page() {
         <SwiperSlide>
           <div className="w-full min-h-dvh flex justify-center items-center p-4 bg-blue-500"></div>
         </SwiperSlide>
-      </Swiper>
+      </Swiper> */}
       <div className="w-full min-h-screen flex text-left justify-center items-center p-4 bg-yellow-500 ">
         <Booking />
       </div>

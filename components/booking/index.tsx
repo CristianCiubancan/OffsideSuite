@@ -3,12 +3,12 @@ import Button from "@/components/primitives/button";
 import RightArrow from "@/assets/icons/RightArrow";
 import LeftArrow from "@/assets/icons/LeftArrow";
 enum BookingIntervals {
-  "14-15" = "14:00 - 15:00",
-  "15-16" = "15:00 - 16:00",
-  "16-17" = "16:00 - 17:00",
-  "17-18" = "17:00 - 18:00",
-  "18-19" = "18:00 - 19:00",
-  "19-20" = "19:00 - 20:00",
+  "TWOTHREE" = "14:00 - 15:00",
+  "THREEFOUR" = "15:00 - 16:00",
+  "FOURFIVE" = "16:00 - 17:00",
+  "FIVESIX" = "17:00 - 18:00",
+  "SIXSEVEN" = "18:00 - 19:00",
+  "SEVENEIGHT" = "19:00 - 20:00",
 }
 interface Spot {
   person?: string;
@@ -31,7 +31,7 @@ const Bookings: Booking[] = [
     day: new Date().getDate(),
     month: new Date().getMonth(),
     year: new Date().getFullYear(),
-    interval: BookingIntervals["15-16"],
+    interval: BookingIntervals.TWOTHREE,
   },
   {
     person: "Jane Doe",
@@ -39,7 +39,7 @@ const Bookings: Booking[] = [
     day: new Date().getDate(),
     month: new Date().getMonth(),
     year: new Date().getFullYear(),
-    interval: BookingIntervals["16-17"],
+    interval: BookingIntervals.THREEFOUR,
   },
   {
     person: "John Doe",
@@ -47,7 +47,7 @@ const Bookings: Booking[] = [
     day: new Date().getDate(),
     month: new Date().getMonth(),
     year: new Date().getFullYear(),
-    interval: BookingIntervals["17-18"],
+    interval: BookingIntervals.FIVESIX,
   },
   {
     person: "Jane Doe",
@@ -55,7 +55,7 @@ const Bookings: Booking[] = [
     day: new Date().getDate(),
     month: new Date().getMonth(),
     year: new Date().getFullYear(),
-    interval: BookingIntervals["18-19"],
+    interval: BookingIntervals.SIXSEVEN,
   },
   {
     person: "John Doe",
@@ -63,7 +63,7 @@ const Bookings: Booking[] = [
     day: new Date().getDate(),
     month: new Date().getMonth(),
     year: new Date().getFullYear(),
-    interval: BookingIntervals["19-20"],
+    interval: BookingIntervals.SEVENEIGHT,
   },
   {
     person: "Jane Doe",
@@ -71,7 +71,7 @@ const Bookings: Booking[] = [
     day: new Date().getDate() + 1,
     month: new Date().getMonth(),
     year: new Date().getFullYear(),
-    interval: BookingIntervals["14-15"],
+    interval: BookingIntervals.TWOTHREE,
   },
   {
     person: "John Doe",
@@ -79,7 +79,7 @@ const Bookings: Booking[] = [
     day: new Date().getDate() + 1,
     month: new Date().getMonth(),
     year: new Date().getFullYear(),
-    interval: BookingIntervals["15-16"],
+    interval: BookingIntervals.THREEFOUR,
   },
   {
     person: "Jane Doe",
@@ -87,7 +87,7 @@ const Bookings: Booking[] = [
     day: new Date().getDate() + 1,
     month: new Date().getMonth(),
     year: new Date().getFullYear(),
-    interval: BookingIntervals["16-17"],
+    interval: BookingIntervals.SIXSEVEN,
   },
   {
     person: "Jane Doe",
@@ -95,7 +95,7 @@ const Bookings: Booking[] = [
     day: new Date().getDate() + 1,
     month: new Date().getMonth(),
     year: new Date().getFullYear(),
-    interval: BookingIntervals["18-19"],
+    interval: BookingIntervals.SEVENEIGHT,
   },
 ];
 const Booking = () => {
@@ -247,7 +247,6 @@ const Booking = () => {
       <div className="border-b-2 border-black my-4"></div>
       <div className="flex flex-col gap-y-4">
         {Object.values(BookingIntervals).map((interval) => {
-          console.log(interval);
           const todaysBookings = [...Bookings].filter(
             (booking) =>
               booking.day === selectedDate.day &&
@@ -256,7 +255,6 @@ const Booking = () => {
           );
           const todaysBookingsMap = new Map<string, Booking>();
           todaysBookings.forEach((booking) => {
-            console.log(booking.interval);
             todaysBookingsMap.set(booking.interval, booking);
           });
           const bookingOrSpot = todaysBookingsMap.get(interval);
@@ -268,7 +266,9 @@ const Booking = () => {
               }}
               className="bg-gray-300 text-left flex items-center gap-4 border-2 border-gray-400 rounded text-gray-400 cursor-pointer hover:bg-red-200 hover:border-red-800 hover:text-black hover:cursor-not-allowed"
             >
-              <span className="p-4 bg-red-800 text-white">{interval}</span>
+              <span className="p-4 bg-red-800 text-white rounded-sm">
+                {interval}
+              </span>
               <span>
                 {`${bookingOrSpot?.person} - ${bookingOrSpot?.project}`}
               </span>
@@ -281,7 +281,9 @@ const Booking = () => {
               }}
               className="bg-green-50 text-left flex items-center gap-4 border-2 border-green-800 rounded text-black cursor-pointer hover:bg-green-800 hover:border-green-950 hover:text-white"
             >
-              <span className="p-4 bg-green-800 text-white">{interval}</span>
+              <span className="p-4 bg-green-800 text-white rounded-sm">
+                {interval}
+              </span>
               <span>It's free! Click to book it now.</span>
             </button>
           );

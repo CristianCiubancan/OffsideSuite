@@ -1,7 +1,6 @@
 "use client";
-import MenuIcon from "@/assets/icons/MenuIcon";
 import { Bebas_Neue } from "next/font/google";
-import Button from "@/components/primitives/button";
+import LoginButton from "./login-button";
 const bebasNeue = Bebas_Neue({
   weight: ["400"],
   subsets: ["latin"],
@@ -15,9 +14,11 @@ const Header = () => {
       <div className="h-16 w-full bg-red-700 flex justify-between absolute top-0 left-0"></div>
 
       <div
-        className={`h-16 w-full flex justify-between items-center absolute z-30 top-0 left-0 p-4 text-white ${bebasNeue.className}`}
+        className={`h-16 w-full flex justify-between items-center absolute z-30 top-0 left-0 p-4 text-white`}
       >
-        <div className="font-bold text-2xl text-white">Offside Music</div>
+        <div className={`font-bold text-2xl text-white ${bebasNeue.className}`}>
+          Offside Music
+        </div>
         {/* TODO: maybe a add a menu once more functionalities are implemented */}
         {/* <Button
           color="yellow"
@@ -27,6 +28,7 @@ const Header = () => {
         >
           <MenuIcon className="w-8 h-8 inline-block mr-2" />
         </Button> */}
+        <LoginButton />
       </div>
     </div>
   );
