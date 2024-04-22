@@ -245,7 +245,7 @@ const Booking = () => {
         </Button>
       </div>
       <div className="border-b-2 border-black my-4"></div>
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-y-4">
         {Object.values(BookingIntervals).map((interval) => {
           console.log(interval);
           const todaysBookings = [...Bookings].filter(
@@ -266,17 +266,23 @@ const Booking = () => {
               onClick={() => {
                 alert("This spot is already booked");
               }}
-              className="bg-gray-300 border-2 border-gray-400 p-4 rounded text-gray-400 cursor-pointer hover:bg-red-200 hover:border-red-800 hover:text-black hover:cursor-not-allowed"
-            >{`${bookingOrSpot?.person} - ${bookingOrSpot?.project}`}</button>
+              className="bg-gray-300 text-left flex items-center gap-4 border-2 border-gray-400 rounded text-gray-400 cursor-pointer hover:bg-red-200 hover:border-red-800 hover:text-black hover:cursor-not-allowed"
+            >
+              <span className="p-4 bg-red-800 text-white">{interval}</span>
+              <span>
+                {`${bookingOrSpot?.person} - ${bookingOrSpot?.project}`}
+              </span>
+            </button>
           ) : (
             <button
               key={`${selectedDate.day}${selectedDate.month}${selectedDate.year}${interval}`}
               onClick={() => {
                 alert("To be implemented");
               }}
-              className="bg-green-50 border-2 border-green-800 p-4 rounded text-black cursor-pointer hover:bg-green-800 hover:border-green-950 hover:text-white"
+              className="bg-green-50 text-left flex items-center gap-4 border-2 border-green-800 rounded text-black cursor-pointer hover:bg-green-800 hover:border-green-950 hover:text-white"
             >
-              It's free! Click to book it now.
+              <span className="p-4 bg-green-800 text-white">{interval}</span>
+              <span>It's free! Click to book it now.</span>
             </button>
           );
         })}
