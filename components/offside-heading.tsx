@@ -1,5 +1,5 @@
 // OffsideHeading.tsx
-import ChangingAttribute from "./changing-attribute";
+import ChangingAttribute from "@/components/changing-attribute";
 // const attributeOptions = ["Creativity", "Passion", "Integrity"];
 const attributeOptions = [
   {

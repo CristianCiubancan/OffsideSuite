@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
-import styles from "./Attribute.module.css";
-import useWindowSize from "./useWindowSize";
+import styles from "@/components/attribute.module.css";
+import useWindowSize from "@/components/useWindowSize";
 interface IAttributeProps {
   text: {
     key: number;

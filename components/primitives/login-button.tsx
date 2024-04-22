@@ -1,29 +1,21 @@
+"use client";
 import UserIcon from "@/assets/icons/UserIcon";
-import Button from "./button";
-import { useState } from "react";
-import Modal from "./modal";
-import MenuIcon from "@/assets/icons/MenuIcon";
-import ToggleSwitch from "./toggle-switch";
-import LoginOrRegister from "./login-or-register";
+import Button from "@/components/primitives/button";
+import { useModal } from "../contexts/modal-context";
 
 const LoginButton = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const { openModal } = useModal();
+
   return (
     <>
       <Button
         color="red"
         onClick={() => {
-          setIsOpen(!isOpen);
+          openModal();
         }}
       >
         <UserIcon width={24} height={24} strokeWidth={3} />
       </Button>
-
-      {isOpen && (
-        <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
-          <LoginOrRegister />
-        </Modal>
-      )}
     </>
   );
 };

@@ -1,7 +1,10 @@
+"use client";
+import { AuthProvider } from "@/components/contexts/auth-context";
+import { ModalProvider } from "@/components/contexts/modal-context";
 import Header from "@/components/primitives/main-header";
+import LoginOrRegisterModal from "@/components/primitives/register-modal";
 import "@/styles/global.css";
 import "@/styles/styles.css";
-import Head from "next/head"; // Ensure you import Head from 'next/head'
 
 export default function RootLayout({
   children,
@@ -35,9 +38,15 @@ export default function RootLayout({
       <meta property="fb:app_id" content="450961180645048" />
       <meta property="og:image:alt" content="OffsideMusic logo banner" />
       <body className="position-relative">
-        <Header />
-        {children}
-        <div id="modal-root"></div>
+        <ModalProvider>
+          <AuthProvider>
+            <>
+              <Header />
+              {children}
+              <LoginOrRegisterModal />
+            </>
+          </AuthProvider>
+        </ModalProvider>
       </body>
     </html>
   );

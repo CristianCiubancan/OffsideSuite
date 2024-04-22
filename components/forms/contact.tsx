@@ -3,7 +3,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import InputField from "@/components/forms/input-field";
 import Button from "@/components/primitives/button";
 import { useState } from "react";
-import { sendEmail } from "@/components/forms/forms-apis";
+import { sendEmail } from "@/components/forms/forms.api";
 import lodash from "lodash";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

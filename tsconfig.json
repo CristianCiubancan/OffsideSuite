@@ -21,6 +21,7 @@
       "@/assets/*": ["assets/*"],
       "@/pages/*": ["pages/*"],
       "@/app/*": ["app/*"],
+      "@/api/*": ["api/*"],
       "@/styles/*": ["styles/*"],
       "@/*": ["./*"]
     },

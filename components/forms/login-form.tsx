@@ -1,6 +1,6 @@
 import { FormProvider, useForm } from "react-hook-form";
-import InputField from "../forms/input-field";
-import Button from "./button";
+import InputField from "./input-field";
+import Button from "../primitives/button";
 
 const LoginForm = () => {
   const methods = useForm({
@@ -32,7 +32,8 @@ const LoginForm = () => {
       >
         <InputField
           label="Your E-mail address"
-          name="email"
+          name="loginEmail"
+          autoComplete="email"
           validation={{
             required: "Email is required",
             minLength: {
@@ -48,6 +49,7 @@ const LoginForm = () => {
         <InputField
           label="Password"
           name="password"
+          autoComplete="current-password"
           type="password"
           validation={{
             required: "Password is required",
@@ -58,7 +60,7 @@ const LoginForm = () => {
           }}
         />
         <Button fullWidth color="red" type="submit">
-          submit
+          Submit
         </Button>
       </form>
     </FormProvider>

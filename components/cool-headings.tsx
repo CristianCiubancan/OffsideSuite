@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef } from "react";
-import styles from "./CoolHeadings.module.css";
+import styles from "@/components/CoolHeadings.module.css";
 const CoolHeadings = () => {
   const textElements = useRef<HTMLElement[] | null>([]);
   useEffect(() => {

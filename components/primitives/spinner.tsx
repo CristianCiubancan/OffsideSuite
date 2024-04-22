@@ -21,7 +21,7 @@ const Spinner = ({ size = "medium" }: ISpinnerProps) => {
     <div role="status">
       <svg
         aria-hidden="true"
-        className={`${sizeClasses} text-gray-200 animate-spin dark:text-gray-600 fill-purple-700`}
+        className={`${sizeClasses} text-red-800 animate-spin dark:text-gray-600 fill-red-700`}
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
