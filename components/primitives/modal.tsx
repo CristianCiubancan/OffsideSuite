@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
+import ReactDOM from "react-dom";
 
 interface IModalProps {
   children: React.ReactNode;
@@ -7,31 +8,45 @@ interface IModalProps {
 }
 
 const Modal = ({ children, isOpen, onClose }: IModalProps) => {
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
+  const modalRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    // Prevent scrolling on mount and restore on unmount
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    }
     return () => {
       document.body.style.overflow = "auto";
     };
   }, [isOpen]);
-  return isOpen ? (
-    <>
+
+  const modalContent = isOpen ? (
+    <div className="position-fixed top-0 lef-0" ref={modalRef}>
       <div
         onClick={onClose}
-        className="bg-red-950 fixed w-full h-screen z-40 top-0 left-0 opacity-20"
+        className="bg-red-950 fixed inset-0 z-40 opacity-40"
       ></div>
       <div
         onClick={onClose}
-        className="fixed z-50 flex justify-center items-center h-screen w-full overflow-auto top-0 left-0"
+        className="fixed z-50 flex justify-center items-center inset-0 p-4 overflow-auto top-0 left-0 w-full h-full"
       >
         <div
           onClick={(e) => e.stopPropagation()}
-          className="p-4 rounded-lg bg-red-700 max-w-screen-sm w-full h-auto overflow-auto"
+          className="p-8 rounded-lg border-0 bg-red-700 max-w-screen-sm w-full overflow-auto max-h-full"
         >
           {children}
         </div>
       </div>
-    </>
+    </div>
   ) : null;
+
+  // Use ReactDOM.createPortal to render the modalContent into the modal-root
+  return modalContent
+    ? ReactDOM.createPortal(
+        modalContent,
+        document.getElementById("modal-root")!
+      )
+    : null;
 };
+
 export default Modal;

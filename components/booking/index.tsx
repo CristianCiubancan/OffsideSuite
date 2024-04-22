@@ -122,7 +122,7 @@ const Booking = () => {
   };
 
   return (
-    <div className="p-6 border-2 border-black rounded max-w-screen-md">
+    <div className="p-4 border-2 border-black rounded max-w-screen-md">
       <div>
         <h1 className="text-4xl font-bold mb-4">Book a session</h1>
         <p className="text-lg">

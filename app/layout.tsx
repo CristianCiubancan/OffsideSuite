@@ -37,6 +37,7 @@ export default function RootLayout({
       <body className="position-relative">
         <Header />
         {children}
+        <div id="modal-root"></div>
       </body>
     </html>
   );
