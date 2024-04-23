@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import styles from "@/components/attribute.module.css";
+import styles from "@/components/attribute-element.module.css";
 import useWindowSize from "@/components/useWindowSize";
 interface IAttributeProps {
   text: {
