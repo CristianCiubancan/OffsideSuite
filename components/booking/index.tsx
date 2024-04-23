@@ -246,18 +246,18 @@ const Booking = () => {
               }}
               className="bg-yellow-50 h-24 text-left flex gap-4 border-2 border-black rounded text-black cursor-pointer hover:cursor-not-allowed w-full"
             >
-              <span className="flex-shrink-0 h-full flex flex-col items-center justify-center bg-red-800 text-white rounded-l-xs text-center w-20">
+              <span className="flex-shrink-0 h-full flex flex-col items-center justify-center bg-red-800 text-white rounded-l-xs text-center w-20 border-r-2 border-r-black">
                 {interval.split(" ").map((word) => {
                   return <div key={word}>{word}</div>;
                 })}
               </span>
 
               <div className="h-full py-2 flex flex-col justify-between text-sm overflow-hidden">
-                <div className="truncate">
+                <div className="truncate flex items-center gap-2">
                   <span className="font-bold">Project: </span>
                   <span>{bookingOrSpot?.projectName}</span>
                 </div>
-                <div className="truncate">
+                <div className="truncate flex items-center gap-2">
                   <span className="font-bold">Artist: </span>
                   <span
                     className={`${styles.gradientText}`}
@@ -269,7 +269,7 @@ const Booking = () => {
                       bookingOrSpot?.user?.firstName}
                   </span>
                 </div>
-                <div className="truncate">
+                <div className="truncate flex items-center gap-2">
                   <span className="font-bold">Description: </span>
                   <span>{bookingOrSpot?.projectDescription}</span>
                 </div>
@@ -292,7 +292,7 @@ const Booking = () => {
               }}
               className="bg-yellow-50 h-24 text-left flex items-start gap-4 border-2 border-black rounded text-black cursor-pointer hover:bg-green-700 hover:border-green-950 hover:text-white"
             >
-              <span className="flex-shrink-0 h-full flex flex-col items-center justify-center bg-green-700 text-white rounded-l-xs text-center w-20">
+              <span className="flex-shrink-0 h-full flex flex-col items-center justify-center bg-green-700 text-white rounded-l-xs text-center w-20 border-r-black border-r-2">
                 {interval.split(" ").map((word) => {
                   return <div key={word}>{word}</div>;
                 })}
@@ -300,7 +300,13 @@ const Booking = () => {
               {/* <span className="p-4 bg-green-700 text-white rounded-l-xs w-20 text-center">
                 {interval}
               </span> */}
-              <span className="py-4">It's free! Click to book it now.</span>
+              <div className="h-full py-2 flex flex-col justify-between text-sm overflow-hidden">
+                <div className="flex items-center gap-2">
+                  <span className="leading-4">
+                    It's free! Click to book it now.
+                  </span>
+                </div>
+              </div>
             </button>
           );
         })}
