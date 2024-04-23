@@ -39,7 +39,7 @@ export const BookingsProvider = ({
   }) => {
     setLoading(true);
 
-    const paddedMonth = String(selectedDate.month).padStart(2, "0");
+    const paddedMonth = String(selectedDate.month + 1).padStart(2, "0");
     const paddedDay = String(selectedDate.day).padStart(2, "0");
     const isoDateString = `${selectedDate.year}-${paddedMonth}-${paddedDay}T00:00:00`;
     const formattedDate = new Date(isoDateString);
