@@ -1,8 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "@/components/primitives/button";
 import RightArrow from "@/assets/icons/RightArrow";
 import LeftArrow from "@/assets/icons/LeftArrow";
-enum BookingIntervals {
+import { ModalNames, useModal } from "../contexts/modal-context";
+import { IUser, useAuth } from "../contexts/auth-context";
+import Spinner from "../primitives/spinner";
+import { useBookings } from "../contexts/bookings-context";
+
+export enum BookingIntervals {
   "TWOTHREE" = "14:00 - 15:00",
   "THREEFOUR" = "15:00 - 16:00",
   "FOURFIVE" = "16:00 - 17:00",
@@ -10,95 +15,31 @@ enum BookingIntervals {
   "SIXSEVEN" = "18:00 - 19:00",
   "SEVENEIGHT" = "19:00 - 20:00",
 }
+
 interface Spot {
-  person?: string;
-  project?: string;
-  day: number;
-  month: number;
-  year: number;
-  interval: BookingIntervals;
+  id: number;
+  date: string;
+  interval: keyof typeof BookingIntervals;
+  projectName?: string;
+  projectDescription?: string;
+  userId: number;
+  user?: IUser;
 }
 
 interface Booking extends Spot {
-  person: string;
-  project: string;
+  id: number;
+  date: string;
+  interval: keyof typeof BookingIntervals;
+  projectName: string;
+  projectDescription: string;
+  userId: number;
+  user: IUser;
 }
 
-const Bookings: Booking[] = [
-  {
-    person: "John Doe",
-    project: "Some project",
-    day: new Date().getDate(),
-    month: new Date().getMonth(),
-    year: new Date().getFullYear(),
-    interval: BookingIntervals.TWOTHREE,
-  },
-  {
-    person: "Jane Doe",
-    project: "Some project",
-    day: new Date().getDate(),
-    month: new Date().getMonth(),
-    year: new Date().getFullYear(),
-    interval: BookingIntervals.THREEFOUR,
-  },
-  {
-    person: "John Doe",
-    project: "Some project",
-    day: new Date().getDate(),
-    month: new Date().getMonth(),
-    year: new Date().getFullYear(),
-    interval: BookingIntervals.FIVESIX,
-  },
-  {
-    person: "Jane Doe",
-    project: "Some project",
-    day: new Date().getDate(),
-    month: new Date().getMonth(),
-    year: new Date().getFullYear(),
-    interval: BookingIntervals.SIXSEVEN,
-  },
-  {
-    person: "John Doe",
-    project: "Some project",
-    day: new Date().getDate(),
-    month: new Date().getMonth(),
-    year: new Date().getFullYear(),
-    interval: BookingIntervals.SEVENEIGHT,
-  },
-  {
-    person: "Jane Doe",
-    project: "Some project",
-    day: new Date().getDate() + 1,
-    month: new Date().getMonth(),
-    year: new Date().getFullYear(),
-    interval: BookingIntervals.TWOTHREE,
-  },
-  {
-    person: "John Doe",
-    project: "Some project",
-    day: new Date().getDate() + 1,
-    month: new Date().getMonth(),
-    year: new Date().getFullYear(),
-    interval: BookingIntervals.THREEFOUR,
-  },
-  {
-    person: "Jane Doe",
-    project: "Some project",
-    day: new Date().getDate() + 1,
-    month: new Date().getMonth(),
-    year: new Date().getFullYear(),
-    interval: BookingIntervals.SIXSEVEN,
-  },
-  {
-    person: "Jane Doe",
-    project: "Some project",
-    day: new Date().getDate() + 1,
-    month: new Date().getMonth(),
-    year: new Date().getFullYear(),
-    interval: BookingIntervals.SEVENEIGHT,
-  },
-];
 const Booking = () => {
+  const { openModal } = useModal();
+  const { user } = useAuth();
+  const { bookings, loading, rePopulateBookings } = useBookings();
   const [selectedDate, setSelectedDate] = useState({
     day: new Date().getDate(),
     dayName: new Date().toLocaleString("en-us", { weekday: "long" }),
@@ -120,6 +61,10 @@ const Booking = () => {
       (year === today.getFullYear() && month < today.getMonth())
     );
   };
+
+  useEffect(() => {
+    rePopulateBookings(selectedDate);
+  }, [selectedDate]);
 
   return (
     <div className="p-4 border-2 border-black rounded max-w-screen-md">
@@ -245,24 +190,24 @@ const Booking = () => {
         </Button>
       </div>
       <div className="border-b-2 border-black my-4"></div>
-      <div className="flex flex-col gap-y-4">
+      <div className="flex flex-col gap-y-4 relative">
         {Object.values(BookingIntervals).map((interval) => {
-          const todaysBookings = [...Bookings].filter(
-            (booking) =>
-              booking.day === selectedDate.day &&
-              booking.month === selectedDate.month &&
-              booking.year === selectedDate.year
-          );
           const todaysBookingsMap = new Map<string, Booking>();
-          todaysBookings.forEach((booking) => {
-            todaysBookingsMap.set(booking.interval, booking);
+          bookings.forEach((booking) => {
+            todaysBookingsMap.set(
+              BookingIntervals[
+                booking.interval as keyof typeof BookingIntervals
+              ],
+              booking
+            );
           });
           const bookingOrSpot = todaysBookingsMap.get(interval);
           return todaysBookingsMap.has(interval) ? (
             <button
               key={`${selectedDate.day}${selectedDate.month}${selectedDate.year}${interval}`}
-              onClick={() => {
-                alert("This spot is already booked");
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
               }}
               className="bg-gray-300 text-left flex items-center gap-4 border-2 border-gray-400 rounded text-gray-400 cursor-pointer hover:bg-red-200 hover:border-red-800 hover:text-black hover:cursor-not-allowed"
             >
@@ -270,14 +215,27 @@ const Booking = () => {
                 {interval}
               </span>
               <span>
-                {`${bookingOrSpot?.person} - ${bookingOrSpot?.project}`}
+                {`${
+                  bookingOrSpot?.user?.nickname
+                    ? bookingOrSpot?.user?.nickname
+                    : bookingOrSpot?.user?.firstName
+                } - ${bookingOrSpot?.projectName}`}
               </span>
             </button>
           ) : (
             <button
               key={`${selectedDate.day}${selectedDate.month}${selectedDate.year}${interval}`}
               onClick={() => {
-                alert("To be implemented");
+                if (!user) {
+                  openModal(ModalNames.NOTLOGGEDIN);
+                } else {
+                  openModal(ModalNames.BOOKING, {
+                    date: `${selectedDate.year}-${selectedDate.month + 1}-${
+                      selectedDate.day
+                    }`,
+                    interval,
+                  });
+                }
               }}
               className="bg-green-50 text-left flex items-center gap-4 border-2 border-green-800 rounded text-black cursor-pointer hover:bg-green-800 hover:border-green-950 hover:text-white"
             >
@@ -288,7 +246,13 @@ const Booking = () => {
             </button>
           );
         })}
+        {loading ? (
+          <div className="absolute w-full h-full bg-yellow-500 top-0 left-0 flex justify-center items-center">
+            <Spinner />
+          </div>
+        ) : null}
       </div>
+      <div className=""></div>
     </div>
   );
 };

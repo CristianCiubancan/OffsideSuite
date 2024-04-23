@@ -1,7 +1,7 @@
 "use client";
 import UserIcon from "@/assets/icons/UserIcon";
 import Button from "@/components/primitives/button";
-import { useModal } from "../contexts/modal-context";
+import { ModalNames, useModal } from "../contexts/modal-context";
 
 const LoginButton = () => {
   const { openModal } = useModal();
@@ -11,7 +11,7 @@ const LoginButton = () => {
       <Button
         color="red"
         onClick={() => {
-          openModal();
+          openModal(ModalNames.REGISTER);
         }}
       >
         <UserIcon width={24} height={24} strokeWidth={3} />

@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useModal } from "../contexts/modal-context";
 import lodash from "lodash";
 import { registerUser } from "@/api/user";
+import { useAuth } from "../contexts/auth-context";
 
 export interface IRegisterForm {
   email: string;
@@ -20,6 +21,7 @@ export interface IRegisterForm {
 const RegisterForm = ({ notify }: { notify: () => void }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const { closeModal } = useModal();
+  const { refreshUser } = useAuth();
   const methods = useForm<IRegisterForm>({
     mode: "onTouched",
     reValidateMode: "onSubmit",
@@ -53,6 +55,7 @@ const RegisterForm = ({ notify }: { notify: () => void }) => {
       router.refresh();
       // sleep for 200ms
       await new Promise((resolve) => setTimeout(resolve, 200));
+      await refreshUser();
       setLoading(false);
       closeModal();
     } else {
@@ -64,7 +67,8 @@ const RegisterForm = ({ notify }: { notify: () => void }) => {
         if (res?.field !== "root") {
           setError("root", {
             type: "manual",
-            message: "Please check the form for errors.",
+            message:
+              "Please check the form for errors. If the problem persists, please contact support.",
           });
         }
       }
@@ -73,7 +77,7 @@ const RegisterForm = ({ notify }: { notify: () => void }) => {
   };
   const rootError = lodash.get(errors, "root");
   return (
-    <FormProvider {...methods}>
+    <FormProvider {...methods} key={"register-form"}>
       <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
         <InputField
           label="Your E-mail address"
@@ -99,8 +103,8 @@ const RegisterForm = ({ notify }: { notify: () => void }) => {
             required: "Phone number is required",
             // only allow numbers
             pattern: {
-              value: /^[0-9]*$/,
-              message: "Please enter a valid phone number",
+              value: /^\+?[0-9]{6,}$/,
+              message: "Please enter a valid phone number.",
             },
             minLength: {
               value: 10,
@@ -166,7 +170,13 @@ const RegisterForm = ({ notify }: { notify: () => void }) => {
               value === methods.watch("password") || "Passwords do not match",
           }}
         />
-        <Button fullWidth color="red" type="submit" loading={loading}>
+        <Button
+          fullWidth
+          color="red"
+          type="submit"
+          loading={loading}
+          disabled={loading}
+        >
           Submit
         </Button>
         {rootError ? (

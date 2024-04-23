@@ -4,27 +4,46 @@ import React, {
   useContext,
   useMemo,
   ReactElement,
-  useEffect,
 } from "react";
+
+export enum ModalNames {
+  REGISTER = "LoginOrRegisterModal",
+  NOTLOGGEDIN = "NotLoggedInModal",
+  BOOKING = "BookModal",
+}
 
 interface ModalContextProps {
   isOpen: boolean;
   closeModal: () => void;
-  openModal: () => void;
+  openModal: (modalName: string, additionalData?: any) => void;
+  currentModalName: string | null;
+  additionalData: any | null;
+  setAdditionalData: (data: any) => void;
 }
 
 const ModalContext = createContext<ModalContextProps | undefined>(undefined);
 
 export const ModalProvider = ({ children }: { children: ReactElement }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [currentModalName, setCurrentModalName] = useState<string | null>(null);
+  const [additionalData, setAdditionalData] = useState<any>(null);
   const closeModal = () => setIsOpen(false);
-  const openModal = () => setIsOpen(true);
+  const openModal = (modalName: string, additionalData?: any) => {
+    setIsOpen(true);
+    setCurrentModalName(modalName);
+    if (additionalData) {
+      setAdditionalData(additionalData);
+    }
+  };
 
   const providerValue = useMemo(
     () => ({
       isOpen,
       closeModal,
       openModal,
+      currentModalName,
+      additionalData,
+      setAdditionalData,
     }),
     [isOpen]
   );

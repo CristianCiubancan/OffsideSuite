@@ -2,20 +2,23 @@ import { getMe } from "@/api/user";
 import React, { createContext, useContext, useState, useEffect } from "react";
 
 export interface IUser {
+  id: number;
   email: string;
-  phone: string;
+  password?: string; // Note: Storing passwords in frontend types is generally not safe.
   firstName: string;
   lastName: string;
   nickname?: string;
   company?: string;
-  password: string;
+  phone: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 interface AuthContextType {
   user: IUser | null;
   isLoading: boolean;
   error: Error | null;
-  refreshUser: () => void;
+  refreshUser: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);

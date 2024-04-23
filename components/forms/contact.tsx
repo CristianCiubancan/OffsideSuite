@@ -5,7 +5,7 @@ import Button from "@/components/primitives/button";
 import { useState } from "react";
 import { sendEmail } from "@/components/forms/forms.api";
 import lodash from "lodash";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export interface IContactForm {}
@@ -120,7 +120,6 @@ const ContactForm = ({}: IContactForm) => {
           <div className="text-red-300 text-base italic mt-2 min-h-6"> </div>
         )}
       </form>
-      <ToastContainer />
     </FormProvider>
   );
 };

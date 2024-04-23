@@ -10,7 +10,7 @@ const LoginOrRegister = () => {
   const notify = () => toast("Your account was registered successfully.");
 
   return (
-    <>
+    <div className="w-full">
       <div className="flex flex-col items-center gap-4">
         <ToggleSwitch
           value1="Login"
@@ -22,7 +22,7 @@ const LoginOrRegister = () => {
         />
         {isLogin ? <LoginForm /> : <RegisterForm notify={notify} />}
       </div>
-    </>
+    </div>
   );
 };
 

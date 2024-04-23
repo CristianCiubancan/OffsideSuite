@@ -1,10 +1,12 @@
 "use client";
 import { AuthProvider } from "@/components/contexts/auth-context";
+import { BookingsProvider } from "@/components/contexts/bookings-context";
 import { ModalProvider } from "@/components/contexts/modal-context";
+import ModalRegistrar from "@/components/modal-registrar";
 import Header from "@/components/primitives/main-header";
-import LoginOrRegisterModal from "@/components/primitives/register-modal";
 import "@/styles/global.css";
 import "@/styles/styles.css";
+import { ToastContainer } from "react-toastify";
 
 export default function RootLayout({
   children,
@@ -40,11 +42,14 @@ export default function RootLayout({
       <body className="position-relative">
         <ModalProvider>
           <AuthProvider>
-            <>
-              <Header />
-              {children}
-              <LoginOrRegisterModal />
-            </>
+            <BookingsProvider>
+              <>
+                <Header />
+                {children}
+                <ModalRegistrar />
+                <ToastContainer />
+              </>
+            </BookingsProvider>
           </AuthProvider>
         </ModalProvider>
       </body>
