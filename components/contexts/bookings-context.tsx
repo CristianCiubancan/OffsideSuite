@@ -23,15 +23,15 @@ export const BookingsProvider = ({
 }) => {
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
-  const notifyError = (message: string) =>
+  const notifyError = (err: any) => {
+    const message = err.message || "Unknown error";
     toast(
-      "Failed to fetch bookings. Please try again later." +
-        " Error Message: " +
-        message,
+      `Failed to fetch bookings. Please try again later. Error: ${message}`,
       {
         type: "error",
       }
     );
+  };
   const rePopulateBookings = async (selectedDate: {
     day: number;
     month: number;
@@ -51,7 +51,7 @@ export const BookingsProvider = ({
         bodyOrQuery: { date: formattedDate.toISOString() },
       });
     } catch (err) {
-      notifyError(JSON.stringify(err));
+      notifyError(err);
       setBookings([]);
       setLoading(false);
       return;
