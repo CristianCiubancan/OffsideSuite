@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { getBookings } from "@/api/booking";
+import { toast } from "react-toastify";
 
 const BookingsContext = createContext<{
   bookings: any[];
@@ -22,7 +23,10 @@ export const BookingsProvider = ({
 }) => {
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const notifyError = () =>
+    toast("Failed to fetch bookings. Please try again later.", {
+      type: "error",
+    });
   const rePopulateBookings = async (selectedDate: {
     day: number;
     month: number;
@@ -36,9 +40,18 @@ export const BookingsProvider = ({
     formattedDate.setMinutes(
       formattedDate.getMinutes() + formattedDate.getTimezoneOffset()
     );
-    const bookingsData = await getBookings({
-      bodyOrQuery: { date: formattedDate.toISOString() },
-    });
+    let bookingsData = [];
+    try {
+      bookingsData = await getBookings({
+        bodyOrQuery: { date: formattedDate.toISOString() },
+      });
+    } catch (err) {
+      notifyError();
+      setBookings([]);
+      setLoading(false);
+      return;
+    }
+
     setBookings(bookingsData);
     setLoading(false);
   };
