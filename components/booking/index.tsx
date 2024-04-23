@@ -67,7 +67,7 @@ const Booking = () => {
   }, [selectedDate]);
 
   return (
-    <div className="p-4 border-2 border-black rounded max-w-screen-md">
+    <div className="p-4 border-2 border-black rounded max-w-full">
       <div>
         <h1 className="text-4xl font-bold mb-4">Book a session</h1>
         <p className="text-lg">
@@ -190,7 +190,7 @@ const Booking = () => {
         </Button>
       </div>
       <div className="border-b-2 border-black my-4"></div>
-      <div className="flex flex-col gap-y-4 relative">
+      <div className="flex flex-col gap-y-4 relative w-full">
         {Object.values(BookingIntervals).map((interval) => {
           const todaysBookingsMap = new Map<string, Booking>();
           bookings.forEach((booking) => {
@@ -209,18 +209,31 @@ const Booking = () => {
                 e.preventDefault();
                 e.stopPropagation();
               }}
-              className="bg-gray-300 text-left flex items-center gap-4 border-2 border-gray-400 rounded text-gray-400 cursor-pointer hover:bg-red-200 hover:border-red-800 hover:text-black hover:cursor-not-allowed"
+              className="bg-gray-300 h-24 text-left flex gap-4 border-2 border-gray-400 rounded text-gray-400 cursor-pointer hover:bg-red-200 hover:border-red-800 hover:text-black hover:cursor-not-allowed w-full"
             >
-              <span className="p-4 bg-red-800 text-white rounded-sm">
-                {interval}
+              <span className="flex-shrink-0 h-full flex flex-col items-center justify-center bg-red-800 text-white rounded-sm text-center w-20">
+                {interval.split(" ").map((word) => {
+                  return <div>{word}</div>;
+                })}
               </span>
-              <span>
-                {`${
-                  bookingOrSpot?.user?.nickname
-                    ? bookingOrSpot?.user?.nickname
-                    : bookingOrSpot?.user?.firstName
-                } - ${bookingOrSpot?.projectName}`}
-              </span>
+
+              <div className="h-full py-2 flex flex-col justify-between text-sm overflow-hidden">
+                <div className="truncate">
+                  <span className="font-bold">Project: </span>
+                  <span>{bookingOrSpot?.projectName}</span>
+                </div>
+                <div className="truncate">
+                  <span className="font-bold">Artist: </span>
+                  <span>
+                    {bookingOrSpot?.user?.nickname ||
+                      bookingOrSpot?.user?.firstName}
+                  </span>
+                </div>
+                <div className="truncate">
+                  <span className="font-bold">Description: </span>
+                  <span>{bookingOrSpot?.projectDescription}</span>
+                </div>
+              </div>
             </button>
           ) : (
             <button
@@ -237,12 +250,12 @@ const Booking = () => {
                   });
                 }
               }}
-              className="bg-green-50 text-left flex items-center gap-4 border-2 border-green-800 rounded text-black cursor-pointer hover:bg-green-800 hover:border-green-950 hover:text-white"
+              className="bg-green-50 text-left flex items-start gap-4 border-2 border-green-800 rounded text-black cursor-pointer hover:bg-green-800 hover:border-green-950 hover:text-white"
             >
-              <span className="p-4 bg-green-800 text-white rounded-sm">
+              <span className="p-4 bg-green-800 text-white rounded-sm w-20 text-center">
                 {interval}
               </span>
-              <span>It's free! Click to book it now.</span>
+              <span className="py-4">It's free! Click to book it now.</span>
             </button>
           );
         })}
