@@ -6,8 +6,12 @@ import ModalRegistrar from "@/components/modal-registrar";
 import Header from "@/components/primitives/main-header";
 import "@/styles/global.css";
 import "@/styles/styles.css";
+import { Syne_Mono } from "next/font/google";
 import { ToastContainer } from "react-toastify";
-
+const syneMono = Syne_Mono({
+  weight: ["400"],
+  subsets: ["latin"],
+});
 export default function RootLayout({
   children,
 }: {
@@ -39,7 +43,7 @@ export default function RootLayout({
       />
       <meta property="fb:app_id" content="450961180645048" />
       <meta property="og:image:alt" content="OffsideMusic logo banner" />
-      <body className="position-relative">
+      <body className={`position-relative ${syneMono.className}`}>
         <ModalProvider>
           <AuthProvider>
             <BookingsProvider>
