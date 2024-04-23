@@ -292,7 +292,7 @@ const Booking = () => {
               }}
               className="bg-yellow-50 h-24 text-left flex items-start gap-4 border-2 border-black rounded text-black cursor-pointer hover:bg-green-700 hover:border-green-950 hover:text-white"
             >
-              <span className="flex-shrink-0 h-full flex flex-col items-center justify-center bg-green-700 text-white rounded-l-xs text-center w-20 border-r-black border-r-2">
+              <span className="flex-shrink-0 h-full flex flex-col items-center justify-center bg-green-700 text-white rounded-l-xs text-center w-20">
                 {interval.split(" ").map((word) => {
                   return <div key={word}>{word}</div>;
                 })}
