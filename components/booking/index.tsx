@@ -244,9 +244,9 @@ const Booking = () => {
                 e.preventDefault();
                 e.stopPropagation();
               }}
-              className="bg-gray-300 h-24 text-left flex gap-4 border-2 border-gray-400 rounded text-gray-400 cursor-pointer hover:bg-red-200 hover:border-red-800 hover:text-black hover:cursor-not-allowed w-full"
+              className="bg-yellow-50 h-24 text-left flex gap-4 border-2 border-black rounded text-black cursor-pointer hover:cursor-not-allowed w-full"
             >
-              <span className="flex-shrink-0 h-full flex flex-col items-center justify-center bg-red-800 text-white rounded-sm text-center w-20">
+              <span className="flex-shrink-0 h-full flex flex-col items-center justify-center bg-red-800 text-white rounded-l-xs text-center w-20">
                 {interval.split(" ").map((word) => {
                   return <div key={word}>{word}</div>;
                 })}
@@ -268,20 +268,6 @@ const Booking = () => {
                     {bookingOrSpot?.user?.nickname ||
                       bookingOrSpot?.user?.firstName}
                   </span>
-                  {/* <span
-                    className={`text-bold text-xl ${styles.gradientText}`}
-                    style={{
-                      background: `linear-gradient(90deg, ${color1}, ${color2})`,
-                      WebkitBackgroundClip: "text",
-                      backgroundClip: "text",
-                      color: "transparent",
-                      display: "inline",
-                      animation: "color-shift 5s infinite alternate",
-                    }}
-                  >
-                    {bookingOrSpot?.user?.nickname ||
-                      bookingOrSpot?.user?.firstName}
-                  </span> */}
                 </div>
                 <div className="truncate">
                   <span className="font-bold">Description: </span>
@@ -304,9 +290,9 @@ const Booking = () => {
                   });
                 }
               }}
-              className="bg-green-50 text-left flex items-start gap-4 border-2 border-green-800 rounded text-black cursor-pointer hover:bg-green-800 hover:border-green-950 hover:text-white"
+              className="bg-yellow-50 text-left flex items-start gap-4 border-2 border-black rounded text-black cursor-pointer hover:bg-green-700 hover:border-green-950 hover:text-white"
             >
-              <span className="p-4 bg-green-800 text-white rounded-sm w-20 text-center">
+              <span className="p-4 bg-green-700 text-white rounded-l-xs w-20 text-center">
                 {interval}
               </span>
               <span className="py-4">It's free! Click to book it now.</span>
