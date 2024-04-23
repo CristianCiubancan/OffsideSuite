@@ -44,13 +44,17 @@ const BookForm = ({ notify }: { notify: () => void }) => {
 
   const onSubmit = async (data: IBookForm) => {
     setLoading(true);
-    const formattedDate = new Date(additionalData?.date);
-    // set everything to 0 except the date
-    formattedDate.setHours(0, 0, 0, 0);
-    // also set the timezone to UTC
+    const [year, month, day] = additionalData?.date.split("-");
+    const paddedMonth = String(parseInt(month) + 1).padStart(2, "0");
+    const paddedDay = String(parseInt(day)).padStart(2, "0");
+    const isoDateString = `${parseInt(
+      year
+    )}-${paddedMonth}-${paddedDay}T00:00:00`;
+    const formattedDate = new Date(isoDateString);
     formattedDate.setMinutes(
       formattedDate.getMinutes() + formattedDate.getTimezoneOffset()
     );
+
     const res = await createBooking({
       bodyOrQuery: {
         ...data,

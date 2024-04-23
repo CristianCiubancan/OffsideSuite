@@ -38,13 +38,15 @@ export const BookingsProvider = ({
     year: number;
   }) => {
     setLoading(true);
-    const formattedDate = new Date(
-      `${selectedDate.year}-${selectedDate.month + 1}-${selectedDate.day}`
-    );
-    formattedDate.setHours(0, 0, 0, 0);
+
+    const paddedMonth = String(selectedDate.month + 1).padStart(2, "0");
+    const paddedDay = String(selectedDate.day).padStart(2, "0");
+    const isoDateString = `${selectedDate.year}-${paddedMonth}-${paddedDay}T00:00:00`;
+    const formattedDate = new Date(isoDateString);
     formattedDate.setMinutes(
       formattedDate.getMinutes() + formattedDate.getTimezoneOffset()
     );
+
     let bookingsData = [];
     try {
       bookingsData = await getBookings({
