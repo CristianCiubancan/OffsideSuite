@@ -45,7 +45,7 @@ const BookForm = ({ notify }: { notify: () => void }) => {
   const onSubmit = async (data: IBookForm) => {
     setLoading(true);
     const [year, month, day] = additionalData?.date.split("-");
-    const paddedMonth = String(parseInt(month) + 1).padStart(2, "0");
+    const paddedMonth = String(parseInt(month)).padStart(2, "0");
     const paddedDay = String(parseInt(day)).padStart(2, "0");
     const isoDateString = `${parseInt(
       year
