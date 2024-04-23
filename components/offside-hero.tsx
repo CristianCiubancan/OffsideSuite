@@ -409,6 +409,7 @@ const OffsideHero = () => {
       recursiveReplay();
     }
   }, [videoRef]);
+
   return (
     <div className={bebasNeue.className}>
       <div className="relative h-screen overflow-hidden">
