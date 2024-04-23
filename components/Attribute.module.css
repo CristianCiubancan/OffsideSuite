@@ -1,4 +1,5 @@
 /* In your CSS file for the Attribute component */
+
 .attribute-element { 
   opacity: 0;         /* Initially hidden */
   transition: opacity 0.5s ease-in-out; /* Adjust duration and easing as needed */
