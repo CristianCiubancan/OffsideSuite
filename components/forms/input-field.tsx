@@ -57,7 +57,7 @@ const InputField: React.FC<InputFieldProps> = ({
             id={name}
             autoComplete={autoComplete}
             rows={4}
-            className="block p-2.5 w-full min-h-10 text-base text-white bg-red-700 rounded-sm border-2 border-white appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer"
+            className="block p-2.5 w-full min-h-10 text-base text-white bg-red-700 rounded border-2 border-white appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer"
             placeholder=" "
           ></textarea>
           <label
