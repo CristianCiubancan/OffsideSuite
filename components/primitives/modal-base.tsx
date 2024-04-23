@@ -25,7 +25,14 @@ const ModalBase = ({ children, forceButtonFix }: IModalBase) => {
         onClick={closeModal}
         className="bg-yellow-950 fixed inset-0 z-40 opacity-40"
       ></div>
-      <div className="fixed z-50 flex justify-center items-center inset-0 p-4">
+      <div
+        onClick={(e) => {
+          console.log("clicked");
+          e.stopPropagation();
+          closeModal();
+        }}
+        className="fixed z-50 flex justify-center items-center inset-0 p-4"
+      >
         <div
           style={{
             height: forceButtonFix ? "100%" : "unset",

@@ -8,7 +8,7 @@ const BookModal = () => {
   const modalContent = (
     <ModalBase>
       <div className="flex flex-col items-center gap-4 w-full">
-        <p className="text-white text-4xl">Give us a few details.</p>
+        <p className="text-white text-4xl pt-4">Give us a few details.</p>
         <BookForm notify={notify} />
       </div>
     </ModalBase>
