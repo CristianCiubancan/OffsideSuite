@@ -6,7 +6,7 @@ import { ModalNames, useModal } from "../contexts/modal-context";
 import { IUser, useAuth } from "../contexts/auth-context";
 import Spinner from "../primitives/spinner";
 import { useBookings } from "../contexts/bookings-context";
-
+import styles from "./booking.module.css";
 export enum BookingIntervals {
   "TWOTHREE" = "14:00 - 15:00",
   "THREEFOUR" = "15:00 - 16:00",
@@ -35,6 +35,37 @@ interface Booking extends Spot {
   userId: number;
   user: IUser;
 }
+
+export const stringsToColors = (strs: string[]) => {
+  // Combine strings to get a single string
+  const combinedStr = strs.join("");
+
+  // Simple hashing function to get an integer hash from a string
+  const hashFn = (str: string) => {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+      hash = str.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    return hash;
+  };
+
+  // A function to convert a hash into a hex color
+  const intToRGB = (i: number) => {
+    const c = (i & 0x00ffffff).toString(16).toUpperCase();
+    return "#" + "00000".substring(0, 6 - c.length) + c;
+  };
+
+  // Split the string in half to create two "seed" strings
+  const halfIndex = Math.ceil(combinedStr.length / 2);
+  const str1 = combinedStr.substring(0, halfIndex);
+  const str2 = combinedStr.substring(halfIndex);
+
+  // Generate two colors from the halves
+  const color1 = intToRGB(hashFn(str1));
+  const color2 = intToRGB(hashFn(str2));
+
+  return { color1, color2 };
+};
 
 const Booking = () => {
   const { openModal } = useModal();
@@ -202,6 +233,10 @@ const Booking = () => {
             );
           });
           const bookingOrSpot = todaysBookingsMap.get(interval);
+          const { color1, color2 } = stringsToColors([
+            bookingOrSpot?.user?.firstName!,
+            bookingOrSpot?.user?.lastName!,
+          ]);
           return todaysBookingsMap.has(interval) ? (
             <button
               key={`${selectedDate.day}${selectedDate.month}${selectedDate.year}${interval}`}
@@ -213,7 +248,7 @@ const Booking = () => {
             >
               <span className="flex-shrink-0 h-full flex flex-col items-center justify-center bg-red-800 text-white rounded-sm text-center w-20">
                 {interval.split(" ").map((word) => {
-                  return <div>{word}</div>;
+                  return <div key={word}>{word}</div>;
                 })}
               </span>
 
@@ -224,10 +259,29 @@ const Booking = () => {
                 </div>
                 <div className="truncate">
                   <span className="font-bold">Artist: </span>
-                  <span>
+                  <span
+                    className={`${styles.gradientText}`}
+                    style={{
+                      backgroundImage: `linear-gradient(90deg, ${color1}, ${color2})`,
+                    }}
+                  >
                     {bookingOrSpot?.user?.nickname ||
                       bookingOrSpot?.user?.firstName}
                   </span>
+                  {/* <span
+                    className={`text-bold text-xl ${styles.gradientText}`}
+                    style={{
+                      background: `linear-gradient(90deg, ${color1}, ${color2})`,
+                      WebkitBackgroundClip: "text",
+                      backgroundClip: "text",
+                      color: "transparent",
+                      display: "inline",
+                      animation: "color-shift 5s infinite alternate",
+                    }}
+                  >
+                    {bookingOrSpot?.user?.nickname ||
+                      bookingOrSpot?.user?.firstName}
+                  </span> */}
                 </div>
                 <div className="truncate">
                   <span className="font-bold">Description: </span>

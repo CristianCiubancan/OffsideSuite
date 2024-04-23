@@ -63,7 +63,6 @@ const BookForm = ({ notify }: { notify: () => void }) => {
       },
     });
     if (!res?.error) {
-      console.log("additionalData?.", additionalData);
       // set token as a cookie
       // document.cookie = `${config.cookie_name}=${res.token}; path=/;`;
       notify();
