@@ -1,26 +1,29 @@
 import Link from "next/link";
-import { use } from "react";
-
-const getUser = async (id: number) => {
-  const user = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {
-    cache: "no-store",
-  });
-  return user.json();
-};
 
 const Footer = () => {
-  const user = use(getUser(1));
   return (
-    <nav className="w-full main-layout-footer bg-purple-500">
-      <div className="main-layout-footer-content flex justify-between items-center px-6 text-white">
-        <div className="main-layout-footer-content-heading w-full">
-          <Link href="/" className="cursor-pointer">
-            <div>Logo</div>
-          </Link>
-          <Link href="/profile" className="cursor-pointer">
-            {user.name}
-          </Link>
+    <nav className="w-full main-layout-footer bg-yellow-500 relative">
+      <div className="container mx-auto p-8">
+        <div className="flex justify-between items-center flex-col">
+          <div className="pb-2 flex justify-center items-center flex-col w-full">
+            <p className="text-red-700 font-bold text-2xl">
+              © 2024 Offside Music
+            </p>
+          </div>
+          <div>
+            <Link href="/terms" className="text-black hover:text-red-700">
+              Terms of Service
+            </Link>
+            <span className="mx-4 text-white">|</span>
+            <Link href="/privacy" className="text-black hover:text-red-700">
+              Privacy Policy
+            </Link>
+          </div>
         </div>
+      </div>
+      <div className="text-yellow-400 text-sm absolute bottom-2 right-2">
+        Invisioned, designed and developed by{" "}
+        <span className="text-bold text-2xl">Ciubăncan Cristian</span>
       </div>
     </nav>
   );

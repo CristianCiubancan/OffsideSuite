@@ -4,6 +4,7 @@ import LoginButton from "@/components/primitives/login-button";
 import { useAuth } from "../contexts/auth-context";
 import Spinner from "./spinner";
 import UserMenuButton from "./user-menu-button";
+import Link from "next/link";
 const bebasNeue = Bebas_Neue({
   weight: ["400"],
   subsets: ["latin"],
@@ -20,9 +21,12 @@ const Header = () => {
       <div
         className={`h-16 w-full flex justify-between items-center absolute z-30 top-0 left-0 p-4 text-white`}
       >
-        <div className={`font-bold text-2xl text-white ${bebasNeue.className}`}>
+        <Link
+          href={"/"}
+          className={`font-bold text-2xl text-white ${bebasNeue.className}`}
+        >
           Offside Music
-        </div>
+        </Link>
         {/* TODO: maybe a add a menu once more functionalities are implemented */}
         {/* <Button
           color="yellow"
