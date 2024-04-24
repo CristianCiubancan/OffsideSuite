@@ -32,11 +32,13 @@ const Footer = () => {
               Privacy Policy
             </Link>
           </div>
+          <div className="text-yellow-400 text-sm w-full text-center">
+            Invisioned, designed and developed by{" "}
+            <span className="text-bold text-2xl whitespace-nowrap">
+              Ciubăncan Cristian
+            </span>
+          </div>
         </div>
-      </div>
-      <div className="text-yellow-400 text-sm absolute bottom-2 right-2">
-        Invisioned, designed and developed by{" "}
-        <span className="text-bold text-2xl">Ciubăncan Cristian</span>
       </div>
     </nav>
   );
