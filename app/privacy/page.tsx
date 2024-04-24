@@ -9,7 +9,7 @@ const PrivacyPage = () => {
       <p className="text-sm">
         Offside Music ("We", "us", "our") respects the privacy of our users
         ("you"). This Privacy Policy explains how we collect, use, disclose, and
-        safeguard your information when you visit our website
+        safeguard your information when you visit our website{" "}
         <Link href="/" className="text-yellow-500 hover:text-yellow-700">
           {process.env.NEXT_PUBLIC_FRONTEND_URL}
         </Link>{" "}
