@@ -23,7 +23,7 @@ const Header = () => {
       >
         <Link
           href={"/"}
-          className={`font-bold text-2xl text-white ${bebasNeue.className}`}
+          className={`font-bold text-2xl text-white ${bebasNeue.className} drop-shadow-lg`}
         >
           Offside Music
         </Link>

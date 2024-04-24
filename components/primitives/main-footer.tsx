@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="container mx-auto p-8 relative z-10">
         <div className="flex justify-between items-center flex-col">
           <div className="pb-2 flex justify-center items-center flex-col w-full">
-            <p className="text-red-700 font-bold text-4xl text-center">
+            <p className="text-red-700 font-bold text-4xl text-center drop-shadow-lg">
               © 2024 Offside Music
             </p>
           </div>
