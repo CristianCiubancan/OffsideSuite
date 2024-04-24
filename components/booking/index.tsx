@@ -249,7 +249,7 @@ const Booking = () => {
                 })}
               </span>
 
-              <div className="h-full py-2 flex flex-col justify-between text-sm overflow-hidden">
+              <div className="h-full py-2 flex flex-col justify-between text-sm overflow-hidden pr-4">
                 <div className="truncate">
                   <span className="font-bold">Project: </span>
                   <span className="ml-1">{bookingOrSpot?.projectName}</span>
@@ -302,7 +302,7 @@ const Booking = () => {
               {/* <span className="p-4 bg-green-700 text-white rounded-l-xs w-20 text-center">
                 {interval}
               </span> */}
-              <div className="h-full py-2 flex flex-col justify-between text-sm overflow-hidden">
+              <div className="h-full py-2 flex flex-col justify-between text-sm overflow-hidden pr-2">
                 <div className="flex items-center gap-2">
                   <span className="leading-4">
                     It's free! Click to book it now.
