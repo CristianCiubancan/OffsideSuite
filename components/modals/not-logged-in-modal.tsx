@@ -1,5 +1,5 @@
-import LoginOrRegister from "@/components/primitives/login-or-register";
-import ModalBase from "./modal-base";
+import LoginOrRegister from "@/components/login-or-register";
+import ModalBase from "@/components/modals/modal-base";
 
 const NotLoggedInModal = () => {
   const modalContent = (

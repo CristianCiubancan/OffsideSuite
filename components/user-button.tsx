@@ -1,4 +1,4 @@
-import { useAuth } from "../contexts/auth-context";
+import { useAuth } from "@/components/contexts/auth-context";
 export const turnNameToHexColor = (name: string) => {
   const str = name
     .split("")

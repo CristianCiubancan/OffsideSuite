@@ -1,16 +1,16 @@
 import { FormProvider, useForm } from "react-hook-form";
-import InputField from "./input-field";
-import Button from "../primitives/button";
+import InputField from "@/components/forms/input-field";
+import Button from "@/components/primitives/button";
 import { useEffect, useState } from "react";
 import { loginUser } from "@/api/user";
 import { useRouter } from "next/navigation";
 import lodash, { set } from "lodash";
-import { useModal } from "../contexts/modal-context";
-import { useAuth } from "../contexts/auth-context";
+import { useModal } from "@/components/contexts/modal-context";
+import { useAuth } from "@/components/contexts/auth-context";
 import {
   FormNames,
   useUnfinishedForms,
-} from "../contexts/unfinished-forms-context";
+} from "@/components/contexts/unfinished-forms-context";
 
 export interface ILoginForm {
   loginEmail: string;

@@ -3,14 +3,14 @@ import InputField from "@/components/forms/input-field";
 import Button from "@/components/primitives/button";
 import { use, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { useModal } from "../contexts/modal-context";
+import { useModal } from "@/components/contexts/modal-context";
 import lodash from "lodash";
 import { registerUser } from "@/api/user";
-import { useAuth } from "../contexts/auth-context";
+import { useAuth } from "@/components/contexts/auth-context";
 import {
   FormNames,
   useUnfinishedForms,
-} from "../contexts/unfinished-forms-context";
+} from "@/components/contexts/unfinished-forms-context";
 
 export interface IRegisterForm {
   email: string;

@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import Button from "@/components/primitives/button";
 import RightArrow from "@/assets/icons/RightArrow";
 import LeftArrow from "@/assets/icons/LeftArrow";
-import { ModalNames, useModal } from "../contexts/modal-context";
-import { IUser, useAuth } from "../contexts/auth-context";
-import Spinner from "../primitives/spinner";
-import { useBookings } from "../contexts/bookings-context";
-import styles from "./booking.module.css";
+import { ModalNames, useModal } from "@/components/contexts/modal-context";
+import { IUser, useAuth } from "@/components/contexts/auth-context";
+import Spinner from "@/components/primitives/spinner";
+import { useBookings } from "@/components/contexts/bookings-context";
+import styles from "@/components/booking/booking.module.css";
 export enum BookingIntervals {
   "TWOFOUR" = "14:00 - 16:00",
   "FOURSIX" = "16:00 - 18:00",

@@ -1,7 +1,7 @@
 "use client";
 import UserIcon from "@/assets/icons/UserIcon";
 import Button from "@/components/primitives/button";
-import { ModalNames, useModal } from "../contexts/modal-context";
+import { ModalNames, useModal } from "@/components/contexts/modal-context";
 
 const LoginButton = () => {
   const { openModal } = useModal();

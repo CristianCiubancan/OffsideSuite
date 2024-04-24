@@ -1,7 +1,7 @@
-import { ModalNames, useModal } from "./contexts/modal-context";
-import BookModal from "./primitives/book-modal";
-import NotLoggedInModal from "./primitives/not-logged-in-modal";
-import LoginOrRegisterModal from "./primitives/register-modal";
+import { ModalNames, useModal } from "@/components/contexts/modal-context";
+import BookModal from "@/components/modals/book-modal";
+import NotLoggedInModal from "@/components/modals/not-logged-in-modal";
+import LoginOrRegisterModal from "@/components/modals/register-modal";
 
 const ModalRegistrar = () => {
   const { currentModalName } = useModal();

@@ -1,9 +1,9 @@
 import { useState } from "react";
-import UserButton from "./user-button";
-import Button from "./button";
+import UserButton from "@/components/user-button";
+import Button from "@/components/primitives/button";
 import { logoutUser } from "@/api/user";
 import { useRouter } from "next/navigation";
-import { useAuth } from "../contexts/auth-context";
+import { useAuth } from "@/components/contexts/auth-context";
 
 const UserMenuButton = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);

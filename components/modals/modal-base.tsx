@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useModal } from "@/components/contexts/modal-context";
 import CancelIcon from "@/assets/icons/CancelIcon";
-import Button from "./button";
+import Button from "@/components/primitives/button";
 interface IModalBase {
   children: React.ReactNode;
   forceButtonFix?: boolean;

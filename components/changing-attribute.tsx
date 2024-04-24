@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import styles from "@/components/cool-headings.module.css";
+import styles from "@/components/changing-attribute.module.css";
 interface IAttribute {
   key: number;
   value: string;

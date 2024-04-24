@@ -1,7 +1,7 @@
-import LoginOrRegister from "@/components/primitives/login-or-register";
-import ModalBase from "./modal-base";
+import LoginOrRegister from "@/components/login-or-register";
+import ModalBase from "@/components/modals/modal-base";
 import { toast } from "react-toastify";
-import BookForm from "../forms/book-form";
+import BookForm from "@/components/forms/book-form";
 
 const BookModal = () => {
   const notify = () => toast("Your booking was successful.");

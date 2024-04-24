@@ -1,4 +1,4 @@
-import createFetchRequest, { IGetRequestOptions } from ".";
+import createFetchRequest, { IGetRequestOptions } from "@/api/api";
 
 export const getBookings = async (data?: IGetRequestOptions) => {
   return await createFetchRequest({

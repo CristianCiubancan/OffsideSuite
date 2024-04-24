@@ -1,9 +1,9 @@
 "use client";
 import { Bebas_Neue } from "next/font/google";
-import LoginButton from "@/components/primitives/login-button";
-import { useAuth } from "../contexts/auth-context";
-import Spinner from "./spinner";
-import UserMenuButton from "./user-menu-button";
+import LoginButton from "@/components/login-button";
+import { useAuth } from "@/components/contexts/auth-context";
+import Spinner from "@/components/primitives/spinner";
+import UserMenuButton from "@/components/user-menu-button";
 import Link from "next/link";
 const bebasNeue = Bebas_Neue({
   weight: ["400"],

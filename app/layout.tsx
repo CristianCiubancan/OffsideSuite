@@ -3,7 +3,7 @@ import { AuthProvider } from "@/components/contexts/auth-context";
 import { BookingsProvider } from "@/components/contexts/bookings-context";
 import { ModalProvider } from "@/components/contexts/modal-context";
 import { UnfinishedFormsProvider } from "@/components/contexts/unfinished-forms-context";
-import ModalRegistrar from "@/components/modal-registrar";
+import ModalRegistrar from "@/components/uitls/modal-registrar";
 import Footer from "@/components/primitives/main-footer";
 import Header from "@/components/primitives/main-header";
 import "@/styles/global.css";

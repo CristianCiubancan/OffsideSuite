@@ -3,16 +3,16 @@ import InputField from "@/components/forms/input-field";
 import Button from "@/components/primitives/button";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { useModal } from "../contexts/modal-context";
+import { useModal } from "@/components/contexts/modal-context";
 import lodash from "lodash";
-import { useAuth } from "../contexts/auth-context";
+import { useAuth } from "@/components/contexts/auth-context";
 import { createBooking } from "@/api/booking";
-import { BookingIntervals } from "../booking";
-import { useBookings } from "../contexts/bookings-context";
+import { BookingIntervals } from "@/components/booking";
+import { useBookings } from "@/components/contexts/bookings-context";
 import {
   FormNames,
   useUnfinishedForms,
-} from "../contexts/unfinished-forms-context";
+} from "@/components/contexts/unfinished-forms-context";
 export interface IBookForm {
   projectName: string;
   projectDescription: string;

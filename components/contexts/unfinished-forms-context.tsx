@@ -1,8 +1,8 @@
 import { createContext, useContext, useState } from "react";
-import { IBookForm } from "../forms/book-form";
-import { IContactForm } from "../forms/contact";
-import { IRegisterForm } from "../forms/register-form";
-import { ILoginForm } from "../forms/login-form";
+import { IBookForm } from "@/components/forms/book-form";
+import { IContactForm } from "@/components/forms/contact";
+import { IRegisterForm } from "@/components/forms/register-form";
+import { ILoginForm } from "@/components/forms/login-form";
 
 export enum FormNames {
   BOOKING = "BookForm",
