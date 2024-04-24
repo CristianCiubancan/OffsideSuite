@@ -1,7 +1,7 @@
 "use client";
 import React, { createContext, useContext, useState } from "react";
 import { getBookings } from "@/api/booking";
-import { formatInTimeZone } from "date-fns-tz";
+// import { formatInTimeZone } from "date-fns-tz";
 import { toast } from "react-toastify";
 
 const BookingsContext = createContext<{
@@ -40,26 +40,22 @@ export const BookingsProvider = ({
     year: number;
   }) => {
     setLoading(true);
-    // if we are on the server we return an empty array
-    if (typeof window === "undefined") {
-      setBookings([]);
-      setLoading(false);
-      return;
-    }
+
     const timeZone = "Europe/Bucharest";
     const date = new Date(
       Date.UTC(selectedDate.year, selectedDate.month, selectedDate.day)
     );
-    const formattedDate = formatInTimeZone(
-      date,
-      timeZone,
-      "yyyy-MM-dd'T'HH:mm:ssXXX"
-    );
+    // const formattedDate = formatInTimeZone(
+    //   date,
+    //   timeZone,
+    //   "yyyy-MM-dd'T'HH:mm:ssXXX"
+    // );
 
     let bookingsData = [];
     try {
       bookingsData = await getBookings({
-        bodyOrQuery: { date: encodeURIComponent(formattedDate) },
+        bodyOrQuery: { date: encodeURIComponent(date.toISOString()) },
+        // bodyOrQuery: { date: encodeURIComponent(formattedDate) },
       });
     } catch (err) {
       notifyError(err);
