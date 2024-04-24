@@ -2,6 +2,7 @@
 import { AuthProvider } from "@/components/contexts/auth-context";
 import { BookingsProvider } from "@/components/contexts/bookings-context";
 import { ModalProvider } from "@/components/contexts/modal-context";
+import { UnfinishedFormsProvider } from "@/components/contexts/unfinished-forms-context";
 import ModalRegistrar from "@/components/modal-registrar";
 import Footer from "@/components/primitives/main-footer";
 import Header from "@/components/primitives/main-header";
@@ -48,13 +49,15 @@ export default function RootLayout({
         <ModalProvider>
           <AuthProvider>
             <BookingsProvider>
-              <>
-                <Header />
-                {children}
-                <Footer />
-                <ModalRegistrar />
-                <ToastContainer />
-              </>
+              <UnfinishedFormsProvider>
+                <>
+                  <Header />
+                  {children}
+                  <Footer />
+                  <ModalRegistrar />
+                  <ToastContainer />
+                </>
+              </UnfinishedFormsProvider>
             </BookingsProvider>
           </AuthProvider>
         </ModalProvider>

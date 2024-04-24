@@ -1,12 +1,16 @@
 import { FormProvider, useForm } from "react-hook-form";
 import InputField from "@/components/forms/input-field";
 import Button from "@/components/primitives/button";
-import { useState } from "react";
+import { use, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useModal } from "../contexts/modal-context";
 import lodash from "lodash";
 import { registerUser } from "@/api/user";
 import { useAuth } from "../contexts/auth-context";
+import {
+  FormNames,
+  useUnfinishedForms,
+} from "../contexts/unfinished-forms-context";
 
 export interface IRegisterForm {
   email: string;
@@ -19,29 +23,34 @@ export interface IRegisterForm {
 }
 
 const RegisterForm = ({ notify }: { notify: () => void }) => {
+  const { formsState, updateFormState } = useUnfinishedForms();
   const [loading, setLoading] = useState<boolean>(false);
   const { closeModal } = useModal();
   const { refreshUser } = useAuth();
   const methods = useForm<IRegisterForm>({
     mode: "onTouched",
     reValidateMode: "onSubmit",
-    defaultValues: {
-      email: "",
-      phone: "",
-      firstName: "",
-      lastName: "",
-      nickname: "",
-      company: "",
-      password: "",
-    },
+    defaultValues: formsState.RegisterForm,
   });
 
   const {
     handleSubmit,
     formState: { errors },
     setError,
+    getValues,
+    reset,
   } = methods;
   const router = useRouter();
+
+  useEffect(() => {
+    // This function is called when the component unmounts
+    return () => {
+      if (methods.getValues()) {
+        // Save the form data
+        updateFormState(FormNames.REGISTER, getValues());
+      }
+    };
+  }, []);
 
   const onSubmit = async (data: IRegisterForm) => {
     setLoading(true);
@@ -52,6 +61,15 @@ const RegisterForm = ({ notify }: { notify: () => void }) => {
       // set token as a cookie
       // document.cookie = `${config.cookie_name}=${res.token}; path=/;`;
       notify();
+      reset({
+        email: "",
+        phone: "",
+        firstName: "",
+        lastName: "",
+        nickname: "",
+        company: "",
+        password: "",
+      });
       router.refresh();
       // sleep for 200ms
       await new Promise((resolve) => setTimeout(resolve, 200));

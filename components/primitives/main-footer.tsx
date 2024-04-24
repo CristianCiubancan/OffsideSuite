@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="container mx-auto p-8 relative z-10">
         <div className="flex justify-between items-center flex-col">
           <div className="pb-2 flex justify-center items-center flex-col w-full">
-            <p className="text-red-700 font-bold text-4xl">
+            <p className="text-red-700 font-bold text-4xl text-center">
               © 2024 Offside Music
             </p>
           </div>
@@ -33,7 +33,7 @@ const Footer = () => {
             </Link>
           </div>
           <div className="text-yellow-400 text-sm w-full text-center pt-4">
-            Invisioned, designed and developed by{" "}
+            envisioned, designed and developed by{" "}
           </div>
           <span className="text-yellow-400 text-2xl w-full text-center">
             Ciubăncan Cristian

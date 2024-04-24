@@ -8,14 +8,18 @@ import lodash from "lodash";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export interface IContactForm {}
+export interface IContactForm {
+  contactEmail: string;
+  phone: string;
+  message?: string;
+}
 
-const ContactForm = ({}: IContactForm) => {
+const ContactForm = ({}: {}) => {
   const methods = useForm({
     mode: "onTouched",
     reValidateMode: "onSubmit",
     defaultValues: {
-      email: "",
+      contactEmail: "",
       phone: "",
       message: "",
     },
@@ -44,7 +48,10 @@ const ContactForm = ({}: IContactForm) => {
         onSubmit={handleSubmit(async (data) => {
           setIsLoading(true);
           try {
-            const response = await sendEmail(data);
+            const response = await sendEmail({
+              ...data,
+              email: data.contactEmail,
+            });
             if (response?.error) {
               setError(response.error.field, {
                 message: response.error.message,
@@ -63,7 +70,7 @@ const ContactForm = ({}: IContactForm) => {
         <div className="text-4xl font-bold mb-4">Contact us</div>
         <InputField
           label="Your E-mail address"
-          name="email"
+          name="contactEmail"
           validation={{
             required: "Email is required",
             minLength: {
