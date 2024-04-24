@@ -8,12 +8,9 @@ import Spinner from "../primitives/spinner";
 import { useBookings } from "../contexts/bookings-context";
 import styles from "./booking.module.css";
 export enum BookingIntervals {
-  "TWOTHREE" = "14:00 - 15:00",
-  "THREEFOUR" = "15:00 - 16:00",
-  "FOURFIVE" = "16:00 - 17:00",
-  "FIVESIX" = "17:00 - 18:00",
-  "SIXSEVEN" = "18:00 - 19:00",
-  "SEVENEIGHT" = "19:00 - 20:00",
+  "TWOFOUR" = "14:00 - 16:00",
+  "FOURSIX" = "16:00 - 18:00",
+  "SIXEIGHT" = "18:00 - 20:00",
 }
 
 interface Spot {
