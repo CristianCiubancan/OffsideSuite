@@ -1,7 +1,13 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
-
+html,
+body,
+#root {
+  /* styles for the scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: #991b1b #b91c1c;
+}
 .swiper {
   width: 100%;
   height: 100%;

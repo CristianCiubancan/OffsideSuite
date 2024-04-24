@@ -1,5 +1,5 @@
 "use client";
-import ContactForm from "@/components/forms/contact";
+import ContactForm from "@/components/forms/contact-form";
 import OffsideHero from "@/components/offside-hero";
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
