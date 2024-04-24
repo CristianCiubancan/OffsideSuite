@@ -1,8 +1,9 @@
 import { Metadata } from "next";
 import Link from "next/link";
 export const metadata: Metadata = {
-  title: "Terms of Service - Offside Music - Creative Media Agency",
-  description: "Read our terms of service to learn more about our policies.",
+  title: "Privacy Policy - Offside Music - Creative Media Agency",
+  description:
+    "Read our privacy policy to learn more about how we handle your data.",
 };
 const PrivacyPage = () => {
   return (
