@@ -13,6 +13,7 @@ import {
   FormNames,
   useUnfinishedForms,
 } from "@/components/contexts/unfinished-forms-context";
+import { formatInTimeZone } from "date-fns-tz";
 export interface IBookForm {
   projectName: string;
   projectDescription: string;
@@ -55,20 +56,24 @@ const BookForm = ({ notify }: { notify: () => void }) => {
   const onSubmit = async (data: IBookForm) => {
     setLoading(true);
     const [year, month, day] = additionalData?.date.split("-");
-    const paddedMonth = String(parseInt(month)).padStart(2, "0");
-    const paddedDay = String(parseInt(day)).padStart(2, "0");
-    const isoDateString = `${parseInt(
-      year
-    )}-${paddedMonth}-${paddedDay}T00:00:00`;
-    const formattedDate = new Date(isoDateString);
-    formattedDate.setMinutes(
-      formattedDate.getMinutes() + formattedDate.getTimezoneOffset()
+    const timeZone = "Europe/Bucharest"; // For example, handling Bucharest timezone
+
+    // Create a date object using parsed year, month, and day
+    const date = new Date(
+      Date.UTC(parseInt(year), parseInt(month) - 1, parseInt(day))
+    );
+
+    // Format date directly in the desired timezone without manual offsets
+    const formattedDate = formatInTimeZone(
+      date,
+      timeZone,
+      "yyyy-MM-dd'T'HH:mm:ssXXX"
     );
 
     const res = await createBooking({
       bodyOrQuery: {
         ...data,
-        date: formattedDate.toISOString(),
+        date: formattedDate,
         interval: getKeyByValue(additionalData?.interval),
       },
     });
