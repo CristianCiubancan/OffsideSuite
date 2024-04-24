@@ -11,6 +11,10 @@ const Footer = () => {
             </p>
           </div>
           <div>
+            <Link href="/" className="text-black hover:text-red-700">
+              Home
+            </Link>
+            <span className="mx-4 text-white">|</span>
             <Link href="/terms" className="text-black hover:text-red-700">
               Terms of Service
             </Link>
