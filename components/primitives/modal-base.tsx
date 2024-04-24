@@ -27,7 +27,6 @@ const ModalBase = ({ children, forceButtonFix }: IModalBase) => {
       ></div>
       <div
         onClick={(e) => {
-          console.log("clicked");
           e.stopPropagation();
           closeModal();
         }}
