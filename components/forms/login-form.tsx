@@ -1,12 +1,16 @@
 import { FormProvider, useForm } from "react-hook-form";
 import InputField from "./input-field";
 import Button from "../primitives/button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { loginUser } from "@/api/user";
 import { useRouter } from "next/navigation";
 import lodash, { set } from "lodash";
 import { useModal } from "../contexts/modal-context";
 import { useAuth } from "../contexts/auth-context";
+import {
+  FormNames,
+  useUnfinishedForms,
+} from "../contexts/unfinished-forms-context";
 
 export interface ILoginForm {
   loginEmail: string;
@@ -18,21 +22,29 @@ const LoginForm = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const { refreshUser } = useAuth();
   const { closeModal } = useModal();
-
+  const { formsState, updateFormState } = useUnfinishedForms();
   const methods = useForm<ILoginForm>({
     mode: "onTouched",
     reValidateMode: "onSubmit",
-    defaultValues: {
-      loginEmail: "",
-      password: "",
-    },
+    defaultValues: formsState.LoginForm,
   });
 
   const {
     handleSubmit,
     formState: { errors },
     setError,
+    reset,
   } = methods;
+
+  useEffect(() => {
+    // This function is called when the component unmounts
+    return () => {
+      if (methods.getValues()) {
+        // Save the form data
+        updateFormState(FormNames.LOGIN, methods.getValues());
+      }
+    };
+  }, []);
 
   const onSubmit = async (data: any) => {
     setLoading(true);
@@ -47,6 +59,10 @@ const LoginForm = () => {
 
         router.refresh();
         await refreshUser();
+        reset({
+          loginEmail: "",
+          password: "",
+        });
         setLoading(false);
         closeModal();
       } else {

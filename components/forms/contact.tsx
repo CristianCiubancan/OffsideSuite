@@ -2,32 +2,34 @@
 import { FormProvider, useForm } from "react-hook-form";
 import InputField from "@/components/forms/input-field";
 import Button from "@/components/primitives/button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { sendEmail } from "@/components/forms/forms.api";
 import lodash from "lodash";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import {
+  FormNames,
+  useUnfinishedForms,
+} from "../contexts/unfinished-forms-context";
 
 export interface IContactForm {
   contactEmail: string;
   phone: string;
-  message?: string;
+  message: string;
 }
 
 const ContactForm = ({}: {}) => {
+  const { formsState, updateFormState } = useUnfinishedForms();
   const methods = useForm({
     mode: "onTouched",
     reValidateMode: "onSubmit",
-    defaultValues: {
-      contactEmail: "",
-      phone: "",
-      message: "",
-    },
+    defaultValues: formsState.ContactForm,
   });
   const {
     handleSubmit,
     setError,
     formState: { errors },
+    reset,
   } = methods;
   const notify = () => toast("Your request was registered successfully.");
   const notifyError = () =>
@@ -42,6 +44,15 @@ const ContactForm = ({}: {}) => {
     });
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const rootError = lodash.get(errors, "root");
+  useEffect(() => {
+    // This function is called when the component unmounts
+    return () => {
+      if (methods.getValues()) {
+        // Save the form data
+        updateFormState(FormNames.LOGIN, methods.getValues());
+      }
+    };
+  }, []);
   return (
     <FormProvider {...methods}>
       <form
@@ -58,6 +69,11 @@ const ContactForm = ({}: {}) => {
               });
             } else {
               notify();
+              reset({
+                contactEmail: "",
+                phone: "",
+                message: "",
+              });
             }
           } catch (error) {
             notifyError();

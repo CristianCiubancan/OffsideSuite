@@ -1,7 +1,7 @@
 import { FormProvider, useForm } from "react-hook-form";
 import InputField from "@/components/forms/input-field";
 import Button from "@/components/primitives/button";
-import { useState } from "react";
+import { use, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useModal } from "../contexts/modal-context";
 import lodash from "lodash";
@@ -9,6 +9,10 @@ import { useAuth } from "../contexts/auth-context";
 import { createBooking } from "@/api/booking";
 import { BookingIntervals } from "../booking";
 import { useBookings } from "../contexts/bookings-context";
+import {
+  FormNames,
+  useUnfinishedForms,
+} from "../contexts/unfinished-forms-context";
 export interface IBookForm {
   projectName: string;
   projectDescription: string;
@@ -23,25 +27,31 @@ const BookForm = ({ notify }: { notify: () => void }) => {
   const [loading, setLoading] = useState<boolean>(false);
 
   const { rePopulateBookings } = useBookings();
-
+  const { formsState, updateFormState } = useUnfinishedForms();
   const { closeModal, additionalData } = useModal();
   const { refreshUser } = useAuth();
   const methods = useForm<IBookForm>({
     mode: "onTouched",
     reValidateMode: "onSubmit",
-    defaultValues: {
-      projectName: "",
-      projectDescription: "",
-    },
+    defaultValues: formsState.BookForm,
   });
 
   const {
     handleSubmit,
     formState: { errors },
     setError,
+    reset,
   } = methods;
   const router = useRouter();
-
+  useEffect(() => {
+    // This function is called when the component unmounts
+    return () => {
+      if (methods.getValues()) {
+        // Save the form data
+        updateFormState(FormNames.BOOKING, methods.getValues());
+      }
+    };
+  }, []);
   const onSubmit = async (data: IBookForm) => {
     setLoading(true);
     const [year, month, day] = additionalData?.date.split("-");
@@ -67,6 +77,10 @@ const BookForm = ({ notify }: { notify: () => void }) => {
       // document.cookie = `${config.cookie_name}=${res.token}; path=/;`;
       notify();
       router.refresh();
+      reset({
+        projectName: "",
+        projectDescription: "",
+      });
       // sleep for 200ms
       await new Promise((resolve) => setTimeout(resolve, 200));
       await refreshUser();
