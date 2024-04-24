@@ -84,7 +84,7 @@ const ContactForm = ({}: {}) => {
         })}
         className="p-6 w-full max-w-screen-md right-0 text-white"
       >
-        <div className="text-4xl font-bold mb-4">Contact us</div>
+        <div className="text-4xl font-bold mb-4 drop-shadow-md">Contact us</div>
         <InputField
           label="Your E-mail address"
           name="contactEmail"

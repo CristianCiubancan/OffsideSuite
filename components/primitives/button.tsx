@@ -48,6 +48,7 @@ const Button = ({
        py-2
        px-4
        rounded
+       drop-shadow-md
        relative
        ${fullWidth ? "w-full" : ""}`,
     [color, loading, fullWidth]
