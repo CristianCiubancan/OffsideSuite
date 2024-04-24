@@ -305,7 +305,7 @@ const Booking = () => {
               <div className="h-full py-2 flex flex-col justify-between text-sm overflow-hidden pr-2">
                 <div className="flex items-center gap-2">
                   <span className="leading-4">
-                    It's free! Click to book it now.
+                    It's available! Click to book it now.
                   </span>
                 </div>
               </div>
