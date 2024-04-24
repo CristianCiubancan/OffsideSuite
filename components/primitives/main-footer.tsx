@@ -36,7 +36,7 @@ const Footer = () => {
             envisioned, designed and developed by{" "}
           </div>
           <span className="text-yellow-400 text-2xl w-full text-center drop-shadow-lg">
-            Ciubăncan Cristian
+            Cristian Ciubăncan
           </span>
         </div>
       </div>
