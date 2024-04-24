@@ -31,7 +31,7 @@ const defaultUnfinishedForms: IUnfinishedFormsContextState = {
   [FormNames.CONTACT]: {
     contactEmail: "",
     message: "",
-    phone: "",
+    contactPhone: "",
   },
   [FormNames.LOGIN]: {
     loginEmail: "",

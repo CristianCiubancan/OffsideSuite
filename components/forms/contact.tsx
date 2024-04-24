@@ -14,7 +14,7 @@ import {
 
 export interface IContactForm {
   contactEmail: string;
-  phone: string;
+  contactPhone: string;
   message: string;
 }
 
@@ -62,6 +62,7 @@ const ContactForm = ({}: {}) => {
             const response = await sendEmail({
               ...data,
               email: data.contactEmail,
+              phone: data.contactPhone,
             });
             if (response?.error) {
               setError(response.error.field, {
@@ -71,7 +72,7 @@ const ContactForm = ({}: {}) => {
               notify();
               reset({
                 contactEmail: "",
-                phone: "",
+                contactPhone: "",
                 message: "",
               });
             }
@@ -102,7 +103,7 @@ const ContactForm = ({}: {}) => {
 
         <InputField
           label="Phone Number"
-          name="phone"
+          name="contactPhone"
           validation={{
             required: "Phone number is required",
             // only allow numbers
