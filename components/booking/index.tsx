@@ -250,14 +250,14 @@ const Booking = () => {
               </span>
 
               <div className="h-full py-2 flex flex-col justify-between text-sm overflow-hidden">
-                <div className="truncate flex items-center gap-2">
+                <div className="truncate">
                   <span className="font-bold">Project: </span>
-                  <span>{bookingOrSpot?.projectName}</span>
+                  <span className="ml-1">{bookingOrSpot?.projectName}</span>
                 </div>
-                <div className="truncate flex items-center gap-2">
+                <div className="truncate">
                   <span className="font-bold">Artist: </span>
                   <span
-                    className={`${styles.gradientText}`}
+                    className={`${styles.gradientText} ml-1`}
                     style={{
                       backgroundImage: `linear-gradient(90deg, ${color1}, ${color2})`,
                     }}
@@ -266,9 +266,14 @@ const Booking = () => {
                       bookingOrSpot?.user?.firstName}
                   </span>
                 </div>
-                <div className="truncate flex items-center gap-2">
+                <div className="truncate">
                   <span className="font-bold">Description: </span>
-                  <span>{bookingOrSpot?.projectDescription}</span>
+                  <span
+                    className="ml-1"
+                    style={{ maxWidth: "calc(100% - 4rem)" }}
+                  >
+                    {bookingOrSpot?.projectDescription}
+                  </span>
                 </div>
               </div>
             </button>
