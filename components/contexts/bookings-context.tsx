@@ -40,7 +40,12 @@ export const BookingsProvider = ({
     year: number;
   }) => {
     setLoading(true);
-
+    // if we are on the server we return an empty array
+    if (typeof window === "undefined") {
+      setBookings([]);
+      setLoading(false);
+      return;
+    }
     const timeZone = "Europe/Bucharest";
     const date = new Date(
       Date.UTC(selectedDate.year, selectedDate.month, selectedDate.day)
