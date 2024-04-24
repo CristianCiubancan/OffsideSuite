@@ -20,7 +20,7 @@ const PrivacyPage = () => {
       </p>
 
       <h2 className="text-lg text-bold">2. Information We Collect</h2>
-      <p className="text-sm">
+      <div className="text-sm">
         We may collect information about you in a variety of ways. The
         information we may collect on the Services includes:
         <ul>
@@ -53,10 +53,10 @@ const PrivacyPage = () => {
             contests or giveaways and/or responding to surveys.
           </li>
         </ul>
-      </p>
+      </div>
 
       <h2 className="text-lg text-bold">3. Use of Your Information</h2>
-      <p className="text-sm">
+      <div className="text-sm">
         Having accurate information about you permits us to provide you with a
         smooth, efficient, and customized experience. Specifically, we may use
         information collected about you via the Services to:
@@ -101,10 +101,10 @@ const PrivacyPage = () => {
           <li>Resolve disputes and troubleshoot problems.</li>
           <li>Respond to product and customer service requests.</li>
         </ul>
-      </p>
+      </div>
 
       <h2 className="text-lg text-bold">4. Disclosure of Your Information</h2>
-      <p className="text-sm">
+      <div className="text-sm">
         We may share information we have collected about you in certain
         situations. Your information may be disclosed as follows:
         <ul>
@@ -143,7 +143,7 @@ const PrivacyPage = () => {
             Services in perpetuity.
           </li>
         </ul>
-      </p>
+      </div>
 
       <h2 className="text-lg text-bold">5. Security of Your Information</h2>
       <p className="text-sm">
