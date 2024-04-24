@@ -53,7 +53,7 @@ export const BookingsProvider = ({
     let bookingsData = [];
     try {
       bookingsData = await getBookings({
-        bodyOrQuery: { date: formattedDate },
+        bodyOrQuery: { date: encodeURIComponent(formattedDate) },
       });
     } catch (err) {
       notifyError(err);
