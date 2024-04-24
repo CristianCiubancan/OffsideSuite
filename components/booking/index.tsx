@@ -100,7 +100,7 @@ const Booking = () => {
         <h1 className="text-4xl font-bold mb-4">Book a session</h1>
         <p className="text-lg">
           Select a date for your session. Any of the open spots will be
-          displayed below, pick one and sublit your booking.
+          displayed below, pick one and submit your booking.
         </p>
       </div>
       <div className="border-b-2 border-black my-4"></div>
