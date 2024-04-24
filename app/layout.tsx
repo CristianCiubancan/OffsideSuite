@@ -1,4 +1,3 @@
-"use client";
 import { AuthProvider } from "@/components/contexts/auth-context";
 import { BookingsProvider } from "@/components/contexts/bookings-context";
 import { ModalProvider } from "@/components/contexts/modal-context";
