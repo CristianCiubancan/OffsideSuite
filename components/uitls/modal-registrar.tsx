@@ -1,3 +1,4 @@
+"use client";
 import { ModalNames, useModal } from "@/components/contexts/modal-context";
 import BookModal from "@/components/modals/book-modal";
 import NotLoggedInModal from "@/components/modals/not-logged-in-modal";

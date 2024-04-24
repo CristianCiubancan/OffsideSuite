@@ -1,3 +1,4 @@
+"use client";
 import React, { createContext, useContext, useState } from "react";
 import { getBookings } from "@/api/booking";
 import { formatInTimeZone } from "date-fns-tz";

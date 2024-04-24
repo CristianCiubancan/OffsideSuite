@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect, useRef, useState } from "react";
 import { useModal } from "@/components/contexts/modal-context";
 import CancelIcon from "@/assets/icons/CancelIcon";

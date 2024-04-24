@@ -1,3 +1,4 @@
+"use client";
 import { getMe } from "@/api/user";
 import React, { createContext, useContext, useState, useEffect } from "react";
 
