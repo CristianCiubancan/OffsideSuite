@@ -54,7 +54,7 @@ const ChangingAttribute = ({
     <span
       className={`text-4xl md:text-6xl font-bold mb-4 ${
         styles["attribute-transition"]
-      } ${isFadedOut ? "opacity-0" : ""}`}
+      } ${isFadedOut ? "opacity-0" : ""} drop-shadow-lg`}
     >
       {currentAttribute.value}
     </span>
