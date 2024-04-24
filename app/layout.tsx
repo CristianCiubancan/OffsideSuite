@@ -16,35 +16,6 @@ const syneMono = Syne_Mono({
   subsets: ["latin"],
 });
 
-// export const metadata: Metadata = {
-//   title: "Offside Music - Creative Media Agency",
-//   description:
-//     "We are a creative media agency based in Bucharest specializing in music, video, lyrics, publicity, website and app development. Let's collaborate!",
-//   // ogImage: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/images/og-image.png`,
-//   // ogUrl: "https://www.offsidemusic.ro/",
-//   // ogType: "website",
-//   // ogTitle: "Offside Music - Creative Media Agency",
-//   // ogDescription:
-//   //   "We are a creative media agency based in Bucharest specializing in music, video, lyrics, publicity, website and app development. Let's collaborate!",
-//   // ogAppId: "450961180645048",
-//   // ogImageAlt: "OffsideMusic logo banner",
-//   openGraph: {
-//     title: "Offside Music - Creative Media Agency",
-//     description:
-//       "We are a creative media agency based in Bucharest specializing in music, video, lyrics, publicity, website and app development. Let's collaborate!",
-//     url: "https://www.offsidemusic.ro/",
-//     type: "website",
-//     images: [
-//       {
-//         url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/images/og-image.png`,
-//         alt: "OffsideMusic logo banner",
-//       },
-//     ],
-//     siteName: "Offside Music",
-//     locale: "en_US",
-//   },
-// };
-
 export default function RootLayout({
   children,
 }: {
@@ -52,29 +23,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="bg-red-700">
-      {/* Include the title and meta description inside the Head */}
-      {/* <title>Offside Music - Creative Media Agency</title>
-      <meta
-        name="description"
-        content="We are a creative media agency based in Bucharest specializing in music, video, lyrics, publicity, website and app development. Let's collaborate!"
-      />
-
-      <meta
-        property="og:image"
-        content={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/images/og-image.png`}
-      />
-      <meta property="og:url" content="https://www.offsidemusic.ro/" />
-      <meta property="og:type" content="website" />
-      <meta
-        property="og:title"
-        content="Offside Music - Creative Media Agency"
-      />
-      <meta
-        property="og:description"
-        content="We are a creative media agency based in Bucharest specializing in music, video, lyrics, publicity, website and app development. Let's collaborate!"
-      />
-      <meta property="fb:app_id" content="450961180645048" />
-      <meta property="og:image:alt" content="OffsideMusic logo banner" /> */}
       <body className={`position-relative ${syneMono.className}`}>
         <ModalProvider>
           <AuthProvider>

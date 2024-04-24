@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState } from "react";
 import Button from "@/components/primitives/button";
 import RightArrow from "@/assets/icons/RightArrow";

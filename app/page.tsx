@@ -1,4 +1,3 @@
-"use client";
 import ContactForm from "@/components/forms/contact-form";
 import OffsideHero from "@/components/offside-hero";
 import React from "react";
@@ -12,14 +11,6 @@ export const metadata: Metadata = {
   title: "Offside Music - Creative Media Agency",
   description:
     "We are a creative media agency based in Bucharest specializing in music, video, lyrics, publicity, website and app development. Let's collaborate!",
-  // ogImage: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/images/og-image.png`,
-  // ogUrl: "https://www.offsidemusic.ro/",
-  // ogType: "website",
-  // ogTitle: "Offside Music - Creative Media Agency",
-  // ogDescription:
-  //   "We are a creative media agency based in Bucharest specializing in music, video, lyrics, publicity, website and app development. Let's collaborate!",
-  // ogAppId: "450961180645048",
-  // ogImageAlt: "OffsideMusic logo banner",
   openGraph: {
     title: "Offside Music - Creative Media Agency",
     description:

@@ -1,9 +1,25 @@
 import { Metadata } from "next";
 import Link from "next/link";
+
 export const metadata: Metadata = {
   title: "Privacy Policy - Offside Music - Creative Media Agency",
   description:
     "Read our privacy policy to learn more about how we handle your data.",
+  openGraph: {
+    title: "Offside Music - Creative Media Agency",
+    description:
+      "We are a creative media agency based in Bucharest specializing in music, video, lyrics, publicity, website and app development. Let's collaborate!",
+    url: "https://www.offsidemusic.ro/",
+    type: "website",
+    images: [
+      {
+        url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/images/og-image.png`,
+        alt: "OffsideMusic logo banner",
+      },
+    ],
+    siteName: "Offside Music",
+    locale: "en_US",
+  },
 };
 const PrivacyPage = () => {
   return (
