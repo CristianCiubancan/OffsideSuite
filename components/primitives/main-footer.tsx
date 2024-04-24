@@ -17,14 +17,14 @@ const Footer = () => {
             >
               Home
             </Link>
-            <span className="mx-4 text-white">|</span>
+            <span className="mx-4 text-red-700">|</span>
             <Link
               href="/terms"
               className="text-black hover:text-red-700 w-10 text-center"
             >
               Terms of Service
             </Link>
-            <span className="mx-4 text-white">|</span>
+            <span className="mx-4 text-red-700">|</span>
             <Link
               href="/privacy"
               className="text-black hover:text-red-700 w-10 text-center"
