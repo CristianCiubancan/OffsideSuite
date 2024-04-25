@@ -41,37 +41,84 @@ export const BookingsProvider = ({
     setLoading(true);
 
     const timeZone = "Europe/Bucharest";
-    const date = new Date(
-      Date.UTC(selectedDate.year, selectedDate.month, selectedDate.day)
-    );
 
-    const formatter = new Intl.DateTimeFormat("en-US", {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-      timeZone: timeZone,
-      hour12: false,
-    });
+    // We defer creation of the date and formatting until we are on the client.
+    if (typeof window !== "undefined") {
+      const date = new Date(
+        Date.UTC(selectedDate.year, selectedDate.month - 1, selectedDate.day)
+      );
 
-    const formattedDate = formatter.format(date);
-    let bookingsData = [];
-    try {
-      bookingsData = await getBookings({
-        bodyOrQuery: { date: encodeURIComponent(formattedDate) },
+      const formatter = new Intl.DateTimeFormat("en-US", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        timeZone: timeZone,
+        hour12: false,
       });
-    } catch (err) {
-      notifyError(err);
-      setBookings([]);
-      setLoading(false);
-      return;
-    }
 
-    setBookings(bookingsData);
+      const formattedDate = formatter.format(date);
+      let bookingsData = [];
+      try {
+        bookingsData = await getBookings({
+          bodyOrQuery: { date: encodeURIComponent(formattedDate) },
+        });
+      } catch (err) {
+        notifyError(err);
+        setBookings([]);
+        setLoading(false);
+        return;
+      }
+
+      setBookings(bookingsData);
+    } else {
+      // Optionally handle the server-side scenario, if necessary.
+      console.log("Intl.DateTimeFormat is not executed server-side");
+    }
     setLoading(false);
   };
+
+  // const rePopulateBookings = async (selectedDate: {
+  //   day: number;
+  //   month: number;
+  //   year: number;
+  // }) => {
+  //   setLoading(true);
+
+  //   const timeZone = "Europe/Bucharest";
+  //   const date = new Date(
+  //     Date.UTC(selectedDate.year, selectedDate.month, selectedDate.day)
+  //   );
+
+  //   const formatter = new Intl.DateTimeFormat("en-US", {
+  //     year: "numeric",
+  //     month: "2-digit",
+  //     day: "2-digit",
+  //     hour: "2-digit",
+  //     minute: "2-digit",
+  //     second: "2-digit",
+  //     timeZone: timeZone,
+  //     hour12: false,
+  //   });
+
+  //   const formattedDate = formatter.format(date);
+  //   let bookingsData = [];
+  //   try {
+  //     bookingsData = await getBookings({
+  //       bodyOrQuery: { date: encodeURIComponent(formattedDate) },
+  //     });
+  //   } catch (err) {
+  //     notifyError(err);
+  //     setBookings([]);
+  //     setLoading(false);
+  //     return;
+  //   }
+
+  //   setBookings(bookingsData);
+  //   setLoading(false);
+  // };
 
   return (
     <BookingsContext.Provider value={{ bookings, loading, rePopulateBookings }}>
