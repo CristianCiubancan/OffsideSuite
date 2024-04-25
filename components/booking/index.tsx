@@ -242,9 +242,9 @@ const Booking = () => {
                 e.preventDefault();
                 e.stopPropagation();
               }}
-              className="bg-yellow-50 h-24 text-left flex gap-4 border-2 border-black rounded text-black cursor-pointer hover:cursor-not-allowed w-full"
+              className="bg-stone-200 h-24 text-left flex gap-4 border-2 border-black rounded text-black cursor-pointer hover:cursor-not-allowed w-full"
             >
-              <span className="flex-shrink-0 h-full flex flex-col items-center justify-center bg-red-800 text-white rounded-l-xs text-center w-20 border-r-2 border-r-black">
+              <span className="flex-shrink-0 h-full flex flex-col items-center justify-center bg-stone-400 text-white rounded-l-xs text-center w-20 border-r-2 border-r-black">
                 {interval.split(" ").map((word) => {
                   return <div key={word}>{word}</div>;
                 })}
@@ -293,9 +293,9 @@ const Booking = () => {
                   });
                 }
               }}
-              className="bg-yellow-50 h-24 text-left flex items-start gap-4 border-2 border-black rounded text-black cursor-pointer hover:bg-green-700 hover:border-green-950 hover:text-white"
+              className="bg-yellow-100 h-24 text-left flex items-start gap-4 border-2 border-black rounded text-black cursor-pointer hover:bg-yellow-500"
             >
-              <span className="flex-shrink-0 h-full flex flex-col items-center justify-center bg-green-700 text-white rounded-l-xs text-center w-20">
+              <span className="flex-shrink-0 h-full flex flex-col items-center bg-yellow-500 justify-center rounded-l-xs text-center w-20 border-black border-r-2">
                 {interval.split(" ").map((word) => {
                   return <div key={word}>{word}</div>;
                 })}
@@ -305,7 +305,7 @@ const Booking = () => {
               </span> */}
               <div className="h-full py-2 flex flex-col justify-between text-sm overflow-hidden pr-2">
                 <div className="flex items-center gap-2">
-                  <span className="leading-4">
+                  <span className="leading-4 text-lg">
                     It's available! Click to book it now.
                   </span>
                 </div>
