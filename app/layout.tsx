@@ -7,10 +7,9 @@ import Header from "@/components/primitives/main-header";
 import ModalRegistrar from "@/components/uitls/modal-registrar";
 import "@/styles/global.css";
 import "@/styles/styles.css";
-import { Metadata } from "next";
-import { Syne_Mono } from "next/font/google";
+import { Raleway } from "next/font/google";
 import { ToastContainer } from "react-toastify";
-const syneMono = Syne_Mono({
+const raleway = Raleway({
   weight: ["400"],
   subsets: ["latin"],
 });
@@ -22,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="bg-red-700">
-      <body className={`position-relative ${syneMono.className}`}>
+      <body className={`position-relative ${raleway.className}`}>
         <ModalProvider>
           <AuthProvider>
             <BookingsProvider>

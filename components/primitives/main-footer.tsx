@@ -1,4 +1,10 @@
+import { Bebas_Neue } from "next/font/google";
 import Link from "next/link";
+
+const bebasNeue = Bebas_Neue({
+  weight: ["400"],
+  subsets: ["latin"],
+});
 
 const Footer = () => {
   return (
@@ -7,7 +13,9 @@ const Footer = () => {
         <div className="flex justify-between items-center flex-col">
           <div className="pb-2 flex justify-center items-center flex-col w-full">
             <p className="text-red-700 font-bold text-4xl text-center drop-shadow-lg">
-              © 2024 Offside Music
+              <span className={`${bebasNeue.className} drop-shadow-md`}>
+                © 2024 Offside Music
+              </span>
             </p>
           </div>
           <div className="text-xs display flex flex-wrap justify-center items-center">
