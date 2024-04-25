@@ -6,7 +6,7 @@ import LeftArrow from "@/assets/icons/LeftArrow";
 import { ModalNames, useModal } from "@/components/contexts/modal-context";
 import { IUser, useAuth } from "@/components/contexts/auth-context";
 import Spinner from "@/components/primitives/spinner";
-// import { useBookings } from "@/components/contexts/bookings-context";
+import { useBookings } from "@/components/contexts/bookings-context";
 import styles from "@/components/booking/booking.module.css";
 export enum BookingIntervals {
   "TWOFOUR" = "14:00 - 16:00",
@@ -68,10 +68,7 @@ export const stringsToColors = (strs: string[]) => {
 const Booking = () => {
   const { openModal } = useModal();
   const { user } = useAuth();
-  const bookings: any[] = [];
-  const loading = false;
-  const rePopulateBookings = async (a: any) => {};
-  // const { bookings, loading, rePopulateBookings } = useBookings();
+  const { bookings, loading, rePopulateBookings } = useBookings();
   const [selectedDate, setSelectedDate] = useState({
     day: new Date().getDate(),
     dayName: new Date().toLocaleString("en-us", { weekday: "long" }),
