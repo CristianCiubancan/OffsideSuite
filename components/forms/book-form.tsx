@@ -56,25 +56,26 @@ const BookForm = ({ notify }: { notify: () => void }) => {
   const onSubmit = async (data: IBookForm) => {
     setLoading(true);
     const [year, month, day] = additionalData?.date.split("-");
-    const timeZone = "Europe/Bucharest"; // For example, handling Bucharest timezone
+    const timeZone = "Europe/Bucharest";
+    const date = new Date(Date.UTC(year, month, day));
 
-    // Create a date object using parsed year, month, and day
-    const date = new Date(
-      Date.UTC(parseInt(year), parseInt(month) - 1, parseInt(day))
-    );
+    const formatter = new Intl.DateTimeFormat("en-US", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      timeZone: timeZone,
+      hour12: false,
+    });
 
-    // Format date directly in the desired timezone without manual offsets
-    // const formattedDate = formatInTimeZone(
-    //   date,
-    //   timeZone,
-    //   "yyyy-MM-dd'T'HH:mm:ssXXX"
-    // );
+    const formattedDate = formatter.format(date);
 
     const res = await createBooking({
       bodyOrQuery: {
         ...data,
-        // date: formattedDate,
-        date: date.toISOString(),
+        date: formattedDate,
         interval: getKeyByValue(additionalData?.interval),
       },
     });

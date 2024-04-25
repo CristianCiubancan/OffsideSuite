@@ -44,17 +44,23 @@ export const BookingsProvider = ({
     const date = new Date(
       Date.UTC(selectedDate.year, selectedDate.month, selectedDate.day)
     );
-    // const formattedDate = formatInTimeZone(
-    //   date,
-    //   timeZone,
-    //   "yyyy-MM-dd'T'HH:mm:ssXXX"
-    // );
 
+    const formatter = new Intl.DateTimeFormat("en-US", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      timeZone: timeZone,
+      hour12: false,
+    });
+
+    const formattedDate = formatter.format(date);
     let bookingsData = [];
     try {
       bookingsData = await getBookings({
-        // bodyOrQuery: { date: encodeURIComponent(formattedDate) },
-        bodyOrQuery: { date: encodeURIComponent(date.toISOString()) },
+        bodyOrQuery: { date: encodeURIComponent(formattedDate) },
       });
     } catch (err) {
       notifyError(err);
