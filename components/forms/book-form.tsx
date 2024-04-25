@@ -26,8 +26,8 @@ function getKeyByValue(value: string) {
 }
 const BookForm = ({ notify }: { notify: () => void }) => {
   const [loading, setLoading] = useState<boolean>(false);
-
-  const { rePopulateBookings } = useBookings();
+  const rePopulateBookings = (a: any) => {};
+  // const { rePopulateBookings } = useBookings();
   const { formsState, updateFormState } = useUnfinishedForms();
   const { closeModal, additionalData } = useModal();
   const { refreshUser } = useAuth();

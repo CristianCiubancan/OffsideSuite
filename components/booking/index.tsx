@@ -68,7 +68,12 @@ export const stringsToColors = (strs: string[]) => {
 const Booking = () => {
   const { openModal } = useModal();
   const { user } = useAuth();
-  const { bookings, loading, rePopulateBookings } = useBookings();
+  // const { bookings, loading, rePopulateBookings } = useBookings();
+  const { bookings, loading, rePopulateBookings } = {
+    bookings: [],
+    loading: false,
+    rePopulateBookings: (a: any) => {},
+  };
   const [selectedDate, setSelectedDate] = useState({
     day: new Date().getDate(),
     dayName: new Date().toLocaleString("en-us", { weekday: "long" }),
@@ -94,7 +99,7 @@ const Booking = () => {
   useEffect(() => {
     rePopulateBookings(selectedDate);
   }, [selectedDate]);
-  return null;
+
   return (
     <div className="p-4 border-2 border-black rounded max-w-full">
       <div>
@@ -225,7 +230,7 @@ const Booking = () => {
           bookings.forEach((booking) => {
             todaysBookingsMap.set(
               BookingIntervals[
-                booking.interval as keyof typeof BookingIntervals
+                (booking as any).interval as keyof typeof BookingIntervals
               ],
               booking
             );
