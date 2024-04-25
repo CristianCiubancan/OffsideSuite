@@ -1,4 +1,3 @@
-"use client";
 import ContactForm from "@/components/forms/contact-form";
 import OffsideHero from "@/components/offside-hero";
 import React from "react";
@@ -8,26 +7,26 @@ import "swiper/css/pagination";
 import Booking from "@/components/booking";
 import { Metadata } from "next";
 
-// export const metadata: Metadata = {
-//   title: "Offside Music - Creative Media Agency",
-//   description:
-//     "We are a creative media agency based in Bucharest specializing in music, video, lyrics, publicity, website and app development. Let's collaborate!",
-//   openGraph: {
-//     title: "Offside Music - Creative Media Agency",
-//     description:
-//       "We are a creative media agency based in Bucharest specializing in music, video, lyrics, publicity, website and app development. Let's collaborate!",
-//     url: "https://www.offsidemusic.ro/",
-//     type: "website",
-//     images: [
-//       {
-//         url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/images/og-image.png`,
-//         alt: "OffsideMusic logo banner",
-//       },
-//     ],
-//     siteName: "Offside Music",
-//     locale: "en_US",
-//   },
-// };
+export const metadata: Metadata = {
+  title: "Offside Music - Creative Media Agency",
+  description:
+    "We are a creative media agency based in Bucharest specializing in music, video, lyrics, publicity, website and app development. Let's collaborate!",
+  openGraph: {
+    title: "Offside Music - Creative Media Agency",
+    description:
+      "We are a creative media agency based in Bucharest specializing in music, video, lyrics, publicity, website and app development. Let's collaborate!",
+    url: "https://www.offsidemusic.ro/",
+    type: "website",
+    images: [
+      {
+        url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/images/og-image.png`,
+        alt: "OffsideMusic logo banner",
+      },
+    ],
+    siteName: "Offside Music",
+    locale: "en_US",
+  },
+};
 export default function Page() {
   return (
     <div>

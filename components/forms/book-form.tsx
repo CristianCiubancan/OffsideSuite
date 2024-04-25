@@ -14,7 +14,6 @@ import {
   FormNames,
   useUnfinishedForms,
 } from "@/components/contexts/unfinished-forms-context";
-import { formatInTimeZone } from "date-fns-tz";
 export interface IBookForm {
   projectName: string;
   projectDescription: string;
@@ -65,16 +64,17 @@ const BookForm = ({ notify }: { notify: () => void }) => {
     );
 
     // Format date directly in the desired timezone without manual offsets
-    const formattedDate = formatInTimeZone(
-      date,
-      timeZone,
-      "yyyy-MM-dd'T'HH:mm:ssXXX"
-    );
+    // const formattedDate = formatInTimeZone(
+    //   date,
+    //   timeZone,
+    //   "yyyy-MM-dd'T'HH:mm:ssXXX"
+    // );
 
     const res = await createBooking({
       bodyOrQuery: {
         ...data,
-        date: formattedDate,
+        // date: formattedDate,
+        date: date.toISOString(),
         interval: getKeyByValue(additionalData?.interval),
       },
     });
