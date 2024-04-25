@@ -94,7 +94,7 @@ const Booking = () => {
   useEffect(() => {
     rePopulateBookings(selectedDate);
   }, [selectedDate]);
-
+  return null;
   return (
     <div className="p-4 border-2 border-black rounded max-w-full">
       <div>
