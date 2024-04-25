@@ -57,7 +57,7 @@ const BookForm = ({ notify }: { notify: () => void }) => {
     setLoading(true);
     const [year, month, day] = additionalData?.date.split("-");
     const timeZone = "Europe/Bucharest";
-    const date = new Date(Date.UTC(year, month, day));
+    const date = new Date(Date.UTC(year, parseInt(month) - 1, day));
 
     const formatter = new Intl.DateTimeFormat("en-US", {
       year: "numeric",
