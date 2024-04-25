@@ -32,10 +32,10 @@ const Footer = () => {
               Privacy Policy
             </Link>
           </div>
-          <div className="text-yellow-400 text-sm w-full text-center pt-4 drop-shadow-md">
+          <div className="text-black text-xs w-full text-center pt-4 drop-shadow-md">
             envisioned, designed and developed by{" "}
           </div>
-          <span className="text-yellow-400 text-2xl w-full text-center drop-shadow-lg">
+          <span className="text-black text-sm w-full text-center drop-shadow-lg">
             Cristian Ciubăncan
           </span>
         </div>

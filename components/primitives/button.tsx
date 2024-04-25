@@ -8,6 +8,7 @@ export interface IButtonProps {
   children?: React.ReactNode;
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   type?: "button" | "submit" | "reset";
+  ariaLabel?: string;
   disabled?: boolean;
 }
 
@@ -19,6 +20,7 @@ const Button = ({
   fullWidth,
   onClick = () => {},
   type = "button",
+  ariaLabel,
   disabled,
 }: IButtonProps) => {
   const colorVariationLight = theme === "light" ? 500 : 800;
@@ -60,6 +62,7 @@ const Button = ({
         className={classes}
         type={type}
         disabled={disabled}
+        aria-label={ariaLabel ? ariaLabel : "button"}
       >
         {children}
         {loading ? (
