@@ -8,6 +8,7 @@ import { IUser, useAuth } from "@/components/contexts/auth-context";
 import Spinner from "@/components/primitives/spinner";
 import { useBookings } from "@/components/contexts/bookings-context";
 import styles from "@/components/booking/booking.module.css";
+import { turnNameToHexColor } from "../user-button";
 export enum BookingIntervals {
   "TWOFOUR" = "14:00 - 16:00",
   "FOURSIX" = "16:00 - 18:00",
@@ -34,48 +35,36 @@ interface Booking extends Spot {
   user: IUser;
 }
 
-export const stringsToColors = (strs: string[]) => {
-  // Combine strings to get a single string
-  const combinedStr = strs.join("");
+function getTodayDate(timeZone = "Europe/Bucharest") {
+  const today = new Date();
+  const formatter = new Intl.DateTimeFormat("en-US", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    timeZone: timeZone,
+  });
 
-  // Simple hashing function to get an integer hash from a string
-  const hashFn = (str: string) => {
-    let hash = 0;
-    for (let i = 0; i < str.length; i++) {
-      hash = str.charCodeAt(i) + ((hash << 5) - hash);
-    }
-    return hash;
+  const [month, day, year] = formatter.format(today).split("/");
+  return {
+    day: parseInt(day, 10),
+    dayName: today.toLocaleString("en-us", {
+      weekday: "long",
+      timeZone: timeZone,
+    }),
+    month: parseInt(month, 10) - 1, // Adjust month index to be zero-based
+    monthName: today.toLocaleString("en-us", {
+      month: "long",
+      timeZone: timeZone,
+    }),
+    year: parseInt(year, 10),
   };
-
-  // A function to convert a hash into a hex color
-  const intToRGB = (i: number) => {
-    const c = (i & 0x00ffffff).toString(16).toUpperCase();
-    return "#" + "00000".substring(0, 6 - c.length) + c;
-  };
-
-  // Split the string in half to create two "seed" strings
-  const halfIndex = Math.ceil(combinedStr.length / 2);
-  const str1 = combinedStr.substring(0, halfIndex);
-  const str2 = combinedStr.substring(halfIndex);
-
-  // Generate two colors from the halves
-  const color1 = intToRGB(hashFn(str1));
-  const color2 = intToRGB(hashFn(str2));
-
-  return { color1, color2 };
-};
+}
 
 const Booking = () => {
   const { openModal } = useModal();
   const { user } = useAuth();
   const { bookings, loading, rePopulateBookings } = useBookings();
-  const [selectedDate, setSelectedDate] = useState({
-    day: new Date().getDate(),
-    dayName: new Date().toLocaleString("en-us", { weekday: "long" }),
-    month: new Date().getMonth(),
-    monthName: new Date().toLocaleString("en-us", { month: "long" }),
-    year: new Date().getFullYear(),
-  });
+  const [selectedDate, setSelectedDate] = useState(getTodayDate());
 
   const isBeforeToday = (date: Date) => {
     const today = new Date();
@@ -105,7 +94,7 @@ const Booking = () => {
         </p>
       </div>
       <div className="border-b-2 border-black my-4"></div>
-      {/* <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center">
         <Button
           key={`${selectedDate.day}${selectedDate.month}${selectedDate.year}`}
           color="yellow"
@@ -159,9 +148,9 @@ const Booking = () => {
         >
           <RightArrow width={24} height={24} />
         </Button>
-      </div> */}
+      </div>
       <div className="border-b-2 border-black my-4"></div>
-      {/* <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center">
         <Button
           key={selectedDate.month}
           color="yellow"
@@ -217,7 +206,7 @@ const Booking = () => {
         >
           <RightArrow width={24} height={24} />
         </Button>
-      </div> */}
+      </div>
       <div className="border-b-2 border-black my-4"></div>
       <div className="flex flex-col gap-y-4 relative w-full">
         {Object.values(BookingIntervals).map((interval) => {
@@ -231,10 +220,17 @@ const Booking = () => {
             );
           });
           const bookingOrSpot = todaysBookingsMap.get(interval);
-          const { color1, color2 } = stringsToColors([
-            bookingOrSpot?.user?.firstName!,
-            bookingOrSpot?.user?.lastName!,
-          ]);
+          const color1 = turnNameToHexColor(
+            (bookingOrSpot?.user?.firstName || "asdasd") +
+              (bookingOrSpot?.user?.lastName || "123123"),
+            true
+          );
+          const color2 = turnNameToHexColor(
+            (bookingOrSpot?.user?.firstName || "asdasd") +
+              (bookingOrSpot?.user?.lastName || "123123"),
+            false
+          );
+
           return todaysBookingsMap.has(interval) ? (
             <button
               key={`${selectedDate.day}${selectedDate.month}${selectedDate.year}${interval}`}
