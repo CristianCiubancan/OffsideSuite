@@ -600,6 +600,14 @@ video {
   border-width: 0;
 }
 
+.pointer-events-none {
+  pointer-events: none;
+}
+
+.pointer-events-auto {
+  pointer-events: auto;
+}
+
 .fixed {
   position: fixed;
 }
@@ -662,10 +670,6 @@ video {
 
 .-z-20 {
   z-index: -20;
-}
-
-.-z-50 {
-  z-index: -50;
 }
 
 .z-0 {
@@ -1567,8 +1571,8 @@ video {
   transition-duration: 150ms;
 }
 
-.transition-opacity {
-  transition-property: opacity;
+.transition-all {
+  transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
