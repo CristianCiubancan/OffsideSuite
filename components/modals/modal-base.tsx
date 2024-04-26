@@ -6,11 +6,10 @@ import Button from "@/components/primitives/button";
 
 interface IModalBase {
   children: React.ReactNode;
-  forceButtonFix?: boolean;
 }
-const ModalBase = ({ children, forceButtonFix }: IModalBase) => {
+const ModalBase = ({ children }: IModalBase) => {
   const modalRef = useRef<HTMLDivElement>(null);
-  const { isOpen, closeModal } = useModal();
+  const { isOpen, closeModal, additionalData } = useModal();
 
   useEffect(() => {
     if (isOpen) {
@@ -21,16 +20,54 @@ const ModalBase = ({ children, forceButtonFix }: IModalBase) => {
     };
   }, [isOpen]);
 
-  const modalContent = (
+  return (
     <div
-      className="fixed top-0 left-0 w-full h-full opacity-0 pointer-events-none transition-all duration-300"
+      // the animation duration must match modalAnimationDuration from modal-context.tsx
+      className={`position-fixed top-0 left-0 w-full h-full ${
+        isOpen
+          ? "opacity-100 pointer-events-auto"
+          : "opacity-0 pointer-events-none"
+      }`}
       ref={modalRef}
-      style={{
-        opacity: isOpen ? "1" : "0",
-        pointerEvents: isOpen ? "auto" : "none",
-      }}
     >
       <div
+        onClick={closeModal}
+        className="bg-yellow-950 fixed inset-0 z-40 opacity-40"
+      ></div>
+      <div
+        onClick={(e) => {
+          e.stopPropagation();
+          closeModal();
+        }}
+        className={`fixed z-50 flex justify-center items-center inset-0 p-4 transition-opacity duration-300 ${
+          isOpen
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
+        }`}
+      >
+        <div
+          style={{
+            height: additionalData?.forceButtonFix ? "100%" : "unset",
+          }}
+          className="relative max-w-screen-sm w-full"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="overflow-auto p-8 rounded-lg border-0 bg-red-700 w-full h-full"
+          >
+            <div className="w-full flex items-center justify-center">
+              {/* <LoginOrRegister /> */}
+              {children}
+            </div>
+          </div>
+          <div className="absolute top-0 right-0 mt-2 mr-2 z-50">
+            <Button onClick={closeModal} color="red">
+              <CancelIcon width="24" height="24" />
+            </Button>
+          </div>
+        </div>
+      </div>
+      {/* <div
         onClick={closeModal}
         className="bg-yellow-950 fixed inset-0 z-40 opacity-40"
       ></div>
@@ -43,7 +80,7 @@ const ModalBase = ({ children, forceButtonFix }: IModalBase) => {
       >
         <div
           style={{
-            height: forceButtonFix ? "100%" : "unset",
+            height: additionalData?.forceButtonFix ? "100%" : "unset",
           }}
           className="relative max-w-screen-sm w-full"
         >
@@ -61,11 +98,11 @@ const ModalBase = ({ children, forceButtonFix }: IModalBase) => {
             </Button>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 
-  return modalContent;
+  // return modalContent;
 };
 
 export default ModalBase;
