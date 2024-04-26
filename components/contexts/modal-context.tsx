@@ -32,6 +32,8 @@ export const ModalProvider = ({ children }: { children: ReactElement }) => {
   const [additionalData, setAdditionalData] = useState<any>(null);
   const closeModal = async () => {
     setIsOpen(false);
+    // fix for the scrollable modals
+    // TODO: look into a better way to handle this (TIED TO LINE 44)
     await new Promise((resolve) => setTimeout(resolve, modalAnimationDuration));
     setAdditionalData(null);
   };
