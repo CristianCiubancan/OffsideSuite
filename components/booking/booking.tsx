@@ -79,9 +79,16 @@ export const isMonthBeforeCurrent = (month: number, year: number) => {
 
 const Booking = () => {
   const { loading, rePopulateBookings } = useBookings();
-  const [selectedDate, setSelectedDate] = useState(getFormattedDate());
+  const [selectedDate, setSelectedDate] = useState<IDate | null>(null);
+  // workaround to prevent date initialization from running on the server
+  useEffect(() => {
+    setSelectedDate(getFormattedDate());
+  }, []);
 
   useEffect(() => {
+    if (!selectedDate) {
+      return;
+    }
     rePopulateBookings(selectedDate);
   }, [selectedDate]);
 
@@ -110,7 +117,7 @@ const Booking = () => {
             />
           );
         })}
-        {loading ? (
+        {loading || !selectedDate ? (
           <div className="absolute w-full h-full bg-yellow-500 top-0 left-0 flex justify-center items-center">
             <Spinner />
           </div>
