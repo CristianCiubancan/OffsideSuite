@@ -289,9 +289,9 @@ const Booking = () => {
                   });
                 }
               }}
-              className="bg-yellow-100 h-24 text-left flex items-start gap-4 border-2 border-black rounded text-black cursor-pointer hover:bg-yellow-500"
+              className="bg-yellow-400 h-24 text-left flex items-start gap-4 border-2 border-black rounded text-black cursor-pointer hover:bg-yellow-500"
             >
-              <span className="flex-shrink-0 h-full flex flex-col items-center bg-yellow-500 justify-center rounded-l-xs text-center w-20 border-black border-r-2">
+              <span className="flex-shrink-0 h-full flex flex-col items-center justify-center rounded-l-xs text-center w-20 border-black border-r-2">
                 {interval.split(" ").map((word) => {
                   return <div key={word}>{word}</div>;
                 })}
