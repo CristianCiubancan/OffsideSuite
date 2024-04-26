@@ -14,7 +14,7 @@ const LoginButton = () => {
           openModal(ModalNames.REGISTER);
         }}
       >
-        <UserIcon width={24} height={24} strokeWidth={3} />
+        <UserIcon width={24} height={24} strokeWidth={2} />
       </Button>
     </>
   );

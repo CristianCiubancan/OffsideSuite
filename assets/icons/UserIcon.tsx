@@ -5,7 +5,7 @@ export function UserIcon(props: React.SVGProps<SVGSVGElement>) {
     <svg
       data-slot="icon"
       fill="none"
-      strokeWidth="3"
+      strokeWidth="2"
       stroke="currentColor"
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"

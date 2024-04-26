@@ -43,7 +43,7 @@ const BookingSlot = ({
           e.preventDefault();
           e.stopPropagation();
         }}
-        className="bg-stone-200 h-24 text-left flex gap-4 border-2 border-black rounded text-black cursor-pointer hover:cursor-not-allowed w-full"
+        className="drop-shadow-lg bg-stone-200 h-24 text-left flex gap-4 border-2 border-black rounded text-black cursor-pointer hover:cursor-not-allowed w-full"
       >
         <span className="flex-shrink-0 h-full flex flex-col items-center justify-center bg-stone-400 text-white rounded-l-xs text-center w-20 border-r-2 border-r-black">
           {interval.split(" ").map((word) => {
@@ -90,7 +90,7 @@ const BookingSlot = ({
             });
           }
         }}
-        className="bg-yellow-400 h-24 text-left flex items-start gap-4 border-2 border-black rounded text-black cursor-pointer hover:bg-yellow-500"
+        className="drop-shadow-lg bg-yellow-400 h-24 text-left flex items-start gap-4 border-2 border-black rounded text-black cursor-pointer hover:bg-yellow-500"
       >
         <span className="flex-shrink-0 h-full flex flex-col items-center justify-center rounded-l-xs text-center w-20 border-black border-r-2">
           {interval.split(" ").map((word) => {
@@ -103,7 +103,10 @@ const BookingSlot = ({
         <div className="h-full py-2 flex flex-col justify-between text-sm overflow-hidden pr-2">
           <div className="flex items-center gap-2">
             <span className="leading-4 text-lg">
-              It's available! Click to book it now.
+              It's available!{" "}
+              <span className="drop-shadow-md underline cursor-pointer text-red-500 hover:text-red-700">
+                Click to book it now.
+              </span>
             </span>
           </div>
         </div>
@@ -116,7 +119,7 @@ const BookingSlot = ({
         e.preventDefault();
         e.stopPropagation();
       }}
-      className="bg-stone-200 h-24 text-left flex gap-4 border-2 border-black rounded text-black cursor-pointer hover:cursor-not-allowed w-full"
+      className="drop-shadow-lg bg-stone-200 h-24 text-left flex gap-4 border-2 border-black rounded text-black cursor-pointer hover:cursor-not-allowed w-full"
     >
       <span className="flex-shrink-0 h-full flex flex-col items-center justify-center bg-stone-400 text-white rounded-l-xs text-center w-20 border-r-2 border-r-black">
         {interval.split(" ").map((word) => {

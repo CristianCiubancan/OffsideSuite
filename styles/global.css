@@ -6,7 +6,7 @@ body,
 #root {
   /* styles for the scrollbar */
   scrollbar-width: thin;
-  scrollbar-color: #991b1b #b91c1c;
+  scrollbar-color: #b91c1c #991b1b;
 }
 .swiper {
   width: 100%;
