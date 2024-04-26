@@ -4,7 +4,7 @@ import React from "react";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
-import Booking from "@/components/booking";
+import Booking from "@/components/booking/booking";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

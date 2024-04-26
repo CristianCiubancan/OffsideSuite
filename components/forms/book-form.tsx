@@ -8,7 +8,7 @@ import { useModal } from "@/components/contexts/modal-context";
 import lodash from "lodash";
 import { useAuth } from "@/components/contexts/auth-context";
 import { createBooking } from "@/api/booking";
-import { BookingIntervals } from "@/components/booking";
+import { BookingIntervals } from "@/components/booking/booking";
 import { useBookings } from "@/components/contexts/bookings-context";
 import {
   FormNames,
