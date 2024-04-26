@@ -90,7 +90,7 @@ const BookingSlot = ({
             });
           }
         }}
-        className="drop-shadow-lg bg-yellow-400 h-24 text-left flex items-start gap-4 border-2 border-black rounded text-black cursor-pointer hover:bg-yellow-500"
+        className="drop-shadow-lg bg-yellow-300 h-24 text-left flex items-start gap-4 border-2 border-black rounded text-black cursor-pointer hover:bg-yellow-500"
       >
         <span className="flex-shrink-0 h-full flex flex-col items-center justify-center rounded-l-xs text-center w-20 border-black border-r-2">
           {interval.split(" ").map((word) => {
@@ -104,7 +104,7 @@ const BookingSlot = ({
           <div className="flex items-center gap-2">
             <span className="leading-4 text-lg">
               It's available!{" "}
-              <span className="drop-shadow-md underline cursor-pointer text-red-500 hover:text-red-700">
+              <span className="drop-shadow-md underline cursor-pointer text-red-700 hover:text-red-800">
                 Click to book it now.
               </span>
             </span>
