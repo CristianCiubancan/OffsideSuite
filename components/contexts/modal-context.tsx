@@ -26,9 +26,7 @@ const ModalContext = createContext<ModalContextProps | undefined>(undefined);
 
 export const ModalProvider = ({ children }: { children: ReactElement }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [currentModalName, setCurrentModalName] = useState<string | null>(
-    ModalNames.REGISTER
-  );
+  const [currentModalName, setCurrentModalName] = useState<string | null>(null);
   const [additionalData, setAdditionalData] = useState<any>(null);
   const closeModal = async () => {
     setIsOpen(false);
