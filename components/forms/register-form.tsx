@@ -13,7 +13,7 @@ import {
 } from "@/components/contexts/unfinished-forms-context";
 
 export interface IRegisterForm {
-  email: string;
+  registerEmail: string;
   phone: string;
   firstName: string;
   lastName: string;
@@ -55,14 +55,14 @@ const RegisterForm = ({ notify }: { notify: () => void }) => {
   const onSubmit = async (data: IRegisterForm) => {
     setLoading(true);
     const res = await registerUser({
-      bodyOrQuery: data,
+      bodyOrQuery: { ...data, email: data.registerEmail },
     });
     if (res?.token) {
       // set token as a cookie
       // document.cookie = `${config.cookie_name}=${res.token}; path=/;`;
       notify();
       reset({
-        email: "",
+        registerEmail: "",
         phone: "",
         firstName: "",
         lastName: "",
@@ -77,18 +77,22 @@ const RegisterForm = ({ notify }: { notify: () => void }) => {
       setLoading(false);
       closeModal();
     } else {
-      if (res?.error) {
+      if (!res?.field && res?.error) {
+        setError("root", {
+          type: "manual",
+          message: res.error,
+        });
+      }
+      if (res?.field === "email") {
+        setError("registerEmail", {
+          type: "manual",
+          message: res.error,
+        });
+      } else if (res?.field !== "email" && res?.field) {
         setError(res?.field, {
           type: "manual",
           message: res.error,
         });
-        if (res?.field !== "root") {
-          setError("root", {
-            type: "manual",
-            message:
-              "Please check the form for errors. If the problem persists, please contact support.",
-          });
-        }
       }
       setLoading(false);
     }
@@ -99,7 +103,7 @@ const RegisterForm = ({ notify }: { notify: () => void }) => {
       <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
         <InputField
           label="Your E-mail address"
-          name="email"
+          name="registerEmail"
           autoComplete="email"
           validation={{
             required: "Email is required",

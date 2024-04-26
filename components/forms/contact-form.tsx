@@ -59,15 +59,34 @@ const ContactForm = ({}: {}) => {
         onSubmit={handleSubmit(async (data) => {
           setIsLoading(true);
           try {
-            const response = await sendEmail({
+            const res = await sendEmail({
               ...data,
               email: data.contactEmail,
               phone: data.contactPhone,
             });
-            if (response?.error) {
-              setError(response.error.field, {
-                message: response.error.message,
-              });
+            if (res?.error) {
+              if (!res?.field && res?.error) {
+                setError("root", {
+                  type: "manual",
+                  message: res.error,
+                });
+              }
+              if (res?.field === "email") {
+                setError("contactEmail", {
+                  type: "manual",
+                  message: res.error,
+                });
+              } else if (res?.field === "phone") {
+                setError("contactPhone", {
+                  type: "manual",
+                  message: res.error,
+                });
+              } else if (res?.field !== "email" && res?.field) {
+                setError(res?.field, {
+                  type: "manual",
+                  message: res.error,
+                });
+              }
             } else {
               notify();
               reset({

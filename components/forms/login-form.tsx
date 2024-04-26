@@ -50,7 +50,7 @@ const LoginForm = () => {
     setLoading(true);
     try {
       const res = await loginUser({
-        bodyOrQuery: data,
+        bodyOrQuery: { ...data, email: data.loginEmail },
       });
 
       if (res?.token) {
@@ -67,19 +67,17 @@ const LoginForm = () => {
         closeModal();
       } else {
         if (!res?.field && res?.error) {
-          setError("password", {
+          setError("root", {
             type: "manual",
             message: res.error,
           });
-          if (res?.field !== "root") {
-            setError("root", {
-              type: "manual",
-              message:
-                "Something went wrong. Please check the form for errors. If the problem persists, please contact support.",
-            });
-          }
         }
-        if (res?.field) {
+        if (res?.field === "email") {
+          setError("loginEmail", {
+            type: "manual",
+            message: res.error,
+          });
+        } else if (res?.field !== "email" && res?.field) {
           setError(res?.field, {
             type: "manual",
             message: res.error,
