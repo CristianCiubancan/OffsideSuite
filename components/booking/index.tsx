@@ -9,6 +9,7 @@ import Spinner from "@/components/primitives/spinner";
 import { useBookings } from "@/components/contexts/bookings-context";
 import styles from "@/components/booking/booking.module.css";
 import { turnNameToHexColor } from "../user-button";
+import { get } from "lodash";
 export enum BookingIntervals {
   "TWOFOUR" = "14:00 - 16:00",
   "FOURSIX" = "16:00 - 18:00",
@@ -35,8 +36,7 @@ interface Booking extends Spot {
   user: IUser;
 }
 
-function getTodayDate(timeZone = "Europe/Bucharest") {
-  const today = new Date();
+function getDate(date: Date = new Date(), timeZone = "Europe/Bucharest") {
   const formatter = new Intl.DateTimeFormat("en-US", {
     year: "numeric",
     month: "2-digit",
@@ -44,18 +44,12 @@ function getTodayDate(timeZone = "Europe/Bucharest") {
     timeZone: timeZone,
   });
 
-  const [month, day, year] = formatter.format(today).split("/");
+  const [month, day, year] = formatter.format(date).split("/");
   return {
     day: parseInt(day, 10),
-    dayName: today.toLocaleString("en-us", {
-      weekday: "long",
-      timeZone: timeZone,
-    }),
+    dayName: Intl.DateTimeFormat("en-US", { weekday: "long" }).format(date),
     month: parseInt(month, 10) - 1, // Adjust month index to be zero-based
-    monthName: today.toLocaleString("en-us", {
-      month: "long",
-      timeZone: timeZone,
-    }),
+    monthName: Intl.DateTimeFormat("en-US", { month: "long" }).format(date),
     year: parseInt(year, 10),
   };
 }
@@ -64,7 +58,7 @@ const Booking = () => {
   const { openModal } = useModal();
   const { user } = useAuth();
   const { bookings, loading, rePopulateBookings } = useBookings();
-  const [selectedDate, setSelectedDate] = useState(getTodayDate());
+  const [selectedDate, setSelectedDate] = useState(getDate());
 
   const isBeforeToday = (date: Date) => {
     const today = new Date();
@@ -109,19 +103,7 @@ const Booking = () => {
           onClick={() => {
             setSelectedDate((prev) => {
               const newDate = new Date(prev.year, prev.month, prev.day - 1);
-              return isBeforeToday(newDate)
-                ? prev
-                : {
-                    day: newDate.getDate(),
-                    dayName: newDate.toLocaleString("en-us", {
-                      weekday: "long",
-                    }),
-                    month: newDate.getMonth(),
-                    monthName: newDate.toLocaleString("en-us", {
-                      month: "long",
-                    }),
-                    year: newDate.getFullYear(),
-                  };
+              return isBeforeToday(newDate) ? prev : getDate();
             });
           }}
         >
@@ -136,13 +118,7 @@ const Booking = () => {
           onClick={() => {
             setSelectedDate((prev) => {
               const newDate = new Date(prev.year, prev.month, prev.day + 1);
-              return {
-                day: newDate.getDate(),
-                dayName: newDate.toLocaleString("en-us", { weekday: "long" }),
-                month: newDate.getMonth(),
-                monthName: newDate.toLocaleString("en-us", { month: "long" }),
-                year: newDate.getFullYear(),
-              };
+              return getDate(newDate);
             });
           }}
         >
@@ -164,13 +140,7 @@ const Booking = () => {
               const newMonth = prev.month - 1 < 0 ? 11 : prev.month - 1;
               const newYear = prev.month - 1 < 0 ? prev.year - 1 : prev.year;
               const newDate = new Date(newYear, newMonth, prev.day);
-              const newDateObj = {
-                day: newDate.getDate(),
-                dayName: newDate.toLocaleString("en-us", { weekday: "long" }),
-                month: newDate.getMonth(),
-                monthName: newDate.toLocaleString("en-us", { month: "long" }),
-                year: newYear,
-              };
+              const newDateObj = getDate(newDate);
               if (isBeforeToday(newDate)) {
                 newDateObj.day = new Date().getDate();
                 newDateObj.dayName = new Date().toLocaleString("en-us", {
@@ -194,13 +164,7 @@ const Booking = () => {
               const newMonth = prev.month + 1 > 11 ? 0 : prev.month + 1;
               const newYear = prev.month + 1 > 11 ? prev.year + 1 : prev.year;
               const newDate = new Date(newYear, newMonth, prev.day);
-              return {
-                day: newDate.getDate(),
-                dayName: newDate.toLocaleString("en-us", { weekday: "long" }),
-                month: newDate.getMonth(),
-                monthName: newDate.toLocaleString("en-us", { month: "long" }),
-                year: newYear,
-              };
+              return getDate(newDate);
             });
           }}
         >
