@@ -63,7 +63,7 @@ const DateNavigator = ({
                 });
               }}
             >
-              <LeftArrow width={24} height={24} />
+              <LeftArrow width={24} height={24} className="text-yellow-300" />
             </Button>
             <div className="text-lg font-bold">
               {selectedDate.dayName} {selectedDate.day}
@@ -130,7 +130,7 @@ const DateNavigator = ({
                 });
               }}
             >
-              <LeftArrow width={24} height={24} />
+              <LeftArrow width={24} height={24} className="text-yellow-300" />
             </Button>
             <div className="text-lg font-bold">
               {selectedDate.monthName} {selectedDate.year}

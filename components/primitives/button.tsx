@@ -50,6 +50,7 @@ const Button = ({
        py-2
        px-4
        rounded
+       ${disabled ? "cursor-not-allowed" : "cursor-pointer"}
        ${theme === "light" ? "" : "drop-shadow-md"}
        relative
        ${fullWidth ? "w-full" : ""}`,
@@ -116,7 +117,8 @@ const Button = ({
         <div className="bg-white"></div>
         <div className="text-white"></div>
         {/* here we will add all miscelaneous classes that are used in dynamic properties in order to have them */}
-        <div className="" />
+        <div className="cursor-pointer" />
+        <div className="cursor-not-allowed" />
       </div>
     </>
   );
