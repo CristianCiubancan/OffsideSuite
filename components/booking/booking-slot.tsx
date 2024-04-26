@@ -90,7 +90,7 @@ const BookingSlot = ({
             });
           }
         }}
-        className="drop-shadow-lg bg-yellow-300 h-24 text-left flex items-start gap-4 border-2 border-black rounded text-black cursor-pointer hover:bg-yellow-500"
+        className="drop-shadow-lg bg-yellow-300 h-24 text-left flex items-start gap-4 border-2 border-black rounded text-black cursor-pointer hover:bg-yellow-300"
       >
         <span className="flex-shrink-0 h-full flex flex-col items-center justify-center rounded-l-xs text-center w-20 border-black border-r-2">
           {interval.split(" ").map((word) => {

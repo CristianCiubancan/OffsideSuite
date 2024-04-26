@@ -30,7 +30,7 @@ const TermsPage = () => {
       <p className="text-sm">
         Welcome to Offside Music ("We", "our", "us")! These Terms of Use
         ("Terms") govern your use of our website located at{" "}
-        <Link href="/" className="text-yellow-500 hover:text-yellow-700">
+        <Link href="/" className="text-yellow-300 hover:text-yellow-700">
           {process.env.NEXT_PUBLIC_FRONTEND_URL}
         </Link>{" "}
         ("Website"), use our mobile application (the "App"), and any related
@@ -44,7 +44,7 @@ const TermsPage = () => {
       <p className="text-sm">
         Our Privacy Policy, which describes how we collect, use, and share your
         personal information, is available at{" "}
-        <Link href="/privacy" className="text-yellow-500 hover:text-yellow-700">
+        <Link href="/privacy" className="text-yellow-300 hover:text-yellow-700">
           {process.env.NEXT_PUBLIC_FRONTEND_URL}/privacy
         </Link>
         . By using our Services, you agree to the terms of our Privacy Policy.

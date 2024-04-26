@@ -54,7 +54,7 @@ export default function Page() {
           <div className="w-full min-h-dvh flex text-left justify-center items-center p-4 bg-red-700 "></div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="w-full min-h-dvh flex justify-center items-center p-4 bg-yellow-500"></div>
+          <div className="w-full min-h-dvh flex justify-center items-center p-4 bg-yellow-300"></div>
         </SwiperSlide>
         <SwiperSlide>
           <div className="w-full min-h-dvh flex justify-center items-center p-4 bg-red-500"></div>
@@ -69,7 +69,7 @@ export default function Page() {
           <div className="w-full min-h-dvh flex justify-center items-center p-4 bg-blue-500"></div>
         </SwiperSlide>
       </Swiper> */}
-      <div className="w-full min-h-screen flex text-left justify-center items-center p-4 py-8 bg-yellow-500 ">
+      <div className="w-full min-h-screen flex text-left justify-center items-center p-4 py-8 bg-yellow-300 ">
         <Booking />
       </div>
       <div className="w-full min-h-screen flex text-left justify-center items-center p-4 py-8 bg-red-700 ">
@@ -107,7 +107,7 @@ export default function Page() {
                 <div className="w-full min-h-screen flex text-left justify-center items-center p-4 bg-red-700 "></div>
               </SwiperSlide>
               <SwiperSlide>
-                <div className="w-full min-h-screen flex justify-center items-center p-4 bg-yellow-500"></div>
+                <div className="w-full min-h-screen flex justify-center items-center p-4 bg-yellow-300"></div>
               </SwiperSlide>
               <SwiperSlide>
                 <div className="w-full min-h-screen flex justify-center items-center p-4 bg-red-500"></div>
@@ -129,7 +129,7 @@ export default function Page() {
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="w-full min-h-screen flex justify-center items-center p-4 bg-yellow-500"></div>
+            <div className="w-full min-h-screen flex justify-center items-center p-4 bg-yellow-300"></div>
           </SwiperSlide>
         </Swiper>
       </div> */}

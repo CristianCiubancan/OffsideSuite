@@ -118,7 +118,7 @@ const Booking = () => {
           );
         })}
         {loading || !selectedDate ? (
-          <div className="absolute w-full h-full bg-yellow-500 top-0 left-0 flex justify-center items-center">
+          <div className="absolute w-full h-full bg-yellow-300 top-0 left-0 flex justify-center items-center">
             <Spinner />
           </div>
         ) : null}

@@ -8,7 +8,7 @@ const bebasNeue = Bebas_Neue({
 
 const Footer = () => {
   return (
-    <nav className="w-full main-layout-footer bg-yellow-500 relative">
+    <nav className="w-full main-layout-footer bg-yellow-300 relative">
       <div className="container mx-auto p-8 relative z-10">
         <div className="flex justify-between items-center flex-col gap-4">
           <div className="text-xs display flex flex-wrap justify-center items-center">
