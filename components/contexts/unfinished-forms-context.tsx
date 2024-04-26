@@ -40,7 +40,7 @@ const defaultUnfinishedForms: IUnfinishedFormsContextState = {
   },
   [FormNames.REGISTER]: {
     company: "",
-    email: "",
+    registerEmail: "",
     firstName: "",
     lastName: "",
     nickname: "",
