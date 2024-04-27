@@ -61,7 +61,7 @@ export function getFormattedDate(
   };
 }
 
-export const isBeforeToday = (date: IDate) => {
+export const isBeforeToday = (date: IDate): boolean => {
   const today = getFormattedDate();
   return (
     date.year < today.year ||
@@ -72,7 +72,7 @@ export const isBeforeToday = (date: IDate) => {
   );
 };
 
-export const isMonthBeforeCurrent = (month: number, year: number) => {
+export const isMonthBeforeCurrent = (month: number, year: number): boolean => {
   const today = getFormattedDate();
   return year < today.year || (year === today.year && month < today.month);
 };

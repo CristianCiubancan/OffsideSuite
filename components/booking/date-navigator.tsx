@@ -13,13 +13,27 @@ interface IDateNavigatorProps {
   selectedDate: IDate | null;
   setSelectedDate: React.Dispatch<React.SetStateAction<IDate | null>>;
 }
+
 export const getMaxDaysInMonth = (month: number, year: number) => {
   return new Date(year, month + 1, 0).getDate();
 };
+
 const DateNavigator = ({
   selectedDate,
   setSelectedDate,
 }: IDateNavigatorProps) => {
+  const isPreviousDayDisabled = selectedDate
+    ? isBeforeToday(
+        getFormattedDate(
+          new Date(selectedDate.year, selectedDate.month, selectedDate.day - 1)
+        )
+      )
+    : false;
+
+  const isPreviousMonthDisabled = selectedDate
+    ? isMonthBeforeCurrent(selectedDate.month - 1, selectedDate.year)
+    : false;
+
   return (
     <div className="relative">
       {selectedDate ? (
@@ -29,15 +43,7 @@ const DateNavigator = ({
               key={`${selectedDate.day}${selectedDate.month}${selectedDate.year}`}
               color="yellow"
               theme="light"
-              disabled={isBeforeToday(
-                getFormattedDate(
-                  new Date(
-                    selectedDate.year,
-                    selectedDate.month,
-                    selectedDate.day - 1
-                  )
-                )
-              )}
+              disabled={isPreviousDayDisabled}
               onClick={() => {
                 setSelectedDate((prev) => {
                   if (!prev) {
@@ -63,7 +69,13 @@ const DateNavigator = ({
                 });
               }}
             >
-              <LeftArrow width={24} height={24} className="text-yellow-300" />
+              <LeftArrow
+                width={24}
+                height={24}
+                className={
+                  isPreviousDayDisabled ? "text-yellow-300" : "text-black"
+                }
+              />
             </Button>
             <div className="text-lg font-bold">
               {selectedDate.dayName} {selectedDate.day}
@@ -105,10 +117,7 @@ const DateNavigator = ({
               key={selectedDate.month}
               color="yellow"
               theme="light"
-              disabled={isMonthBeforeCurrent(
-                selectedDate.month - 1,
-                selectedDate.year
-              )}
+              disabled={isPreviousMonthDisabled}
               onClick={() => {
                 setSelectedDate((prev) => {
                   if (!prev) {
@@ -130,7 +139,13 @@ const DateNavigator = ({
                 });
               }}
             >
-              <LeftArrow width={24} height={24} className="text-yellow-300" />
+              <LeftArrow
+                width={24}
+                height={24}
+                className={
+                  isPreviousMonthDisabled ? "text-yellow-300" : "text-black"
+                }
+              />
             </Button>
             <div className="text-lg font-bold">
               {selectedDate.monthName} {selectedDate.year}
