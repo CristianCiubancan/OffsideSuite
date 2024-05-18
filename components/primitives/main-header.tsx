@@ -11,7 +11,7 @@ const bebasNeue = Bebas_Neue({
 });
 
 const Header = () => {
-  const { user, isLoading, error } = useAuth();
+  // const { user, isLoading, error } = useAuth();
   return (
     <div className="w-full h-16 fixed top-0 left-0 z-20">
       {/* a blurred navbar */}
@@ -36,7 +36,7 @@ const Header = () => {
         >
           <MenuIcon className="w-8 h-8 inline-block mr-2" />
         </Button> */}
-        {isLoading ? (
+        {/* {isLoading ? (
           <div className="p-4">
             <Spinner />
           </div>
@@ -46,7 +46,7 @@ const Header = () => {
           </div>
         ) : (
           <LoginButton />
-        )}
+        )} */}
       </div>
     </div>
   );

@@ -23,19 +23,19 @@ export default function RootLayout({
     <html lang="en" className="bg-red-700">
       <body className={`position-relative ${raleway.className}`}>
         <ModalProvider>
-          <AuthProvider>
-            <BookingsProvider>
-              <UnfinishedFormsProvider>
-                <>
-                  <Header />
-                  {children}
-                  <Footer />
-                  <ModalRegistrar />
-                  <ToastContainer />
-                </>
-              </UnfinishedFormsProvider>
-            </BookingsProvider>
-          </AuthProvider>
+          {/* <AuthProvider> */}
+          {/* <BookingsProvider> */}
+          <UnfinishedFormsProvider>
+            <>
+              <Header />
+              {children}
+              <Footer />
+              <ModalRegistrar />
+              <ToastContainer />
+            </>
+          </UnfinishedFormsProvider>
+          {/* </BookingsProvider> */}
+          {/* </AuthProvider> */}
         </ModalProvider>
       </body>
     </html>
