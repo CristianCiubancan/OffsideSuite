@@ -414,7 +414,7 @@ const OffsideHero = () => {
     <div className={bebasNeue.className}>
       <div className="relative h-screen pt-16 overflow-hidden">
         <img
-          src="/images/offside-video-poster.jpg"
+          src="/images/hero-wpp-placeholder.jpg"
           alt="Blurred Background"
           className="absolute inset-0 -z-10 w-full h-full object-cover blur-xl"
         />
@@ -427,7 +427,7 @@ const OffsideHero = () => {
           autoPlay
           muted
         >
-          <source src="/videos/hero-video.mp4" type="video/mp4" />
+          <source src="/videos/final_12.mp4" type="video/mp4" />
         </video>
         <div className="w-full h-full relative -z-10 pt-16">
           <div
