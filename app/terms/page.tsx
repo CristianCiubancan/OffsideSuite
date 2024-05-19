@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/images/og-image.png`,
+        url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/images/hero-wpp.png`,
         alt: "OffsideMusic logo banner",
       },
     ],
